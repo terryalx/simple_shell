@@ -1,3 +1,6 @@
+#include "main.h"
+#include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
@@ -7,6 +10,7 @@
  *
  * Return: pointer to begining of mem area
  */
+
 char *_strchr(char *s, char c)
 {
 	int i;

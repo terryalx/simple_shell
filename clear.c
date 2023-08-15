@@ -1,6 +1,6 @@
 #include "main.h"
 #include "shell.h"
-
+#include "list.h"
 /**
  * _clear - clears the terminal screen
  * @params: parameters

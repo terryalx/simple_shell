@@ -1,11 +1,14 @@
+#include "main.h"
+#include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
  * _strdup - copy a string to a new allocated block of memory
  * @str: string
- *
  * Return: pointer to duplicated string, NULL if insufficient memory
  */
+
 char *_strdup(char *str)
 {
 	int len = 0; /* index of terminating null byte */

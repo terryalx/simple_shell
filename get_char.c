@@ -1,3 +1,6 @@
+#include "main.h"
+#include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
@@ -18,4 +21,5 @@ char *get_char(char c)
 	ptr[0] = c;
 	ptr[1] = '\0';
 	return (ptr);
-}
+}test 
+
