@@ -5,8 +5,6 @@
 
 /**
  * get_type - get type from the specifier from format string
- * This function skip spaces, find a specifier, and move index
- * to the specifier
  * @format: format string
  * @index: current index of format string
  */
