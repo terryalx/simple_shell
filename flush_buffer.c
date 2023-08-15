@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-
+#define BUFFER_SIZE 1024
 /**
  * flush_buffer - print out the buffer upto index and reset
  * @buffer: buffer string

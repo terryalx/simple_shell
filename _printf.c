@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-
+#define BUFFER_SIZE 1024
 /**
  * _printf - output text to standard output specified by format
  * @format: directives for outputing text

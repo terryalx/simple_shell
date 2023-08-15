@@ -21,5 +21,4 @@ char *get_char(char c)
 	ptr[0] = c;
 	ptr[1] = '\0';
 	return (ptr);
-}test 
-
+}
