@@ -1,9 +1,9 @@
+#include "main.h"
+#include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "shell.h"
-#include "lists.h"
-#include "main.h"
 
 /**
  * get_builtin - All built-in function
