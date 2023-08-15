@@ -3,7 +3,7 @@
 #define _GNU_SOURCE
 
 #include <stdio.h>
-#include "lists.h"
+#include "list.h"
 
 typedef struct param_s
 {

@@ -1,5 +1,5 @@
 #include "main.h"
-#include "shell"
+#include "shell.h"
 #include <stdlib.h>
 
 /**

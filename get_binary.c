@@ -1,4 +1,4 @@
-#include <stdlih.h>
+#include <stdlib.h>
 
 /**
  * get_binary - converts an unsigned int to binary

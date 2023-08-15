@@ -20,7 +20,7 @@ void make_alias(char *name, char *val, param_t *params)
 		{
 			free(h->val);
 			h->val = val;
-			h->valLen = _strlen(val);
+			h->val_len = _strlen(val);
 			params->status = 0;
 			return;
 		}
