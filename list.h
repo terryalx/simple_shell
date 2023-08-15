@@ -1,5 +1,6 @@
-#ifndef LIST
-#define LIST
+#ifndef _LIST_H
+#define _LIST_H
+
 #include <unistd.h>
 
 typedef struct list_s
@@ -18,4 +19,4 @@ list_t *add_node(list_t **head, char *str, char *val);
 void free_list(list_t *head);
 list_t *get_node(list_t *head, char *str);
 
-#endif /*end LIST*/
+#endif /*end _LIST_H*/

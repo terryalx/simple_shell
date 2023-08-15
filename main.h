@@ -1,5 +1,5 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _MAIN_H
+#define _MAIN_H
 #define NULL_PTR -1
 #define WRONG_SPECIFIER -2
 
@@ -23,4 +23,4 @@ int _atoi(char *s);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
-#endif /*end MAIN*/
+#endif /*end _MAIN_H*/
