@@ -1,15 +1,15 @@
+#include "main.h"
+#include "shell.h"
+#include "list.h"
+#include <stdlib.h>
+
 /**
- * set_alias - creates a new alias or updates an existing one
- * @name: the name of the alias to set
- * @params: shell state
- *
- * This function sets a new alias or updates an existing one in the shell.
- * An alias is a command or group of commands that can be referred to by
- * a name. For example, "ll" can be an alias for "ls -l". The alias is
- * stored as a key-value pair in the shell's list of aliases.
- *
+ * set_alias - creates a new or updates an existing alias
+ * @name: the name of the alias
+ * @params: state
  * Return: void
  */
+
 void set_alias(char *name, param_t *params)
 {
 	char *val, *tmp = NULL;
@@ -41,7 +41,6 @@ void set_alias(char *name, param_t *params)
 	}
 	else
 		val = _strdup(&name[i + 1]);
-	name[i] = '\0'; /* set = to terminater */
+	name[i] = '\0';
 	make_alias(name, val, params);
 }
-
