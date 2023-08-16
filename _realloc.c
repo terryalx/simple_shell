@@ -12,6 +12,8 @@
  * Return: pointer to new block
  */
 
+/*R - Type Char*/
+
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 	char **newPtr = NULL;

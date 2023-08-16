@@ -33,7 +33,7 @@ int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 char *_strtok(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
-void *_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
+char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
