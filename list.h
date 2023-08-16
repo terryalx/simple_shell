@@ -23,7 +23,6 @@ char *move_left(char *a, int size, int num);
 char *rlLine(char **line, unsigned int oldSize, unsigned int newSize);
 void rev_string(char *s);
 char *rot13(char *s);
-param_t *init_param(char **argv, char **env);
 int validNum(char *s);
 int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
