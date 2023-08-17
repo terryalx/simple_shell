@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
@@ -9,18 +10,20 @@
  * @dest: pointer to the dest address
  * Return: pointer to the dest
  */
-
 char *_strcpy(char *dest, const char *src)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
+
 	if (src[i] == '\n')
+	{
 		dest[i] = '\n';
+	}
+
 	return (dest);
 }

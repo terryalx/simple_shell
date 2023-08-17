@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -8,10 +9,11 @@
  * @savePtr: state
  * Return: next token found in string, NULL if not found
  */
-
 char *_strtok(char *str, char *delim, char **savePtr)
 {
-	char *ptr, *modifier, *end;
+	char *ptr;
+	char *modifier;
+	char *end;
 	int quoteFound = 0;
 
 	if (*savePtr)

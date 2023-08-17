@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -7,11 +8,13 @@
  * @params: shell parameters
  * Return: void
  */
-
 void _cd(param_t *params)
 {
-	char *target = NULL, cwd[1024];
-	char **tmpArgs = NULL, **originArgs = NULL;
+	char *target = NULL;
+	char cwd[1024];
+	char **tmpArgs = NULL;
+	char **originArgs = NULL;
+
 	int i;
 
 	if (params->tokCount == 1)
@@ -42,8 +45,8 @@ void _cd(param_t *params)
 		{
 			params->status = 2;
 			_printf("%s: %d: cd: Illegal option %c%c\n",
-				params->argv[0], params->lineCount,
-				'-', params->args[1][1]);
+					params->argv[0], params->lineCount,
+					'-', params->args[1][1]);
 			return;
 		}
 	}
@@ -73,7 +76,6 @@ void _cd(param_t *params)
 	originArgs = params->args;
 	params->args = tmpArgs;
 	params->tokCount = 3;
-	/* set OLDPWD to the current PWD */
 	tmpArgs[0] = _strdup("setenv");
 	tmpArgs[1] = _strdup("OLDPWD");
 	if (!tmpArgs[0] || !tmpArgs[1])
@@ -86,7 +88,6 @@ void _cd(param_t *params)
 	_setenv(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
-	/* set PWD to the target wd */
 	tmpArgs[0] = _strdup("setenv");
 	tmpArgs[1] = _strdup("PWD");
 	tmpArgs[2] = _strdup(getcwd(cwd, 1024));
@@ -100,6 +101,5 @@ void _cd(param_t *params)
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
 	free(tmpArgs);
-	/* reset params */
 	params->args = originArgs;
 }

@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -8,7 +9,6 @@
  * @params: Pointer to param_t
  * Return: Built-in function pionter. NULL if not found.
  */
-
 void (*get_builtin(param_t *params))(param_t *)
 {
 	op_t ops[] = {
@@ -26,7 +26,9 @@ void (*get_builtin(param_t *params))(param_t *)
 	while (op->name)
 	{
 		if (!_strcmp(params->args[0], op->name))
+		{
 			return (op->func);
+		}
 		op++;
 	}
 	return (NULL);

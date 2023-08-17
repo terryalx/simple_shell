@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -6,24 +7,33 @@
  * @str: string
  * Return: pointer to duplicated string, NULL if insufficient memory
  */
-
 char *_strdup(char *str)
 {
-	int len = 0; /* index of terminating null byte */
+	int len;
+	len = 0;
+
 	char *ptr = NULL;
 
 	if (!str)
+	{
 		return (NULL);
+	}
+
 	while (*str)
 	{
 		len++;
 		str++;
 	}
+
 	ptr = (char *) malloc(sizeof(char) * (len + 1));
+
 	if (ptr)
 	{
 		while (len >= 0)
+		{
 			*(ptr + len--) = *(str--);
+		}
 	}
+
 	return (ptr);
 }

@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -6,11 +7,12 @@
  * @n: integer
  * Return: pointer to binary
  */
-
 char *get_binary(unsigned int n)
 {
 	char *ptr = NULL;
-	unsigned int i, num = 0, size = 0;
+	unsigned int i;
+	unsigned int num = 0;
+	unsigned int size = 0;
 
 	if (n == 0)
 	{

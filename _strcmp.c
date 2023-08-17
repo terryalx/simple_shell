@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
@@ -10,7 +11,6 @@
  * Return: int less than, equal to, or greater than 0 if s1 is, respectively
  * less than, equal to, or greater than s2
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	int res = 0;

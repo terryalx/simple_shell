@@ -1,12 +1,12 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
  * _unsetenv - function searches the environment list to find the
  * environment variable name and removes it.
  * @params: parameters
-*/
-
+ */
 void _unsetenv(param_t *params)
 {
 	char *name = params->args[1];
@@ -19,7 +19,7 @@ void _unsetenv(param_t *params)
 	}
 	while (h)
 	{
-		if (_strcmp(name, h->str) == 0) /* env var exists */
+		if (_strcmp(name, h->str) == 0)
 		{
 			if (h == params->env_head)
 				params->env_head = h->next;

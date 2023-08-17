@@ -1,11 +1,11 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
  * _alias - "alias" shell command.
  * @params: Pointer -> param_t struct.
  */
-
 void _alias(param_t *params)
 {
 	unsigned int i;
