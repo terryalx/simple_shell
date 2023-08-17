@@ -125,4 +125,14 @@ void _clear(param_t *params);
 /* init_param.c */
 param_t *init_param(char **argv, char **env);
 
+void handle_dash(param_t *params);
+void handle_malloc_error(void);
+void handle_chdir_error(param_t *params, char *target);
+void update_oldpwd(param_t *params);
+char **create_tmp_args(param_t *params);
+void setenv_oldpwd(char *pwd, param_t *params);
+void setenv_pwd(char **tmpArgs, char *cwd, param_t *params);
+void free_tmp_args(char **tmpArgs);
+void restore_original_args(param_t *params, char **originArgs);
+
 #endif /* SHELL_H */
