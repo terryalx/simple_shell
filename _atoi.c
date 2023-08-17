@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
@@ -8,24 +9,28 @@
  * @s: string to eval
  * Return: n the value of the first number in the st0ring
  */
-
 int _atoi(char *s)
 {
-	int n, tmp, len, mul = 1;
+	int i;
+	int save_tmp;
+	int len;
+	int mul = 1;
+	int r_val = -1;
 
-	n = 0;
-	tmp = 0;
+	i = 0;
+	save_tmp = 0;
 
 	len = _strlen(s);
 	len--;
+
 	while (len >= 0)
 	{
-		tmp = n;
-		n = n + (s[len] - '0') * mul;
-		if (n < tmp || n > INT_MAX)
-			return (-1);
+		save_tmp = i;
+		i = i + (s[len] - '0') * mul;
+		if (i < save_tmp || i > INT_MAX)
+			return (r_val);
 		len--;
 		mul *= 10;
 	}
-	return (n);
+	return (i);
 }
