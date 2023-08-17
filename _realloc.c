@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -9,13 +10,11 @@
  * @new_size: size of the new block
  * Return: pointer to new block
  */
-
-/*R - Type Char*/
-
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
-	char **newPtr = NULL;
-	unsigned int num, i;
+	char **new_ptr = NULL;
+	unsigned int numb;
+	unsigned int i;
 
 	if (!ptr)
 	{
@@ -28,16 +27,18 @@ char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 	if (new_size == old_size)
+	{
 		return (ptr);
-	num = old_size < new_size ? old_size : new_size;
-	newPtr = malloc(8 * new_size);
-	if (newPtr)
+	}
+	numb = old_size < new_size ? old_size : new_size;
+	new_ptr = malloc(8 * new_size);
+	if (new_ptr)
 	{
 		for (i = 0; i < new_size; i++)
-			newPtr[i] = NULL;
-		for (i = 0; i < num; i++)
-			newPtr[i] = ptr[i];
+			new_ptr[i] = NULL;
+		for (i = 0; i < numb; i++)
+			new_ptr[i] = ptr[i];
 		free(ptr);
 	}
-	return (newPtr);
+	return (new_ptr);
 }
