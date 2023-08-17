@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -8,7 +9,6 @@
  * @n: amount of bytes for s2
  * Return: Null on failure, else ptr to malloc
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;

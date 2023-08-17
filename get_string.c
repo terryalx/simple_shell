@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -6,11 +7,11 @@
  * @s: string to be copied
  * Return: Null if string is null, else pointer of copied string
  */
-
 char *get_string(char *s)
 {
 	char *ptr = NULL;
-	int i, j;
+	int i;
+	int j;
 
 	if (s == NULL)
 	{
@@ -26,10 +27,14 @@ char *get_string(char *s)
 		ptr[6] = '\0';
 		return (ptr);
 	}
-	for (i = 0; s[i] != '\0'; i++)
+
+	i = 0;
+	while (s[i] != '\0')
 	{
+		i++;
 		;
 	}
+
 	ptr = (char *)malloc(i * sizeof(char) + 1);
 	if (ptr == NULL)
 	{
@@ -40,5 +45,6 @@ char *get_string(char *s)
 		ptr[j] = s[j];
 	}
 	ptr[j] = '\0';
+
 	return (ptr);
 }

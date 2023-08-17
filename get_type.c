@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -8,7 +9,6 @@
  * @format: format string
  * @index: current index of format string
  */
-
 void get_type(char *format, int *index)
 {
 	do {

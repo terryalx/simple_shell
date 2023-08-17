@@ -9,10 +9,10 @@
  */
 char *_strdup(char *str)
 {
+	char *ptr = NULL;
+
 	int len;
 	len = 0;
-
-	char *ptr = NULL;
 
 	if (!str)
 	{
@@ -34,6 +34,5 @@ char *_strdup(char *str)
 			*(ptr + len--) = *(str--);
 		}
 	}
-
 	return (ptr);
 }

@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -12,7 +13,6 @@
  * @newSize: something blue
  * Return: new allocated buffer
  */
-
 char *rlLine(char **line, unsigned int oldSize, unsigned int newSize)
 {
 	char *newLine = NULL;
@@ -22,7 +22,9 @@ char *rlLine(char **line, unsigned int oldSize, unsigned int newSize)
 	if (newLine)
 	{
 		for (i = 0; i < oldSize; i++)
+		{
 			newLine[i] = (*line)[i];
+		}
 		free(*line);
 		*line = newLine;
 	}

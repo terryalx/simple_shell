@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -9,11 +10,14 @@
  *
  * Return: number of tokens
  */
-
 int process_string(param_t *params)
 {
-	char *token = NULL, *state = NULL;
-	char *alias = NULL, *state_2 = NULL, *val;
+	char *token = NULL;
+	char *state = NULL;
+	char *alias = NULL;
+	char *state_2 = NULL;
+	char *val;
+
 	list_t *node;
 
 	token = _strtok(params->nextCommand, " \n\t", &state);
@@ -31,7 +35,7 @@ int process_string(param_t *params)
 		if (!alias)
 		{
 			write(STDERR_FILENO,
-			      "alias expansion malloc error\n", 18);
+					"alias expansion malloc error\n", 18);
 			free_params(params);
 			exit(-1);
 		}
@@ -56,8 +60,8 @@ int process_string(param_t *params)
 		{
 			params->argsCap += 10;
 			params->args = _realloc(params->args,
-						params->argsCap - 10,
-						params->argsCap);
+					params->argsCap - 10,
+					params->argsCap);
 			if (!(params->args))
 			{
 				write(STDERR_FILENO, "realloc error\n", 14);

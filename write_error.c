@@ -1,16 +1,17 @@
 #include "shell.h"
+
 #include <unistd.h>
 
 /**
  * write_error - write error message to stderr
  * @params: parameters struct
  * @msg: error message
-*/
-
+ */
 void write_error(param_t *params, char *msg)
 {
 	char errBuffer[1024] = {0};
-	char *writeHead = errBuffer, *bufPtr = errBuffer;
+	char *writeHead = errBuffer;
+	char *bufPtr = errBuffer;
 
 	_strcpy(writeHead, params->argv[0]);
 	writeHead = bufPtr + _strlen(bufPtr);
@@ -26,6 +27,5 @@ void write_error(param_t *params, char *msg)
 	writeHead = bufPtr + _strlen(bufPtr);
 	_strcpy(writeHead, msg);
 	writeHead = bufPtr + _strlen(bufPtr);
-
 	write(STDERR_FILENO, errBuffer, _strlen(bufPtr));
 }

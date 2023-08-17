@@ -23,11 +23,11 @@
  */
 typedef struct list_s
 {
-    char *str;
-    char *val;
-    unsigned int len;
-    unsigned int val_len;
-    struct list_s *next;
+	char *str;
+	char *val;
+	unsigned int len;
+	unsigned int val_len;
+	struct list_s *next;
 } list_t;
 
 /**
@@ -35,16 +35,16 @@ typedef struct list_s
  */
 typedef struct param_s
 {
-    unsigned int argsCap;
-    unsigned int lineCount;
-    unsigned int tokCount;
-    int status;
-    char **argv;
-    char *nextCommand;
-    char *buffer;
-    char **args;
-    list_t *env_head;
-    list_t *alias_head;
+	unsigned int argsCap;
+	unsigned int lineCount;
+	unsigned int tokCount;
+	int status;
+	char **argv;
+	char *nextCommand;
+	char *buffer;
+	char **args;
+	list_t *env_head;
+	list_t *alias_head;
 } param_t;
 
 /*

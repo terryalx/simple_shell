@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -8,7 +9,6 @@
  * run_command - searches path dirs for command and execs
  * @params: parameters
  */
-
 void run_command(param_t *params)
 {
 	char *exeFile = NULL;

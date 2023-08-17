@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -7,7 +8,6 @@
  * @val: value of new alias
  * @params: parameter
  */
-
 void make_alias(char *name, char *val, param_t *params)
 {
 	list_t *h = params->alias_head;
@@ -24,7 +24,7 @@ void make_alias(char *name, char *val, param_t *params)
 		}
 		h = h->next;
 	}
-	
+
 	params->alias_head = add_node(&(params->alias_head), name, val);
 	free(val);
 	params->status = 0;

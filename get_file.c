@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -7,13 +8,13 @@
  * get_file - get correct path to a command file
  * @params: parameters
  * Return: string of valid path to command file, NULL if not found
- * The string needs to be freed
  */
-
 char *get_file(param_t *params)
 {
 	char *path = NULL;
-	char *exePath = NULL, *exeArg = NULL, *tmp = NULL;
+	char *exePath = NULL;
+	char *exeArg = NULL;
+	char *tmp = NULL;
 	char *state = NULL;
 
 	if (access(params->args[0], F_OK | X_OK) == 0)

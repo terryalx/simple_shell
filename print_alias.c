@@ -1,12 +1,12 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
  * print_alias - prints the value of an alias
  * @name: name of alias
  * @params: alias list
-*/
-
+ */
 void print_alias(char *name, param_t *params)
 {
 	unsigned int len = 0;

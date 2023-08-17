@@ -5,13 +5,12 @@
  * @params: parameters
  * Return: void
  */
-
 void _printenv(param_t *params)
 {
 	if (params->tokCount != 1)
 	{
 		_printf("env: %s: No such file or directory\n",
-			params->args[1]);
+				params->args[1]);
 		params->status = 2;
 		return;
 	}

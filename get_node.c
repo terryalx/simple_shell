@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,18 +9,23 @@
  * @str: key
  * Return: ptr to desired node, NULL if not found
  */
-
 list_t *get_node(list_t *head, char *str)
 {
 	list_t *h;
 
 	if (!head)
+	{
 		return (NULL);
+	}
+
 	h = head;
+
 	while (h)
 	{
 		if (!_strcmp(h->str, str))
+		{
 			break;
+		}
 		h = h->next;
 	}
 	return (h);

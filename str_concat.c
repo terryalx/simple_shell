@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -7,7 +8,6 @@
  * @s2: second string argument
  * Return: Null on failure, else ptr to malloc
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	char *ptr;

@@ -1,8 +1,11 @@
 #include "shell.h"
+
 #define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+
 #define BUFFER_SIZE 4096
 
 /**
@@ -12,7 +15,6 @@
  * @env: Null terminated environment variables list
  * Return: 0 on success
  */
-
 int main(int __attribute__((unused)) argc, char **argv, char **env)
 {
 	param_t *params = NULL;
@@ -30,7 +32,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 		if (cond == -1)
 		{
 			status = params->status;
-			_printf("$ :\n");
+			_printf("$ \n");
 			free_params(params);
 			return (status);
 		}
@@ -38,7 +40,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			(params->buffer)[i] = 0;
 		params->tokCount = 0;
 		if (isatty(STDIN_FILENO))
-			_printf("$: ");
+			_printf("$ ");
 		cond = getline(&params->buffer, &size, stdin);
 		params->lineCount++;
 		if (cond == -1 && _strlen(params->buffer) == 0)
@@ -63,7 +65,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			params->tokCount = 0;
 			free(params->nextCommand);
 			params->nextCommand = _strtok(params->buffer, ";\n",
-						      &state);
+					&state);
 		}
 	}
 }

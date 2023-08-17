@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 
 /**
@@ -6,22 +7,28 @@
  * @n: integer
  * Return: pointer to integer string, NULL on error
  */
-
 char *get_number(int n)
 {
-	int i, len = 0, tmp;
+	int i;
+	int len = 0;
+	int tmp;
 	char *buf = NULL;
-	/* find number bytes to allocate */
+
 	tmp = n;
+
 	while (tmp >= 10 || tmp <= -10)
 	{
 		tmp /= 10;
 		len++;
 	}
 	len++;
+
 	if (n < 0)
+	{
 		len++;
+	}
 	buf = malloc(sizeof(char) * (len + 1));
+
 	if (buf)
 	{
 		buf[len] = '\0';

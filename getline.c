@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -11,7 +12,6 @@
  *
  * Return: number of char read
  */
-
 int _getline(param_t *params)
 {
 	char *line = NULL;

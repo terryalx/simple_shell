@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdlib.h>
 #include <limits.h>
 
@@ -6,7 +7,6 @@
  * _myExit - buildin exit function
  * @params: parameters
  */
-
 void _myExit(param_t *params)
 {
 	int status = 0;
@@ -24,7 +24,7 @@ void _myExit(param_t *params)
 		{
 			write_error(params, "Illegal number: ");
 			write(STDERR_FILENO, params->args[1],
-			      _strlen(params->args[1]));
+					_strlen(params->args[1]));
 			write(STDERR_FILENO, "\n", 1);
 			params->status = 2;
 			return;
@@ -37,7 +37,7 @@ void _myExit(param_t *params)
 		params->status = 2;
 		write_error(params, "Illegal number: ");
 		write(STDERR_FILENO, params->args[1],
-		      _strlen(params->args[1]));
+				_strlen(params->args[1]));
 		write(STDERR_FILENO, "\n", 1);
 	}
 }

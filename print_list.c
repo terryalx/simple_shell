@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +9,6 @@
  *
  * Return: length of list
  */
-
 size_t print_list(list_t *h)
 {
 	int count;
