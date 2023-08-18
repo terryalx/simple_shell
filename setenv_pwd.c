@@ -5,7 +5,9 @@
 
 /**
  * setenv_pwd - _cd helper
- * @params: shell parameters
+ * @tmpArgs: shell parameters
+ * @cwd: ..
+ * @params: ...
  * Return: void
  */
 void setenv_pwd(char **tmpArgs, char *cwd, param_t *params)

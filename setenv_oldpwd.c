@@ -4,13 +4,15 @@
 #include <stdlib.h>
 
 /**
- * _cd - change current working directory
+ * setenv_oldpwd - _cd
+ * @pwd: ...
  * @params: shell parameters
  * Return: void
  */
 void setenv_oldpwd(char *pwd, param_t *params)
 {
 	char **tmpArgs = malloc(sizeof(char *) * 3);
+
 	if (!tmpArgs)
 	{
 		write(STDERR_FILENO, "cd old PWD malloc error\n", 23);

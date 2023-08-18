@@ -4,19 +4,24 @@
 #include <stdlib.h>
 
 /**
- * _cd - change current working directory
+ * create_tmp_args - _cd helper
  * @params: shell parameters
  * Return: void
  */
 char **create_tmp_args(param_t *params)
 {
+	int vall = -1;
+
 	char **tmpArgs = malloc(sizeof(char *) * 3);
+
 	if (!tmpArgs)
-		exit(-1);
+	{
+		exit(vall);
+	}
 
 	tmpArgs[0] = _strdup("setenv");
 	tmpArgs[1] = _strdup("OLDPWD");
 	tmpArgs[2] = _getenv("PWD", params);
 
-	return tmpArgs;
+	return (tmpArgs);
 }
