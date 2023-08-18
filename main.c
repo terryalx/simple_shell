@@ -56,6 +56,21 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			params->tokCount = process_string(params);
 			if (params->tokCount == 0)
 				break;
+			if (_strcmp(params->args[0], "exit") == 0)
+			{
+				if (params->tokCount > 1 && validNum(params->args[1]))
+				{
+					status = _atoi(params->args[1]);
+					free_params(params);
+					exit(status);
+				}
+				else
+				{
+					_printf("Usage: exit status\n");
+					params->status = 2;
+					break;
+				}
+			}
 			run_command(params);
 			for (i = 0; i < params->argsCap; i++)
 			{
