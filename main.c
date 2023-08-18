@@ -50,7 +50,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			return (status);
 		}
 		state = NULL;
-		params->nextCommand = _strtok(params->buffer, ";\n", &state);
+		params->nextCommand = token_(params->buffer, ";\n", &state);
 		while (params->nextCommand)
 		{
 			params->tokCount = process_string(params);
@@ -79,7 +79,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			}
 			params->tokCount = 0;
 			free(params->nextCommand);
-			params->nextCommand = _strtok(params->buffer, ";\n",
+			params->nextCommand = token_(params->buffer, ";\n",
 					&state);
 		}
 	}

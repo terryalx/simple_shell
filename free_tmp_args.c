@@ -1,11 +1,10 @@
 #include "shell.h"
-
 #include <unistd.h>
 #include <stdlib.h>
 
 /**
- * free_tmp_args - _cd helper
- * @tmpArgs: shell parameters
+ * free_tmp_args - Helper function to free memory allocated for tmpArgs array
+ * @tmpArgs: Array of shell parameters
  * Return: void
  */
 void free_tmp_args(char **tmpArgs)

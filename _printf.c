@@ -1,5 +1,4 @@
 #include "shell.h"
-
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -13,34 +12,39 @@
  */
 int _printf(const char *format, ...)
 {
-	int maxx, sum = 0, val = -1, index = 0;
+	int formatIndex, charCount = 0, returnValue = -1, bufferIndex = 0;
 	char *arg = NULL;
 	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
 	if (!format)
-		return (val);
+		return (returnValue);
+
 	if (_strlen((char *)format) == 1 && format[0] == '%')
 	{
-		return (val);
+		return (returnValue);
 	}
-	maxx = 0;
+
+	formatIndex = 0;
 	va_start(params, format);
+
 	while (1)
 	{
-		if (index == BUFFER_SIZE)
+		if (bufferIndex == BUFFER_SIZE)
 		{
-			sum += flush_buffer(buffer, &index);
+			charCount += flush_buffer(buffer, &bufferIndex);
 		}
-		if (format[maxx] == '%')
+
+		if (format[formatIndex] == '%')
 		{
-			get_type((char *)format, &maxx);
-			switch (format[maxx])
+			get_type((char *)format, &formatIndex);
+
+			switch (format[formatIndex])
 			{
 				case 'c':
-					buffer[index] = (char) va_arg(params, int);
-					index++;
-					maxx++;
+					buffer[bufferIndex] = (char) va_arg(params, int);
+					bufferIndex++;
+					formatIndex++;
 					continue;
 				case 's':
 					arg = get_arg('s', va_arg(params, char*));
@@ -64,38 +68,41 @@ int _printf(const char *format, ...)
 					arg[1] = '\0';
 					break;
 				case '\0':
-					buffer[index] = '%';
-					index++;
+					buffer[bufferIndex] = '%';
+					bufferIndex++;
 					continue;
 				default:
 					arg = malloc(3);
 					arg[0] = '%';
-					arg[1] = format[maxx];
+					arg[1] = format[formatIndex];
 					arg[2] = '\0';
 			}
+
 			if (!arg)
 			{
 				va_end(params);
 				free(arg);
-				return (val);
+				return (returnValue);
 			}
-			sum += flush_buffer(buffer, &index);
-			sum += print_arg(arg);
+
+			charCount += flush_buffer(buffer, &bufferIndex);
+			charCount += print_arg(arg);
 			free(arg);
-			maxx++;
+			formatIndex++;
 		}
-		else if (format[maxx] != '\0')
+		else if (format[formatIndex] != '\0')
 		{
-			buffer[index] = format[maxx];
-			index++;
-			maxx++;
+			buffer[bufferIndex] = format[formatIndex];
+			bufferIndex++;
+			formatIndex++;
 		}
 		else
 		{
-			sum += flush_buffer(buffer, &index);
+			charCount += flush_buffer(buffer, &bufferIndex);
 			va_end(params);
-			return (sum);
+			return (charCount);
 		}
 	}
-	return (sum);
+
+	return (charCount);
 }

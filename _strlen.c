@@ -1,27 +1,21 @@
 #include "shell.h"
-
 #include <stdlib.h>
 
 /**
- *_strlen - returns the length of a string
- *@s: string
- *Return: 0 if null, else length without null byte
+ * _strlen - Returns the length of a string.
+ * @s: The string to calculate the length of.
+ *
+ * Return: The length of the string.
  */
-int _strlen(char *s)
+size_t _strlen(const char *s)
 {
-	int length;
-
-	length = 0;
+	size_t length = 0;
 
 	if (s == NULL)
-	{
 		return (0);
-	}
 
 	while (s[length] != '\0')
-	{
 		length++;
-	}
 
 	return (length);
 }

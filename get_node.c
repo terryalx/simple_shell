@@ -1,32 +1,26 @@
 #include "shell.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * get_node - search for a node
- * @head: start of list
- * @str: key
- * Return: ptr to desired node, NULL if not found
+ * get_node - Search for a node in a linked list.
+ * @head: Pointer to the head of the list.
+ * @str: Key to search for.
+ *
+ * Return: Pointer to the desired node, NULL if not found.
  */
 list_t *get_node(list_t *head, char *str)
 {
-	list_t *h;
+	list_t *current = head;
 
-	if (!head)
+	while (current != NULL)
 	{
-		return (NULL);
-	}
-
-	h = head;
-
-	while (h)
-	{
-		if (!_strcmp(h->str, str))
+		if (!_strcmp(current->str, str))
 		{
 			break;
 		}
-		h = h->next;
+		current = current->next;
 	}
-	return (h);
+
+	return current;
 }

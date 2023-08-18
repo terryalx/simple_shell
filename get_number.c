@@ -1,51 +1,50 @@
 #include "shell.h"
-
 #include <stdlib.h>
 
+
 /**
- * get_number - put integer into a memory block as string
- * @n: integer
- * Return: pointer to integer string, NULL on error
+ * get_number - Convert an integer to a string.
+ * @number: The integer to be converted.
+ *
+ * Return: A pointer to the string representation of the integer,
+ *         or NULL if an error occurs.
  */
-char *get_number(int n)
+char *get_number(int number)
 {
-	int i;
-	int len = 0;
-	int tmp;
-	char *buf = NULL;
+	int i, string_length = 0, temp;
+	char *result = NULL;
 
-	tmp = n;
+	temp = number;
 
-	while (tmp >= 10 || tmp <= -10)
+	while (temp != 0)
 	{
-		tmp /= 10;
-		len++;
+		temp /= 10;
+		string_length++;
 	}
-	len++;
+	string_length++;
 
-	if (n < 0)
-	{
-		len++;
-	}
-	buf = malloc(sizeof(char) * (len + 1));
+	if (number < 0)
+		string_length++;
 
-	if (buf)
+	result = malloc(sizeof(char) * (string_length + 1));
+
+	if (result)
 	{
-		buf[len] = '\0';
-		if (n < 0)
+		result[string_length] = '\0';
+
+		i = string_length - 1;
+
+		do
 		{
-			buf[0] = '-';
-		}
-		i = len - 1;
-		while (n >= 10 || n <= -10)
-		{
-			tmp = (n % 10) >= 0 ? n % 10 : -(n % 10);
-			buf[i] = tmp + '0';
+			temp = (number % 10) >= 0 ? number % 10 : -(number % 10);
+			result[i] = temp + '0';
 			i--;
-			n /= 10;
-		}
-		tmp = (n % 10) >= 0 ? n % 10 : -(n % 10);
-		buf[i] = tmp + '0';
+			number /= 10;
+		} while (number != 0);
+
+		if (number < 0)
+			result[0] = '-';
 	}
-	return (buf);
+
+	return result;
 }

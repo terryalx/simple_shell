@@ -1,26 +1,22 @@
 #include "shell.h"
-
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
 
 /**
- * _atoi - turn a str into an int
- * @s: string to eval
- * Return: n the value of the first number in the st0ring
+ * _atoi - Convert a string to an integer
+ * @s: The string to be converted
+ *
+ * Return: The converted integer value
  */
 int _atoi(char *s)
 {
-	int i;
-	int save_tmp;
-	int len;
+	int i = 0;
+	int save_tmp = 0;
+	int len = _strlen(s);
 	int mul = 1;
 	int r_val = -1;
 
-	i = 0;
-	save_tmp = 0;
-
-	len = _strlen(s);
 	len--;
 
 	while (len >= 0)
@@ -32,5 +28,6 @@ int _atoi(char *s)
 		len--;
 		mul *= 10;
 	}
+
 	return (i);
 }

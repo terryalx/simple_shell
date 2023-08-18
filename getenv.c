@@ -1,22 +1,26 @@
 #include "shell.h"
-
 #include <stdlib.h>
+#include <string.h>
 
 /**
- * _getenv - Value of environment variable.
+ * _getenv - Retrieve the value of an environment variable.
  * @name: Name of the environment variable to retrieve.
  * @params: Pointer to the parameter structure containing the environment list.
- * Return: A pointer to -> value of the environment variable, or NULL if not.
+ *
+ * Return: A pointer to the value of the environment variable, or NULL if not found.
  */
-char *_getenv(char *name, param_t *params)
+char *_getenv(const char *name, param_t *params)
 {
-	list_t *ptr = params->env_head;
+	list_t *currentNode = params->env_head;
 
-	while (ptr)
+	while (currentNode)
 	{
-		if (!_strcmp(name, ptr->str))
-			return (_strdup(ptr->val));
-		ptr = ptr->next;
+		if (strcmp(name, currentNode->str) == 0)
+			return strdup(currentNode->val);
+		currentNode = currentNode->next;
 	}
-	return (NULL);
+
+	/* Environment variable not found */
+
+	return NULL;
 }

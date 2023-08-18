@@ -68,7 +68,7 @@ char *get_rev(char *s);
 char *get_rot13(char *s);
 char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
-int _strlen(char *);
+size_t _strlen(const char *s);
 int _printf(const char *, ...);
 char *_strchr(char *s, char c);
 int _atoi(char *s);
@@ -99,12 +99,12 @@ char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
-char *_strtok(char *str, char *delim, char **savePtr);
+char *token_(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
 void sigint_handler(int);
-char *_getenv(char *name, param_t *params);
+char *_getenv(const char *name, param_t *params);
 void _setenv(param_t *params);
 void _unsetenv(param_t *params);
 char *get_file(param_t *params);
@@ -120,7 +120,7 @@ void print_list_env(list_t *);
 void print_list_alias(list_t *);
 void free_params(param_t *params);
 void write_error(param_t *params, char *msg);
-void _clear(param_t *params);
+void clear_screen(param_t *params);
 
 /* init_param.c */
 param_t *init_param(char **argv, char **env);

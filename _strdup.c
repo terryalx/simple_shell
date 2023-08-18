@@ -1,5 +1,4 @@
 #include "shell.h"
-
 #include <stdlib.h>
 
 /**
@@ -10,30 +9,24 @@
 char *_strdup(char *str)
 {
 	char *ptr = NULL;
-
-	int len;
-
-	len = 0;
+	int len = 0;
 
 	if (!str)
-	{
 		return (NULL);
-	}
 
-	while (*str)
-	{
+	while (str[len])
 		len++;
-		str++;
-	}
 
-	ptr = (char *) malloc(sizeof(char) * (len + 1));
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
 
 	if (ptr)
 	{
 		while (len >= 0)
 		{
-			*(ptr + len--) = *(str--);
+			ptr[len] = str[len];
+			len--;
 		}
 	}
+
 	return (ptr);
 }

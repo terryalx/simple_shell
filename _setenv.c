@@ -1,10 +1,11 @@
 #include "shell.h"
-
 #include <stdlib.h>
 
 /**
- * _setenv - function searches list to environment variable name.
+ * _setenv - function searches list for environment variable name.
  * @params: parameters
+ *
+ * Return: void
  */
 void _setenv(param_t *params)
 {
@@ -20,6 +21,7 @@ void _setenv(param_t *params)
 		params->status = 0;
 		return;
 	}
+
 	while (h)
 	{
 		if (_strcmp(name, h->str) == 0)
@@ -38,6 +40,7 @@ void _setenv(param_t *params)
 		}
 		h = h->next;
 	}
+
 	params->env_head = add_node(&(params->env_head), name, value);
 	params->status = 0;
 }
