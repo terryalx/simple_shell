@@ -12,97 +12,90 @@
  */
 int _printf(const char *format, ...)
 {
-	int formatIndex, charCount = 0, returnValue = -1, bufferIndex = 0;
+	int high, sum = 0, index = 0;
 	char *arg = NULL;
 	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
 	if (!format)
-		return (returnValue);
-
+		return (-1);
+	/* special case only one % sign */
 	if (_strlen((char *)format) == 1 && format[0] == '%')
 	{
-		return (returnValue);
+		return (-1);
 	}
-
-	formatIndex = 0;
+	high = 0;
 	va_start(params, format);
-
 	while (1)
 	{
-		if (bufferIndex == BUFFER_SIZE)
+		if (index == BUFFER_SIZE)
 		{
-			charCount += flush_buffer(buffer, &bufferIndex);
+			sum += flush_buffer(buffer, &index);
 		}
-
-		if (format[formatIndex] == '%')
+		if (format[high] == '%')
 		{
-			get_type((char *)format, &formatIndex);
-
-			switch (format[formatIndex])
+			get_type((char *)format, &high);
+			switch (format[high])
 			{
-				case 'c':
-					buffer[bufferIndex] = (char) va_arg(params, int);
-					bufferIndex++;
-					formatIndex++;
-					continue;
-				case 's':
-					arg = get_arg('s', va_arg(params, char*));
-					break;
-				case 'd':
-				case 'i':
-					arg = get_arg('d', va_arg(params, int));
-					break;
-				case 'b':
-					arg = get_arg('b', va_arg(params, int));
-					break;
-				case 'r':
-					arg = get_arg('r', va_arg(params, char *));
-					break;
-				case 'R':
-					arg = get_arg('R', va_arg(params, char *));
-					break;
-				case '%':
-					arg = malloc(2);
-					arg[0] = '%';
-					arg[1] = '\0';
-					break;
-				case '\0':
-					buffer[bufferIndex] = '%';
-					bufferIndex++;
-					continue;
-				default:
-					arg = malloc(3);
-					arg[0] = '%';
-					arg[1] = format[formatIndex];
-					arg[2] = '\0';
+			case 'c':
+				buffer[index] = (char) va_arg(params, int);
+				index++;
+				high++;
+				continue;
+			case 's':
+				arg = get_arg('s', va_arg(params, char*));
+				break;
+			case 'd':
+			case 'i':
+				arg = get_arg('d', va_arg(params, int));
+				break;
+			case 'b':
+				arg = get_arg('b', va_arg(params, int));
+				break;
+			case 'r':
+				arg = get_arg('r', va_arg(params, char *));
+				break;
+			case 'R':
+				arg = get_arg('R', va_arg(params, char *));
+				break;
+			case '%':
+				arg = malloc(2);
+				arg[0] = '%';
+				arg[1] = '\0';
+				break;
+			case '\0':
+				buffer[index] = '%';
+				index++;
+				continue;
+			default:/* unknown specifier */
+				arg = malloc(3);
+				arg[0] = '%';
+				arg[1] = format[high];
+				arg[2] = '\0';
 			}
-
 			if (!arg)
 			{
 				va_end(params);
 				free(arg);
-				return (returnValue);
+				return (-1);
 			}
-
-			charCount += flush_buffer(buffer, &bufferIndex);
-			charCount += print_arg(arg);
+			sum += flush_buffer(buffer, &index);
+			sum += print_arg(arg);
 			free(arg);
-			formatIndex++;
+			high++;
 		}
-		else if (format[formatIndex] != '\0')
+		else if (format[high] != '\0')
 		{
-			buffer[bufferIndex] = format[formatIndex];
-			bufferIndex++;
-			formatIndex++;
+			buffer[index] = format[high];
+			index++;
+			high++;
 		}
 		else
 		{
-			charCount += flush_buffer(buffer, &bufferIndex);
+			sum += flush_buffer(buffer, &index);
 			va_end(params);
-			return (charCount);
+			return (sum);
 		}
 	}
-
-	return (charCount);
+	return (sum);
 }

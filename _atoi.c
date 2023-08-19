@@ -11,7 +11,7 @@
  */
 int _atoi(char *s)
 {
-	int i = 0;
+	int nth = 0;
 	int save_tmp = 0;
 	int len = _strlen(s);
 	int mul = 1;
@@ -21,13 +21,13 @@ int _atoi(char *s)
 
 	while (len >= 0)
 	{
-		save_tmp = i;
-		i = i + (s[len] - '0') * mul;
-		if (i < save_tmp || i > INT_MAX)
+		save_tmp = nth;
+		nth = nth + (s[len] - '0') * mul;
+		if (nth < save_tmp || nth > INT_MAX)
 			return (r_val);
 		len--;
 		mul *= 10;
 	}
 
-	return (i);
+	return (nth);
 }
