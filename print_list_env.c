@@ -1,6 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
 
 /**
  * print_list_env - prins environment variables
