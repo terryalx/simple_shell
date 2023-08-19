@@ -1,19 +1,20 @@
 #include "shell.h"
-#include <stdlib.h>
 
 /**
- * _strtok - strtok_r
+ * token_ - string token function
  * @str: string to be passed
  * @delim: delimiters for tokens
  * @savePtr: state
+ *
  * Return: next token found in string, NULL if not found
  */
-
-char *_strtok(char *str, char *delim, char **savePtr)
+char *token_(char *str, char *delim, char **savePtr)
 {
-	char *ptr, *modifier, *end;
+	char *ptr;
+	char *modifier;
+	char *end;
 	int quoteFound = 0;
-
+	
 	if (*savePtr)
 		ptr = *savePtr;
 	else
