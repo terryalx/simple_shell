@@ -1,13 +1,16 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
  * _strchr - locates a character in a string
- * @s: pointer to the string
- * @c: character to be found
+ * @s: where to start looking
+ * @c: values to find
  *
- * Return: pointer to the first occurrence of the character in the string
+ * Return: pointer to begining of mem area
  */
+
 char *_strchr(char *s, char c)
 {
 	int i;

@@ -1,15 +1,19 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 /**
- * _realloc - Reallocates a memory block using malloc.
- * @ptr: Pointer to the old block.
- * @old_size: Size of the old block.
- * @new_size: Size of the new block.
- *
- * Return: Pointer to the new block.
+ * _realloc - reallocates a memory block using malloc
+ * @ptr: old block
+ * @old_size: size of the old block
+ * @new_size: size of the new block
+ * Return: pointer to new block
  */
+
+/*R - Type Char*/
+
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 	char **newPtr = NULL;

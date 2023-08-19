@@ -1,26 +1,21 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
 /**
- * get_builtin - Get the built-in function based on the input parameters
- * @input_params: Pointer to the input parameters
- * Return: Pointer to the built-in function. NULL if not found.
+ * get_builtin - All built-in function
+ * @params: Pointer to param_t
+ * Return: Built-in function pionter. NULL if not found.
  */
-typedef void (*builtin_func_t)(param_t *);
 
-/**
- * get_builtin - Get the built-in function based on the input parameters
- * @input_params: Pointer to the input parameters
- *
- * Return: Pointer to the built-in function. NULL if not found.
- */
-builtin_func_t get_builtin(param_t *input_params)
+void (*get_builtin(param_t *params))(param_t *)
 {
 	op_t ops[] = {
 		{"exit", _myExit},
-		{"clear", clear_screen},
+		{"clear", _clear},
 		{"env", _printenv},
 		{"setenv", _setenv},
 		{"cd", _cd},
@@ -28,15 +23,13 @@ builtin_func_t get_builtin(param_t *input_params)
 		{"alias", _alias},
 		{NULL, NULL},
 	};
-	op_t *current_op = ops;
+	op_t *op = ops;
 
-	while (current_op->name)
+	while (op->name)
 	{
-		if (!_strcmp(input_params->args[0], current_op->name))
-		{
-			return (current_op->func);
-		}
-		current_op++;
+		if (!_strcmp(params->args[0], op->name))
+			return (op->func);
+		op++;
 	}
 	return (NULL);
 }

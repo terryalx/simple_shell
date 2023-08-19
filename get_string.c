@@ -1,47 +1,46 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
  * get_string - returns a new duplicated string
  * @s: string to be copied
- *
  * Return: Null if string is null, else pointer of copied string
  */
+
 char *get_string(char *s)
 {
-	char *duplicated_string = NULL;
-	int string_length = 0, i;
+	char *ptr = NULL;
+	int i, j;
 
 	if (s == NULL)
 	{
-		duplicated_string = malloc(7);
-		if (duplicated_string == NULL)
+		ptr = malloc(7);
+		if (ptr == NULL)
 			return (NULL);
-		duplicated_string[0] = '(';
-		duplicated_string[1] = 'n';
-		duplicated_string[2] = 'u';
-		duplicated_string[3] = 'l';
-		duplicated_string[4] = 'l';
-		duplicated_string[5] = ')';
-		duplicated_string[6] = '\0';
-		return (duplicated_string);
+		ptr[0] = '(';
+		ptr[1] = 'n';
+		ptr[2] = 'u';
+		ptr[3] = 'l';
+		ptr[4] = 'l';
+		ptr[5] = ')';
+		ptr[6] = '\0';
+		return (ptr);
 	}
-
-	while (s[string_length] != '\0')
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		string_length++;
+		;
 	}
-
-	duplicated_string = malloc((string_length + 1) * sizeof(char));
-	if (duplicated_string == NULL)
+	ptr = (char *)malloc(i * sizeof(char) + 1);
+	if (ptr == NULL)
 	{
 		return (NULL);
 	}
-
-	for (i = 0; i <= string_length; i++)
+	for (j = 0; j < i; j++)
 	{
-		duplicated_string[i] = s[i];
+		ptr[j] = s[j];
 	}
-
-	return (duplicated_string);
+	ptr[j] = '\0';
+	return (ptr);
 }

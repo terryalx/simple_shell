@@ -1,15 +1,16 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-
 #define BUFFER_SIZE 1024
-
 /**
  * _printf - output text to standard output specified by format
  * @format: directives for outputing text
  * Return: number of characters output
  */
+
 int _printf(const char *format, ...)
 {
 	int high, sum = 0, index = 0;

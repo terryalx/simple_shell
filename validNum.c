@@ -1,22 +1,22 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <limits.h>
 
 /**
- * is_valid_number - Check if a string is a valid number.
- * @str: The string to be checked.
- *
- * Return: 1 if the string is a valid number, 0 otherwise.
+ * validNum - check if string is a valid number
+ * @s: string
+ * Return: 0 if false, 1 otherwise
  */
-int is_valid_number(char *str)
+
+int validNum(char *s)
 {
-	while (*str)
+	while (*s)
 	{
-		if (*str < '0' || *str > '9')
-		{
-			return 0;
-		}
-		str++;
+		if (*s > '9' || *s < '0')
+			return (0);
+		s++;
 	}
-	return 1;
+	return (1);
 }

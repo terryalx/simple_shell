@@ -1,24 +1,24 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * free_list - Clears a linked list from memory.
- * @head: Pointer to the head of the linked list.
- *
- * Return: void
+ * free_list - clears a linked list from mem
+ * @head: ptr to head of linked list
  */
+
 void free_list(list_t *head)
 {
-	list_t *current = head;
-	list_t *next;
+	list_t *ptr = head;
 
-	while (current)
+	while (head)
 	{
-		next = current->next;
-		free(current->str);
-		free(current->val);
-		free(current);
-		current = next;
+		ptr = head->next;
+		free(head->str);
+		free(head->val);
+		free(head);
+		head = ptr;
 	}
 }

@@ -1,4 +1,6 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
@@ -6,44 +8,42 @@
  * @n: integer
  * Return: pointer to binary
  */
+
 char *get_binary(unsigned int n)
 {
-	char *binary = NULL;
-	unsigned int i;
-	unsigned int num = 0;
-	unsigned int size = 0;
+	char *ptr = NULL;
+	unsigned int i, num = 0, size = 0;
 
 	if (n == 0)
 	{
-		binary = malloc(2);
-		if (binary)
+		ptr = malloc(2);
+		if (ptr)
 		{
-			binary[0] = '0';
-			binary[1] = '\0';
+			ptr[0] = '0';
+			ptr[1] = '\0';
 		}
-		return (binary);
+		return (ptr);
 	}
-
 	size = sizeof(int) * 8 + 1;
-	binary = malloc(size);
-	if (binary)
+	ptr = malloc(size);
+	if (ptr)
 	{
 		for (i = 0; i < size; i++)
 		{
-			binary[i] = '0';
+			ptr[i] = '0';
 		}
-		binary[size - 1] = '\0';
+		ptr[size - 1] = '\0';
 
 		i = size - 2;
 		while (n != 0)
 		{
-			binary[i] = n % 2 == 0 ? '0' : '1';
+			ptr[i] = n % 2 == 0 ? '0' : '1';
 			num++;
 			n = n / 2;
 			i--;
 		}
 		num++;
-		binary = move_left(binary, size, num);
+		ptr = move_left(ptr, size, num);
 	}
-	return (binary);
+	return (ptr);
 }
