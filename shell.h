@@ -135,4 +135,6 @@ void setenv_pwd(char **tmpArgs, char *cwd, param_t *params);
 void free_tmp_args(char **tmpArgs);
 void restore_original_args(param_t *params, char **originArgs);
 
+char **create_setenv_args(char *command, char *variable, char *value);
+
 #endif /* SHELL_H */
