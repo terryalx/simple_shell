@@ -16,7 +16,7 @@ int process_string(param_t *params)
 	char *alias = NULL, *state_2 = NULL, *val;
 	list_t *node;
 
-	token = _strtok(params->nextCommand, " \n\t", &state);
+	token = token_(params->nextCommand, " \n\t", &state);
 	if (!token)
 	{
 		params->tokCount = 0;
@@ -35,22 +35,22 @@ int process_string(param_t *params)
 			free_params(params);
 			exit(-1);
 		}
-		val = _strtok(alias, " \n\t", &state_2);
+		val = token_(alias, " \n\t", &state_2);
 		(params->args)[(params->tokCount)++] = val;
 		while (val)
 		{
-			val = _strtok(alias, " ", &state_2);
+			val = token_(alias, " ", &state_2);
 			(params->args)[(params->tokCount)++] = val;
 		}
 		free(alias);
 	}
 	else
 		(params->args)[(params->tokCount)++] = token;
-	token = _strtok(params->nextCommand, " \n\t", &state);
+	token = token_(params->nextCommand, " \n\t", &state);
 	params->args[params->tokCount++] = token;
 	while (token)
 	{
-		token = _strtok(params->nextCommand, " \n\t", &state);
+		token = token_(params->nextCommand, " \n\t", &state);
 		(params->args)[(params->tokCount)++] = token;
 		if (params->tokCount == params->argsCap)
 		{

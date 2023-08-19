@@ -60,7 +60,7 @@ char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
-char *_strtok(char *str, char *delim, char **savePtr);
+char *token_(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
