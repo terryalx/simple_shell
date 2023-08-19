@@ -14,7 +14,7 @@ char *token_(char *str, char *delim, char **savePtr)
 	char *modifier;
 	char *end;
 	int quoteFound = 0;
-	
+
 	if (*savePtr)
 		ptr = *savePtr;
 	else
