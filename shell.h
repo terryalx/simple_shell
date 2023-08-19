@@ -86,7 +86,7 @@ char *move_left(char *a, int size, int num);
 char *rlLine(char **line, unsigned int oldSize, unsigned int newSize);
 void rev_string(char *s);
 char *rot13(char *s);
-int validNum(char *s);
+int is_valid_number(char *str);
 int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);

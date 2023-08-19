@@ -17,7 +17,7 @@ void _myExit(param_t *params)
 		free_params(params);
 		exit(status);
 	}
-	if (validNum(params->args[1]))
+	if (is_valid_number(params->args[1]))
 	{
 		status = _atoi((params->args)[1]);
 		if (status == -1)

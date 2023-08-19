@@ -58,7 +58,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 				break;
 			if (_strcmp(params->args[0], "exit") == 0)
 			{
-				if (params->tokCount > 1 && validNum(params->args[1]))
+				if (params->tokCount > 1 && is_valid_number(params->args[1]))
 				{
 					status = _atoi(params->args[1]);
 					free_params(params);
