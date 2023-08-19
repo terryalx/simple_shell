@@ -1,13 +1,38 @@
-#ifndef _SHELL_H
-#define _SHELL_H
-#define _GNU_SOURCE
-
-#define NULL_PTR -1
-#define WRONG_SPECIFIER -2
-
-
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <signal.h>
+#include <limits.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+
+/*
+ * Macro
+ */
+#define NULL_PTR -1
+#define WRONG_SPECIFIER -2
+#define _GNU_SOURCE
+
+/**
+ * Data structure to hold information about environment variables.
+ */
+
+/**
+ * singlist
+*/
+typedef struct list_s
+{
+	char *str;
+	char *val;
+	unsigned int len;
+	unsigned int val_len;
+	struct list_s *next;
+} list_t;
 
 typedef struct param_s
 {
@@ -88,16 +113,6 @@ int _strcmp_n(char *, char *, int n);
 /**
  * LIST
 */
-#include <unistd.h>
-
-typedef struct list_s
-{
-	char *str;
-	char *val;
-	unsigned int len;
-	unsigned int val_len;
-	struct list_s *next;
-} list_t;
 
 int _putchar(char c);
 size_t print_list(list_t *h);
