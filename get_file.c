@@ -22,21 +22,18 @@ char *get_file(param_t *params)
 		free(path);
 		return (_strdup(params->args[0]));
 	}
-
 	if (errno == EACCES)
 	{
 		params->status = 126;
 		write_error(params, "Permission denied\n");
 		return (NULL);
 	}
-
 	path = _getenv("PATH", params);
 	if (!path)
 	{
 		write_error(params, "not found\n");
 		return (NULL);
 	}
-
 	exePath = token_(path, ":", &state);
 	while (exePath)
 	{
@@ -46,18 +43,15 @@ char *get_file(param_t *params)
 		tmp = exeArg;
 		exeArg = str_concat(exeArg, params->args[0]);
 		free(tmp);
-
 		if (access(exeArg, F_OK) == 0)
 		{
 			free(path);
 			free(exePath);
 			return (exeArg);
 		}
-
 		free(exePath);
 		exePath = token_(path, ":", &state);
 	}
-
 	params->status = 127;
 	write_error(params, "not found\n");
 	free(path);

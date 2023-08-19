@@ -12,21 +12,19 @@ void run_command(param_t *params)
 {
 	char *exeFile = NULL;
 	pid_t pid;
-	void (*builtin)(param_t *);
+	void (*buildin)(param_t *);
 
-	builtin = get_builtin(params);
-	if (builtin)
+	buildin = get_builtin(params);
+	if (buildin)
 	{
-		builtin(params);
+		buildin(params);
 		return;
 	}
-
 	exeFile = get_file(params);
 	if (!exeFile)
 	{
 		return;
 	}
-
 	pid = fork();
 	if (pid < 0)
 	{

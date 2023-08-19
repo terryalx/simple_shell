@@ -21,7 +21,9 @@ char *_strcpy(char *dest, const char *src)
 	}
 
 	if (src[i] == '\n')
+	{
 		dest[i] = '\n';
+	}
 
 	return (dest);
 }
