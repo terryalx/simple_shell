@@ -73,7 +73,7 @@ typedef struct op
 int _atoi(char *s);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
-int _strlen(const char *s);
+int _strlen(char *s);
 int _printf(const char *, ...);
 char *get_char(char c);
 char *get_string(char *s);
