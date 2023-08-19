@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _printenv - prints environment
- * @params: parameters
+ * printenv - Prints the environment variables
+ * @params: Pointer to the parameters structure
  * Return: void
  */
 void _printenv(param_t *params)

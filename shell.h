@@ -27,6 +27,7 @@ typedef struct list_s
 	char *val;
 	unsigned int len;
 	unsigned int val_len;
+	struct list_s *current_node;
 	struct list_s *next;
 } list_t;
 
