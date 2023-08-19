@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include <limits.h>
 
-/*
+/**
+ * update_oldpwd - Update the value of the "OLDPWD" environment variable
+ * @params: Pointer to the param_t struct
  *
- * */
-
+ * This function updates the value of the "OLDPWD" environment variable
+ * by setting it to the current working directory.
+ */
 void update_oldpwd(param_t *params)
 {
 	char *currentWorkingDirectory;

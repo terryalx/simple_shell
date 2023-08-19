@@ -1,31 +1,32 @@
 #include "shell.h"
-
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 
 /**
- * run_command - searches path dirs for command and execs
+ * run_command - searches path directories for command and executes it
  * @params: parameters
  */
 void run_command(param_t *params)
 {
 	char *exeFile = NULL;
 	pid_t pid;
-	void (*buildin)(param_t *);
+	void (*builtin)(param_t *);
 
-	buildin = get_builtin(params);
-	if (buildin)
+	builtin = get_builtin(params);
+	if (builtin)
 	{
-		buildin(params);
+		builtin(params);
 		return;
 	}
+
 	exeFile = get_file(params);
 	if (!exeFile)
 	{
 		return;
 	}
+
 	pid = fork();
 	if (pid < 0)
 	{

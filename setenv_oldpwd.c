@@ -1,27 +1,35 @@
 #include "shell.h"
-
 #include <unistd.h>
 #include <stdlib.h>
 
 /**
- * setenv_oldpwd - _cd
- * @pwd: ...
- * @params: shell parameters
+ * setenv_oldpwd - Sets the value of the OLDPWD environment variable
+ * @pwd: The current working directory
+ * @params: The shell parameters
+ *
+ * This function sets the value of the OLDPWD environment variable to the
+ * current working directory.
+ *
  * Return: void
  */
 void setenv_oldpwd(char *pwd, param_t *params)
 {
-	char **tmpArgs = malloc(sizeof(char *) * 3);
+	int numArgs = 3;
+	char **envArgs = malloc(sizeof(char *) * (numArgs + 1));
 
-	if (!tmpArgs)
+	if (!envArgs)
 	{
-		write(STDERR_FILENO, "cd old PWD malloc error\n", 23);
+		write(STDERR_FILENO, "Error: Failed to allocate memory for environment arguments\n", 60);
 		free_params(params);
-		exit(-1);
+		return;
 	}
-	tmpArgs[0] = _strdup("setenv");
-	tmpArgs[1] = _strdup("OLDPWD");
-	tmpArgs[2] = pwd;
+
+	envArgs[0] = _strdup("setenv");
+	envArgs[1] = _strdup("OLDPWD");
+	envArgs[2] = pwd;
+	envArgs[3] = NULL;
+
 	_setenv(params);
-	free_tmp_args(tmpArgs);
+
+	free_tmp_args(envArgs);
 }
