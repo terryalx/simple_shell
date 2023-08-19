@@ -32,7 +32,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 		if (cond == -1)
 		{
 			status = params->status;
-			_printf("$ \n");
+			_printf("BenShell($) \n");
 			free_params(params);
 			return (status);
 		}
@@ -40,7 +40,8 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			(params->buffer)[i] = 0;
 		params->tokCount = 0;
 		if (isatty(STDIN_FILENO))
-			_printf("$ ");
+			_printf("BenShell($): ");
+		/*cond = _getline(params);*/
 		cond = getline(&params->buffer, &size, stdin);
 		params->lineCount++;
 		if (cond == -1 && _strlen(params->buffer) == 0)
@@ -50,27 +51,12 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			return (status);
 		}
 		state = NULL;
-		params->nextCommand = token_(params->buffer, ";\n", &state);
+		params->nextCommand = _strtok(params->buffer, ";\n", &state);
 		while (params->nextCommand)
 		{
 			params->tokCount = process_string(params);
 			if (params->tokCount == 0)
 				break;
-			if (_strcmp(params->args[0], "exit") == 0)
-			{
-				if (params->tokCount > 1 && is_valid_number(params->args[1]))
-				{
-					status = _atoi(params->args[1]);
-					free_params(params);
-					exit(status);
-				}
-				else
-				{
-					_printf("Usage: exit status\n");
-					params->status = 2;
-					break;
-				}
-			}
 			run_command(params);
 			for (i = 0; i < params->argsCap; i++)
 			{
@@ -79,8 +65,8 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			}
 			params->tokCount = 0;
 			free(params->nextCommand);
-			params->nextCommand = token_(params->buffer, ";\n",
-					&state);
+			params->nextCommand = _strtok(params->buffer, ";\n",
+						      &state);
 		}
 	}
 }

@@ -16,7 +16,7 @@ void make_alias(char *name, char *val, param_t *params)
 
 	while (alias_node)
 	{
-		if (strcmp(name, alias_node->str) == 0)
+		if (!_strcmp(name, alias_node->str))
 		{
 			free(alias_node->val);
 			alias_node->val = strdup(val);
