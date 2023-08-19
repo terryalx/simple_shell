@@ -17,6 +17,7 @@
 #define NULL_PTR -1
 #define WRONG_SPECIFIER -2
 #define _GNU_SOURCE
+#define BUFFER_SIZE 1024
 
 /**
  * Data structure to hold information about environment variables.
