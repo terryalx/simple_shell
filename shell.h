@@ -11,11 +11,19 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-/*
- * Macro
+/**
+ * @brief This is a macro definition for a null pointer.
  */
 #define NULL_PTR -1
+
+/**
+ * @brief This is a macro definition for a wrong specifier.
+ */
 #define WRONG_SPECIFIER -2
+
+/**
+ * @brief This is a macro definition for the GNU source.
+ */
 #define _GNU_SOURCE
 
 /**
@@ -36,14 +44,14 @@ typedef struct list_s
  */
 typedef struct param_s
 {
-	unsigned int argsCap;
-	unsigned int lineCount;
-	unsigned int tokCount;
-	int status;
 	char **argv;
 	char *nextCommand;
 	char *buffer;
 	char **args;
+	int status;
+	unsigned int argsCap;
+	unsigned int lineCount;
+	unsigned int tokCount;
 	list_t *env_head;
 	list_t *alias_head;
 } param_t;
@@ -57,9 +65,15 @@ typedef struct op
 	void (*func)(param_t *);
 } op_t;
 
-/* Function prototypes */
+/**
+ * Function prototypes
+ */
 
 /* main helper */
+int _atoi(char *s);
+int _strcmp(char *, char *);
+int _strcmp_n(char *, char *, int n);
+int _printf(const char *, ...);
 char *get_char(char c);
 char *get_string(char *s);
 char *get_number(int n);
@@ -69,29 +83,25 @@ char *get_rev(char *s);
 char *get_rot13(char *s);
 char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
-size_t _strlen(const char *s);
-int _printf(const char *, ...);
 char *_strchr(char *s, char c);
-int _atoi(char *s);
-int _strcmp(char *, char *);
-int _strcmp_n(char *, char *, int n);
+size_t _strlen(const char *s);
 
 /* linked list */
 int _putchar(char c);
-size_t print_list(list_t *h);
-size_t list_len(list_t *h);
-list_t *add_node(list_t **head, char *str, char *val);
-void free_list(list_t *head);
-list_t *get_node(list_t *head, char *str);
-char *move_left(char *a, int size, int num);
-char *rlLine(char **line, unsigned int oldSize, unsigned int newSize);
-void rev_string(char *s);
-char *rot13(char *s);
-int is_valid_number(char *str);
-int flush_buffer(char *buffer, int *index);
-void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
+int is_valid_number(char *str);
+int flush_buffer(char *buffer, int *index);
+void rev_string(char *s);
+void free_list(list_t *head);
+void get_type(char *format, int *index);
+char *move_left(char *a, int size, int num);
+char *rlLine(char **line, unsigned int oldSize, unsigned int newSize);
+char *rot13(char *s);
+list_t *get_node(list_t *head, char *str);
+list_t *add_node(list_t **head, char *str, char *val);
+size_t print_list(list_t *h);
+size_t list_len(list_t *h);
 
 /* shell helper */
 int process_string(param_t *);
@@ -137,6 +147,5 @@ void free_tmp_args(char **tmpArgs);
 void restore_original_args(param_t *params, char **originArgs);
 
 char **create_setenv_args(char *command, char *variable, char *value);
-
 
 #endif /* SHELL_H */
