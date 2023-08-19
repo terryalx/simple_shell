@@ -8,25 +8,21 @@
  */
 char *_strdup(char *str)
 {
+	int len = 0; /* index of terminating null byte */
 	char *ptr = NULL;
-	int len = 0;
 
 	if (!str)
 		return (NULL);
-
-	while (str[len])
+	while (*str)
+	{
 		len++;
-
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
-
+		str++;
+	}
+	ptr = (char *) malloc(sizeof(char) * (len + 1));
 	if (ptr)
 	{
 		while (len >= 0)
-		{
-			ptr[len] = str[len];
-			len--;
-		}
+			*(ptr + len--) = *(str--);
 	}
-
 	return (ptr);
 }

@@ -73,6 +73,7 @@ typedef struct op
 int _atoi(char *s);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
+int _strlen(const char *s);
 int _printf(const char *, ...);
 char *get_char(char c);
 char *get_string(char *s);
@@ -84,7 +85,6 @@ char *get_rot13(char *s);
 char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
 char *_strchr(char *s, char c);
-size_t _strlen(const char *s);
 
 /* linked list */
 int _putchar(char c);

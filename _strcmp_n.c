@@ -18,17 +18,17 @@
  * 0, the characters are equal; if the result is positive, `str1` is greater;
  * if the result is negative, `s1` is smaller.
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp_n(char *s1, char *s2, int n)
 {
-	int res = 0;
+	int i = 0, res = *s1 - *s2;
 
-	do {
-		res = *s1 - *s2;
-		if (*s1 == 0 || *s2 == 0)
+	while (i <= n)
+	{
+		res = *(s1++) - *(s2++);
+		if (res != 0)
 			break;
-		s1++;
-		s2++;
-	} while (res == 0);
+		i++;
+	}
 
 	return (res);
 }
