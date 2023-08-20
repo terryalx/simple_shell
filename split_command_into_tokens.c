@@ -1,25 +1,7 @@
 #include "shell.h"
 
-/**
- * handle_alias - Handle token expansion for alias
- * @params: parameters
- * @token: current token
- * @node: alias node
- *
- * This function expands an alias token and stores the resulting tokens
- * in the 'params->args' array.
- */
-void handle_alias(param_t *params, char *token, list_t *node)
-
-/**
- * handle_regular - Handle regular token processing
- * @params: parameters
- * @token: current token
- * @state: tokenization state
- *
- * This function processes regular tokens and stores them in the 'params->args' array.
- */
-void handle_regular(param_t *params, char *token, char *state)
+static void handle_alias(param_t *params, char *token, list_t *node);
+static void handle_regular(param_t *params, char *token, char *state);
 
 /**
  * split_command_into_tokens - Split the next command into string tokens
@@ -63,7 +45,7 @@ int split_command_into_tokens(param_t *params)
  * This function expands an alias token and stores the resulting tokens
  * in the 'params->args' array.
  */
-void handle_alias(param_t *params, char *token, list_t *node)
+static void handle_alias(param_t *params, char *token, list_t *node)
 {
     char *alias = NULL, *state_2 = NULL, *val;
 
@@ -95,7 +77,7 @@ void handle_alias(param_t *params, char *token, list_t *node)
  *
  * This function processes regular tokens and stores them in the 'params->args' array.
  */
-void handle_regular(param_t *params, char *token, char *state)
+static void handle_regular(param_t *params, char *token, char *state)
 {
     while (token)
     {
