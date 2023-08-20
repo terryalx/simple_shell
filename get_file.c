@@ -26,7 +26,7 @@ char *get_file(param_t *params)
 		write_error(params, "Permission denied\n");
 		return (NULL);
 	}
-	path = _getenv("PATH", params);
+	path = _setenv("PATH", params);
 	if (!path)
 	{
 		write_error(params, "not found\n");
