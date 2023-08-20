@@ -18,7 +18,7 @@ void handle_regular(param_t *params, char *token, char *state)
         if (params->tokCount == params->argsCap)
         {
             params->argsCap += 10;
-            params->args = array_realloc(params->args,
+            params->args = _realloc(params->args,
                                     params->argsCap - 10,
                                     params->argsCap);
             if (!(params->args))

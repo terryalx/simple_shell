@@ -13,7 +13,7 @@ void _cd(param_t *params)
 
 	if (params->tokCount == 1)
 	{
-		target = get_env_value("HOME", params);
+		target = _getenv("HOME", params);
 		if (!target)
 		{
 			params->status = 0;
@@ -24,11 +24,11 @@ void _cd(param_t *params)
 	{
 		if (!string_compare(params->args[1], "-"))
 		{
-			target = get_env_value("OLDPWD", params);
+			target = _getenv("OLDPWD", params);
 			if (!target)
 			{
 				params->status = 0;
-				target = get_env_value("PWD", params);
+				target = _getenv("PWD", params);
 				_printf("%s\n", target);
 				free(target);
 				return;
@@ -78,7 +78,7 @@ void _cd(param_t *params)
 		free_params(params);
 		exit(-1);
 	}
-	tmpArgs[2] = get_env_value("PWD", params);
+	tmpArgs[2] = _getenv("PWD", params);
 	_setenv(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
