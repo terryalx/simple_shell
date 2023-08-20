@@ -42,7 +42,7 @@ int split_command_into_tokens(param_t *params)
  * This function expands an alias token and stores the resulting tokens
  * in the 'params->args' array.
  */
-static void handle_alias(param_t *params, char *token, list_t *node)
+void handle_alias(param_t *params, char *token, list_t *node)
 {
     char *alias = NULL, *state_2 = NULL, *val;
 
@@ -74,7 +74,7 @@ static void handle_alias(param_t *params, char *token, list_t *node)
  *
  * This function processes regular tokens and stores them in the 'params->args' array.
  */
-static void handle_regular(param_t *params, char *token, char *state)
+void handle_regular(param_t *params, char *token, char *state)
 {
     while (token)
     {
