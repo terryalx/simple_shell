@@ -40,7 +40,7 @@ char *token_(char *str, char *delim, char **savePtr)
 		}
 		*modifier = '\0';
 		*savePtr = modifier + 1;
-		return (_strdup(ptr));
+		return (str_duplicate(ptr));
 	}
 	while (*modifier)
 	{
@@ -55,5 +55,5 @@ char *token_(char *str, char *delim, char **savePtr)
 	else
 		*savePtr = modifier + 1;
 	*modifier = '\0';
-	return (_strdup(ptr));
+	return (str_duplicate(ptr));
 }

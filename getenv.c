@@ -14,7 +14,7 @@ char *_getenv(char *name, param_t *params)
 	while (ptr)
 	{
 		if (!string_compare(name, ptr->str))
-			return (_strdup(ptr->value));
+			return (str_duplicate(ptr->value));
 		ptr = ptr->next_node;
 	}
 	return (NULL);

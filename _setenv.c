@@ -27,7 +27,7 @@ void _setenv(param_t *params)
 		{
 			tmp = h->value;
 			free(tmp);
-			h->value = _strdup(value);
+			h->value = str_duplicate(value);
 			if (!h->value)
 			{
 				write(STDERR_FILENO, "setenv malloc error\n", 18);

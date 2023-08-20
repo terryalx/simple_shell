@@ -15,7 +15,7 @@ void handle_alias(param_t *params, char *token, list_t *node)
 
     free(token);
     token = NULL;
-    alias = _strdup(node->value);
+    alias = str_duplicate(node->value);
     if (!alias)
     {
         write(STDERR_FILENO, "alias expansion malloc error\n", 30);

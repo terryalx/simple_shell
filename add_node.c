@@ -19,9 +19,9 @@ list_t *add_node(list_t **head, char *str, char *val)
 		return (NULL);
 	}
 
-	new_node->str = _strdup(str);
+	new_node->str = str_duplicate(str);
 	new_node->length = _strlen(new_node->str);
-	new_node->value = _strdup(val);
+	new_node->value = str_duplicate(val);
 	new_node->value_length = _strlen(val);
 	new_node->next_node = *head;
 	*head = new_node;
