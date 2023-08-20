@@ -57,7 +57,7 @@ typedef struct op
 */
 int read_dynamic_line(param_t *);
 int string_compare(char *, char *);
-int _strcmp_n(char *, char *, int n);
+int _strncmp(char *, char *, int n);
 int split_command_into_tokens(param_t *);
 char *_strdup(char *);
 char *_strcpy(char *dest, const char *src);
