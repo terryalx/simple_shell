@@ -18,7 +18,7 @@ char *get_file(param_t *params)
 	if (access(params->args[0], F_OK | X_OK) == 0)
 	{
 		free(path);
-		return (str_duplicate(params->args[0]));
+		return (_strdup(params->args[0]));
 	}
 	if (errno == EACCES)
 	{
@@ -26,7 +26,7 @@ char *get_file(param_t *params)
 		write_error(params, "Permission denied\n");
 		return (NULL);
 	}
-	path = _setenv("PATH", params);
+	path = get_env_value("PATH", params);
 	if (!path)
 	{
 		write_error(params, "not found\n");
