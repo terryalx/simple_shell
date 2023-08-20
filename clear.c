@@ -1,11 +1,11 @@
 #include "shell.h"
+
 /**
- * _clear - clears the terminal screen
- * @params: parameters
+ * clear_screen - Clears the terminal screen
+ * @params: Unused parameter
  *
  * Return: void
  */
-
 void _clear(param_t *params)
 {
 	(void)params;

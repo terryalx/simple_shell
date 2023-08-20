@@ -1,12 +1,9 @@
 #include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * free_list - clears a linked list from mem
  * @head: ptr to head of linked list
  */
-
 void free_list(list_t *head)
 {
 	list_t *ptr = head;
