@@ -23,7 +23,7 @@ char *check_current_directory(param_t *params)
     // Check if the command is executable in the current directory.
     if (access(command_path, F_OK | X_OK) == 0)
     {
-        return str_duplicate(command_path);
+        return (str_duplicate(command_path));
     }
 
     // Handle permission denied error.
@@ -33,7 +33,7 @@ char *check_current_directory(param_t *params)
         write_error_message(params, "Permission denied\n");
     }
 
-    return NULL;
+    return (NULL);
 }
 
 /**

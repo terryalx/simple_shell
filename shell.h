@@ -66,7 +66,7 @@ char *string_copy(char *dest, const char *src);
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
 char *get_env_value(char *name, param_t *params);
-void write_error_message(param_t *params, const char *message)
+void write_error_message(param_t *params, const char *message);
 /**/
 void run_command(param_t *);
 void _printenv(param_t *);
