@@ -62,7 +62,7 @@ int split_command_into_tokens(param_t *);
 /**/
 char *str_duplicate(char *);
 char *string_copy(char *dest, const char *src);
-char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
+char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
 char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
