@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * get_char - returns a copied char
@@ -8,16 +9,13 @@
  */
 char *get_char(char c)
 {
-	char *ptr = NULL;
+	char *ptr = malloc(2);
 
-	ptr = malloc(2);
 	if (ptr == NULL)
-	{
 		return (NULL);
-	}
-	
+
 	ptr[0] = c;
 	ptr[1] = '\0';
-	
+
 	return (ptr);
 }

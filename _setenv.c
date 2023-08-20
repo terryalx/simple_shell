@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * _setenv - function searches list for environment variable name.
@@ -25,19 +26,19 @@ void _setenv(param_t *params)
 	{
 		if (_strcmp(name, h->str) == 0)
 		{
-			tmp = h->value;
+			tmp = h->val;
 			free(tmp);
-			h->value = _strdup(value);
-			if (!h->value)
+			h->val = _strdup(value);
+			if (!h->val)
 			{
 				write(STDERR_FILENO, "setenv malloc error\n", 18);
 				exit(val);
 			}
-			h->value_length = _strlen(value);
+			h->val_len = _strlen(value);
 			params->status = 0;
 			return;
 		}
-		h = h->next_node;
+		h = h->next;
 	}
 
 	params->env_head = add_node(&(params->env_head), name, value);

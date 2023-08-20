@@ -1,4 +1,8 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 /**
  * run_command - searches path directories for command and executes it

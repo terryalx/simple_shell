@@ -1,4 +1,7 @@
 #include "shell.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <limits.h>
 
 /**
  * _atoi - Convert a string to an integer
@@ -8,24 +11,23 @@
  */
 int _atoi(char *s)
 {
-	int i = 0;
+	int nth = 0;
 	int save_tmp = 0;
 	int len = _strlen(s);
 	int mul = 1;
 	int r_val = -1;
-	int cmp = 0;
 
 	len--;
 
-	while (len >= cmp)
+	while (len >= 0)
 	{
-		save_tmp = i;
-		i = i + (s[len] - '0') * mul;
-		if (i < save_tmp || i > INT_MAX)
+		save_tmp = nth;
+		nth = nth + (s[len] - '0') * mul;
+		if (nth < save_tmp || nth > INT_MAX)
 			return (r_val);
 		len--;
 		mul *= 10;
 	}
 
-	return (i);
+	return (nth);
 }

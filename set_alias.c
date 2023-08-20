@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * set_alias - creates a new or updates an existing alias
@@ -7,37 +8,35 @@
  *
  * Return: void
  */
-void set_alias(char *name, param_t *params)
+void set_alias(char *name, param_t *state)
 {
-	char *val, *tmp = NULL;
-	unsigned int i = 0, j = 1;
+	char *alias_value;
+	char *closing_quote = NULL;
+	unsigned int i = 0;
 
 	while (name[i] && name[i] != '=')
 		i++;
+
 	if (name[i + 1] == '\'')
 	{
 		if (_strchr(&name[i + 2], '\''))
 		{
-			tmp = _strchr(&name[i + 2], '\'');
-			*tmp = '\0';
-			val = _strdup(&name[i + 2]);
-			if (tmp[1] != '\0')
-			{
-				while (tmp[j] &&
-					(tmp[j] == ' ' || tmp[j] == '\t' || tmp[j] == '\n'))
-					j++;
-				if (tmp[j] != '\0')
-					set_alias(&tmp[j], params);
-			}
+			closing_quote = _strchr(&name[i + 2], '\'');
+			*closing_quote = '\0';
+			alias_value = _strdup(&name[i + 2]);
+
+			if (closing_quote[1] != '\0')
+				set_alias(&closing_quote[1], state);
 		}
 		else
 		{
-			_printf("Usage: alias name='value' [...]\n");
+			printf("Usage: alias name='value' [...]\n");
 			return;
 		}
 	}
 	else
-		val = _strdup(&name[i + 1]);
+		alias_value = _strdup(&name[i + 1]);
+
 	name[i] = '\0';
-	make_alias(name, val, params);
+	make_alias(name, alias_value, state);
 }

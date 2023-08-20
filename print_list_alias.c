@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * print_list_alias - Prints the name and value of each alias in a linked list.
@@ -12,8 +13,10 @@ void print_list_alias(list_t *head)
 {
 	if (head)
 	{
-		print_list_alias(head->next_node);
+		print_list_alias(head->next);
 		if (head->str != NULL)
-			_printf("%s=\'%s\'\n", head->str, head->value);
+		{
+			_printf("%s='%s'\n", head->str, head->val);
+		}
 	}
 }

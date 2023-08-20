@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * get_node - Search for a node in a linked list.
@@ -9,16 +11,16 @@
  */
 list_t *get_node(list_t *head, char *str)
 {
-	list_t *h;
+	list_t *current = head;
 
-	if (!head)
-		return (NULL);
-	h = head;
-	while (h)
+	while (current != NULL)
 	{
-		if (!_strcmp(h->str, str))
+		if (!_strcmp(current->str, str))
+		{
 			break;
-		h = h->next_node;
+		}
+		current = current->next;
 	}
-	return (h);
+
+	return current;
 }

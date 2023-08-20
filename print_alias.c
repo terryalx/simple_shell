@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * print_alias - prints the value of an alias
@@ -21,9 +22,9 @@ void print_alias(char *name, param_t *params)
 	{
 		if (_strcmp_n(name, ptr->str, len - 1) == 0)
 		{
-			_printf("%s=\'%s\'\n", ptr->str, ptr->value);
+			_printf("%s=\'%s\'\n", ptr->str, ptr->val);
 		}
-		ptr = ptr->next_node;
+		ptr = ptr->next;
 	}
 	params->status = 0;
 }

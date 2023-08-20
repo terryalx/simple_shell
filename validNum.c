@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <limits.h>
 
 /**
  * is_valid_number - Check if a string is a valid number.
@@ -6,13 +8,15 @@
  *
  * Return: 1 if the string is a valid number, 0 otherwise.
  */
-int validNum(char *s)
+int is_valid_number(char *str)
 {
-	while (*s)
+	while (*str)
 	{
-		if (*s > '9' || *s < '0')
-			return (0);
-		s++;
+		if (*str < '0' || *str > '9')
+		{
+			return 0;
+		}
+		str++;
 	}
-	return (1);
+	return 1;
 }

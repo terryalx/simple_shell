@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * _unsetenv - Removes an environment variable from the list
@@ -7,8 +8,7 @@
 void _unsetenv(param_t *params)
 {
 	char *name = params->args[1];
-	list_t *prev = NULL;
-	list_t *current = params->env_head;
+	list_t *prev = NULL, *current = params->env_head;
 
 	if (params->tokCount != 2)
 	{
@@ -21,19 +21,19 @@ void _unsetenv(param_t *params)
 		if (_strcmp(name, current->str) == 0)
 		{
 			if (current == params->env_head)
-				params->env_head = current->next_node;
+				params->env_head = current->next;
 			else
-				prev->next_node = current->next_node;
+				prev->next = current->next;
 
 			free(current->str);
-			free(current->value);
+			free(current->val);
 			free(current);
 			params->status = 0;
 			return;
 		}
 
 		prev = current;
-		current = current->next_node;
+		current = current->next;
 	}
 
 	params->status = 0;

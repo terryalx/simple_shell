@@ -11,8 +11,10 @@ void print_list_env(list_t *head)
 {
 	if (head)
 	{
-		print_list_env(head->next_node);
+		print_list_env(head->next);
 		if (head->str)
-			_printf("%s=%s\n", head->str, head->value);
+		{
+			_printf("%s=%s\n", head->str, head->val);
+		}
 	}
 }

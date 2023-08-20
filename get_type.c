@@ -1,4 +1,7 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
  * get_type - get type from the specifier from format string

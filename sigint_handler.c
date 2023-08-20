@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <unistd.h>
 
 /**
  * sigint_handler - Handle the terminate signal
@@ -16,6 +17,6 @@
  */
 void sigint_handler(int __attribute__((unused)) s)
 {
-	char prompt[] = "\n($) ";
+	char prompt[] = "($) ";
 	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
 }

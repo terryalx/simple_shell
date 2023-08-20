@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * make_alias - creates a new alias and adds it to the alias list
@@ -10,22 +12,22 @@
  */
 void make_alias(char *name, char *val, param_t *params)
 {
-	list_t *h = params->alias_head;
+	list_t *alias_node = params->alias_head;
 
-	while (h)
+	while (alias_node)
 	{
-		if (!_strcmp(name, h->str))
+		if (!_strcmp(name, alias_node->str))
 		{
-			free(h->value);
-			h->value = val;
-			h->value_length = _strlen(val);
+			free(alias_node->val);
+			alias_node->val = strdup(val);
+			alias_node->val_len = strlen(val);
 			params->status = 0;
 			return;
 		}
-		h = h->next_node;
+		alias_node = alias_node->next;
 	}
-	
-	params->alias_head = add_node(&(params->alias_head), name, val);
+
+	params->alias_head = add_node(&(params->alias_head), name, strdup(val));
 	free(val);
 	params->status = 0;
 }

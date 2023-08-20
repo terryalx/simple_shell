@@ -1,4 +1,7 @@
 #include "shell.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define BUFFER_SIZE 4096
 #define READ_SIZE 1024
@@ -17,16 +20,14 @@
  */
 char *rlLine(char **line, unsigned int oldSize, unsigned int newSize)
 {
-	char *newLine = NULL;
-	unsigned int i;
+	char *newBuffer = NULL;
 
-	newLine = malloc(newSize);
-	if (newLine)
+	newBuffer = malloc(newSize);
+	if (newBuffer)
 	{
-		for (i = 0; i < oldSize; i++)
-			newLine[i] = (*line)[i];
+		memcpy(newBuffer, *line, oldSize);
 		free(*line);
-		*line = newLine;
+		*line = newBuffer;
 	}
-	return (newLine);
+	return newBuffer;
 }

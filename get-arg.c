@@ -1,4 +1,6 @@
 #include "shell.h"
+#include <stdlib.h>
+#include <stdarg.h>
 
 /**
  * get_arg - Returns formatted argument based on the type specifier.
@@ -11,24 +13,37 @@
 char *get_arg(char type, ...)
 {
 	va_list params;
+	char *result = NULL;
 
 	va_start(params, type);
+
 	switch (type)
 	{
-	case 'c':
-		return (get_char(va_arg(params, int)));
-	case 's':
-		return (get_string(va_arg(params, char*)));
-	case 'd':
-	case 'i':
-		return (get_number(va_arg(params, int)));
-	case 'b':
-		return (get_binary(va_arg(params, int)));
-	case 'r':
-		return (get_rev(va_arg(params, char *)));
-	case 'R':
-		return (get_rot13(va_arg(params, char *)));
-	default:
-		return (NULL);
+		case 'c':
+			result = get_char(va_arg(params, int));
+			break;
+		case 's':
+			result = get_string(va_arg(params, char *));
+			break;
+		case 'd':
+		case 'i':
+			result = get_number(va_arg(params, int));
+			break;
+		case 'b':
+			result = get_binary(va_arg(params, int));
+			break;
+		case 'r':
+			result = get_rev(va_arg(params, char *));
+			break;
+		case 'R':
+			result = get_rot13(va_arg(params, char *));
+			break;
+		default:
+			result = NULL;
+			break;
 	}
+
+	va_end(params);
+
+	return (result);
 }

@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h>
 
 /**
  * is_delim - Check if a character is one of the delimiters.
@@ -9,10 +10,15 @@
  */
 int isDelim(char c, char *delim)
 {
+	int val;
+	val = 1;
+
 	while (*delim)
 	{
 		if (c == *delim)
-			return (1);
+		{
+			return (val);
+		}
 		delim++;
 	}
 	return (0);
