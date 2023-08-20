@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * process_string - process the next command into string tokens
+ * split_command_into_tokens - Split the next command into string tokens
  * @params: parameters
  *
  * Return: number of tokens
  */
-int process_string(param_t *params)
+int split_command_into_tokens(param_t *params)
 {
 	char *token = NULL, *state = NULL;
 	char *alias = NULL, *state_2 = NULL, *val;

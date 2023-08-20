@@ -21,21 +21,6 @@
 /**
  * Data structure to hold information about environment variables.
  */
-
-/**
- * singlist
-*/
-/*
-typedef struct list_s
-{
-	char *str;
-	char *val;
-	unsigned int len;
-	unsigned int val_len;
-	struct list_s *next;
-} list_t;
-*/
-
 typedef struct list_s {
     char *str;
     char *value;
@@ -44,6 +29,9 @@ typedef struct list_s {
     struct list_s *next_node;
 } list_t;
 
+/**
+ * param_t struct holds parameters
+*/
 typedef struct param_s
 {
 	char **argv;
@@ -64,7 +52,10 @@ typedef struct op
 	void (*func)(param_t *);
 } op_t;
 
-int process_string(param_t *);
+/**
+ * Main functions
+*/
+int split_command_into_tokens(param_t *);
 char *_strdup(char *);
 char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
