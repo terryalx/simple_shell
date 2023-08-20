@@ -1,13 +1,12 @@
 #include "shell.h"
-#include <stdlib.h>
 
 /**
  * str_concat - concatenates two strings
  * @s1: first string argument
  * @s2: second string argument
- * Return: Null on failure, else ptr to malloc
+ *
+ * Return: pointer to the concatenated string, or NULL on failure
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	char *ptr;

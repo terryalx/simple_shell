@@ -1,12 +1,12 @@
 #include "shell.h"
-#include <unistd.h>
 
 /**
  * write_error - write error message to stderr
  * @params: parameters struct
  * @msg: error message
-*/
-
+ *
+ * Return: void
+ */
 void write_error(param_t *params, char *msg)
 {
 	char errBuffer[1024] = {0};
