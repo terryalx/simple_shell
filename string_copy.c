@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * strcpy - Copy a string to another memory address
+ * string_copy - Copy a string to another memory address
  * @dest: Pointer to the destination address
  * @src: Pointer to the source string
  *
  * Return: Pointer to the destination
  */
-char *strcpy(char *dest, const char *src)
+char *string_copy(char *dest, const char *src)
 {
     int i = 0;
 
@@ -19,5 +19,5 @@ char *strcpy(char *dest, const char *src)
 
     dest[i] = '\0';
 
-    return dest;
+    return (dest);
 }
