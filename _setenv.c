@@ -23,7 +23,7 @@ void _setenv(param_t *params)
 
 	while (h)
 	{
-		if (_strcmp(name, h->str) == 0)
+		if (string_compare(name, h->str) == 0)
 		{
 			tmp = h->value;
 			free(tmp);
