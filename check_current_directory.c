@@ -8,12 +8,14 @@
  */
 char *check_current_directory(param_t *params)
 {
-    if (access(params->args[0], F_OK | X_OK) == 0)
+    char *command_path = params->args[0];
+
+    if (access(command_path, F_OK | X_OK) == 0)
     {
-        return str_duplicate(params->args[0]);
+        return str_duplicate(command_path);
     }
 
-    if (errno == EACCES)
+    if (access(command_path, F_OK) == 0)
     {
         params->status = 126;
         write_error(params, "Permission denied\n");
