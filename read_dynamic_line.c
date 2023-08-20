@@ -4,11 +4,15 @@
 #define READ_SIZE 1024
 
 /**
- * _getline - Fetches a line of characters from stdin
+ * read_dynamic_line - Reads a line of characters from stdin with dynamic allocation
  * @params: Pointer to the parameters struct
+ *
+ * This function reads characters from the standard input until a newline character is encountered.
+ * It dynamically allocates memory for the line and increases the buffer size if necessary.
+ *
  * Return: The number of characters read
  */
-int _getline(param_t *params) {
+int read_dynamic_line(param_t *params) {
     char *line = NULL, *writeHead = line;
     static unsigned int bufSize = BUFFER_SIZE;
     unsigned int len;
