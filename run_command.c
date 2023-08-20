@@ -36,7 +36,7 @@ void run_command(param_t *params)
     {
         if (execve(exeFile, params->args, params->env) == -1)
         {
-            perror("execve"); // Print an error message if execve fails
+            perror("execve");
             free_params(params);
             free(exeFile);
             exit(127);
