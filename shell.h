@@ -25,6 +25,7 @@
 /**
  * singlist
 */
+/*
 typedef struct list_s
 {
 	char *str;
@@ -32,6 +33,15 @@ typedef struct list_s
 	unsigned int len;
 	unsigned int val_len;
 	struct list_s *next;
+} list_t;
+*/
+
+typedef struct list_s {
+    char *text;
+    char *value;
+    unsigned int text_length;
+    unsigned int value_length;
+    struct list_s *next_node;
 } list_t;
 
 typedef struct param_s
