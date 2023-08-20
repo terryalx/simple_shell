@@ -4,12 +4,11 @@
 #include <errno.h>
 
 /**
- * get_file - get correct path to a command file
- * @params: parameters
- * Return: string of valid path to command file, NULL if not found
- * The string needs to be freed
+ * get_file - Get the correct path to a command file.
+ * @params: The parameters.
+ *
+ * Return: A string of the valid path to the command file, or NULL if not found.
  */
-
 char *get_file(param_t *params)
 {
 	char *path = NULL;
