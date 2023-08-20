@@ -8,7 +8,7 @@
  *
  * This function processes regular tokens and stores them in the 'params->args' array.
  */
-static void handle_regular(param_t *params, char *token, char *state)
+void handle_regular(param_t *params, char *token, char *state)
 {
     while (token)
     {

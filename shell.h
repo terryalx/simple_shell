@@ -83,8 +83,8 @@ void print_list_alias(list_t *);
 void free_params(param_t *params);
 void write_error(param_t *params, char *msg);
 void _clear(param_t *params);
-static void handle_alias(param_t *params, char *token, list_t *node);
-static void handle_regular(param_t *params, char *token, char *state);
+void handle_alias(param_t *params, char *token, list_t *node);
+void handle_regular(param_t *params, char *token, char *state);
 
 param_t *init_param(char **argv, char **env);
 

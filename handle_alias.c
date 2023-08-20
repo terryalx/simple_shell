@@ -9,7 +9,7 @@
  * This function expands an alias token and stores the resulting tokens
  * in the 'params->args' array.
  */
-static void handle_alias(param_t *params, char *token, list_t *node)
+void handle_alias(param_t *params, char *token, list_t *node)
 {
     char *alias = NULL, *state_2 = NULL, *val;
 
