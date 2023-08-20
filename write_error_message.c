@@ -5,7 +5,7 @@
  * @params: The parameters.
  * @message: The error message to write.
  */
-void write_error_message(param_t *params, const char *message)
+void write_error_message(const char *message)
 {
     write(STDERR_FILENO, message, strlen(message));
 }
