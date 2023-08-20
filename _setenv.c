@@ -33,7 +33,7 @@ void _setenv(param_t *params)
 				write(STDERR_FILENO, "setenv malloc error\n", 18);
 				exit(val);
 			}
-			h->value = _strlen(value);
+			h->value_length = _strlen(value);
 			params->status = 0;
 			return;
 		}
