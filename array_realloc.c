@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * _realloc - Reallocates an array of pointers with memory copying.
+ * array_realloc - Reallocates an array of pointers with memory copying.
  * @ptr: Pointer to the old array.
  * @old_size: Size of the old array.
  * @new_size: Size of the new array.
  *
  * Return: Pointer to the new array.
  */
-char  **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
+char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
-	char **new_ptr = NULL;
+    char **new_ptr = NULL;
     unsigned int i;
 
     if (!ptr)
