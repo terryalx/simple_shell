@@ -39,6 +39,7 @@ typedef struct param_s
 	char *buffer;
 	char **args;
 	char *nextCommand;
+	char **env;
 	unsigned int argsCap;
 	unsigned int lineCount;
 	unsigned int tokCount;
