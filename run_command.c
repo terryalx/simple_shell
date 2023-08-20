@@ -16,7 +16,7 @@ void run_command(param_t *params)
 		buildin(params);
 		return;
 	}
-	exeFile = check_current_directory(params);
+	exeFile = write_error_message(params);
 	if (!exeFile)
 	{
 		return;

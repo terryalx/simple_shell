@@ -20,13 +20,11 @@ char *check_current_directory(param_t *params)
 {
     char *command_path = params->args[0];
 
-    // Check if the command is executable in the current directory.
     if (access(command_path, F_OK | X_OK) == 0)
     {
         return (str_duplicate(command_path));
     }
 
-    // Handle permission denied error.
     if (access(command_path, F_OK) == 0)
     {
         params->status = 126;
