@@ -22,7 +22,7 @@ void _cd(param_t *params)
 	}
 	else if (params->args[1][0] == '-')
 	{
-		if (!string_compare(params->args[1], "-"))
+		if (!_strcmp(params->args[1], "-"))
 		{
 			target = _getenv("OLDPWD", params);
 			if (!target)
@@ -46,7 +46,7 @@ void _cd(param_t *params)
 	}
 	else
 	{
-		target = str_duplicate(params->args[1]);
+		target = _strdup(params->args[1]);
 		if (!target)
 		{
 			write(STDERR_FILENO, "cd target malloc error\n", 18);
@@ -70,8 +70,8 @@ void _cd(param_t *params)
 	originArgs = params->args;
 	params->args = tmpArgs;
 	params->tokCount = 3;
-	tmpArgs[0] = str_duplicate("setenv");
-	tmpArgs[1] = str_duplicate("OLDPWD");
+	tmpArgs[0] = _strdup("setenv");
+	tmpArgs[1] = _strdup("OLDPWD");
 	if (!tmpArgs[0] || !tmpArgs[1])
 	{
 		write(STDERR_FILENO, "cd old PWD malloc error\n", 18);
@@ -82,9 +82,9 @@ void _cd(param_t *params)
 	_setenv(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
-	tmpArgs[0] = str_duplicate("setenv");
-	tmpArgs[1] = str_duplicate("PWD");
-	tmpArgs[2] = str_duplicate(getcwd(cwd, 1024));
+	tmpArgs[0] = _strdup("setenv");
+	tmpArgs[1] = _strdup("PWD");
+	tmpArgs[2] = _strdup(getcwd(cwd, 1024));
 	if (!tmpArgs[0] || !tmpArgs[1] || !tmpArgs[2])
 	{
 		write(STDERR_FILENO, "cd new PWD malloc error\n", 18);

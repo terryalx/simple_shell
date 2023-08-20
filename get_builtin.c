@@ -22,7 +22,7 @@ void (*get_builtin(param_t *params))(param_t *)
 
 	while (op->name)
 	{
-		if (!string_compare(params->args[0], op->name))
+		if (!_strcmp(params->args[0], op->name))
 			return (op->func);
 		op++;
 	}

@@ -13,8 +13,8 @@ char *_getenv(char *name, param_t *params)
 
 	while (ptr)
 	{
-		if (!string_compare(name, ptr->str))
-			return (str_duplicate(ptr->value));
+		if (!_strcmp(name, ptr->str))
+			return (_strdup(ptr->value));
 		ptr = ptr->next_node;
 	}
 	return (NULL);

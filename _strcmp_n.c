@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strncmp - compares n bytes of two strings
+ * _strcmp_n - compares n bytes of two strings
  * @str1: the first string to compare
  * @str2: the second string to compare
  * @num: the number of bytes to compare
@@ -16,18 +16,18 @@
  * 0, the characters are equal; if the result is positive, `str1` is greater;
  * if the result is negative, `str1` is smaller.
  */
-int _strncmp(char *str1, char *str2, int num)
+int _strcmp_n(char *str1, char *str2, int num)
 {
-    int i = 0;
-    int res = 0;
+	int i = 0;
+	int res = *str1 - *str2;
 
-    while (i < num)
-    {
-        res = *(str1++) - *(str2++);
-        if (res != 0)
-            break;
-        i++;
-    }
+	while (i <= num)
+	{
+		res = *(str1++) - *(str2++);
+		if (res != 0)
+			break;
+		i++;
+	}
 
-    return res;
+	return (res);
 }

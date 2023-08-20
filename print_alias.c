@@ -19,7 +19,7 @@ void print_alias(char *name, param_t *params)
 	len = _strlen(name);
 	while (ptr)
 	{
-		if (_strncmp(name, ptr->str, len - 1) == 0)
+		if (_strcmp_n(name, ptr->str, len - 1) == 0)
 		{
 			_printf("%s=\'%s\'\n", ptr->str, ptr->value);
 		}

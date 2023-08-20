@@ -14,7 +14,7 @@ void make_alias(char *name, char *val, param_t *params)
 
 	while (h)
 	{
-		if (!string_compare(name, h->str))
+		if (!_strcmp(name, h->str))
 		{
 			free(h->value);
 			h->value = val;

@@ -56,11 +56,11 @@ typedef struct op
  * Main functions
 */
 int read_dynamic_line(param_t *);
-int string_compare(char *, char *);
-int _strncmp(char *, char *, int n);
+int _strcmp(char *, char *);
+int _strcmp_n(char *, char *, int n);
 int split_command_into_tokens(param_t *);
-char *str_duplicate(char *);
-char *strcpy(char *dest, const char *src);
+char *_strdup(char *);
+char *_strcpy(char *dest, const char *src);
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
 char *_getenv(char *name, param_t *params);
@@ -83,8 +83,6 @@ void print_list_alias(list_t *);
 void free_params(param_t *params);
 void write_error(param_t *params, char *msg);
 void _clear(param_t *params);
-void handle_alias(param_t *params, char *token, list_t *node);
-void handle_regular(param_t *params, char *token, char *state);
 
 param_t *init_param(char **argv, char **env);
 

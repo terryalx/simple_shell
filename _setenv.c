@@ -23,11 +23,11 @@ void _setenv(param_t *params)
 
 	while (h)
 	{
-		if (string_compare(name, h->str) == 0)
+		if (_strcmp(name, h->str) == 0)
 		{
 			tmp = h->value;
 			free(tmp);
-			h->value = str_duplicate(value);
+			h->value = _strdup(value);
 			if (!h->value)
 			{
 				write(STDERR_FILENO, "setenv malloc error\n", 18);
