@@ -9,13 +9,21 @@
  */
 char *_getenv(char *name, param_t *params)
 {
-	list_t *ptr = params->env_head;
+    list_t *ptr = params->env_head;
 
-	while (ptr)
-	{
-		if (!string_compare(name, ptr->str))
-			return (str_duplicate(ptr->value));
-		ptr = ptr->next_node;
-	}
-	return (NULL);
+    while (ptr)
+    {
+        if (string_compare(name, ptr->str) == 0)
+        {
+            char *value = str_duplicate(ptr->value);
+            if (!value)
+            {
+                return NULL;
+            }
+            return value;
+        }
+        ptr = ptr->next_node;
+    }
+
+    return NULL;
 }
