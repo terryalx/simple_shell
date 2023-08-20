@@ -1,13 +1,13 @@
 #include "shell.h"
-#include <stdlib.h>
 
 /**
- * make_alias - creates a new alias and adds to alias list
- * @name: name of new alias
- * @val: value of new alias
+ * make_alias - creates a new alias and adds it to the alias list
+ * @name: name of the new alias
+ * @val: value of the new alias
  * @params: parameter
+ *
+ * Return: void
  */
-
 void make_alias(char *name, char *val, param_t *params)
 {
 	list_t *h = params->alias_head;
