@@ -59,14 +59,12 @@ int read_dynamic_line(param_t *);
 int string_compare(char *, char *);
 int _strncmp(char *, char *, int n);
 int split_command_into_tokens(param_t *);
-/**/
 char *str_duplicate(char *);
-char *string_copy(char *dest, const char *src);
-char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
+char *strcpy(char *dest, const char *src);
+char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
-char *get_env_value(char *name, param_t *params);
+char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
-/**/
 void run_command(param_t *);
 void _printenv(param_t *);
 void sigint_handler(int);
@@ -115,7 +113,9 @@ int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
 
-/* LIST */
+/**
+ * LIST
+*/
 
 int _putchar(char c);
 size_t print_list(list_t *h);
@@ -133,5 +133,6 @@ int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
+
 
 #endif /*end _SHELL_H*/
