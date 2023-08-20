@@ -37,9 +37,9 @@ typedef struct list_s
 */
 
 typedef struct list_s {
-    char *text;
+    char *str;
     char *value;
-    unsigned int text_length;
+    unsigned int length;
     unsigned int value_length;
     struct list_s *next_node;
 } list_t;
