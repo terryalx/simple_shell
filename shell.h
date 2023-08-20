@@ -59,12 +59,15 @@ int read_dynamic_line(param_t *);
 int string_compare(char *, char *);
 int _strncmp(char *, char *, int n);
 int split_command_into_tokens(param_t *);
+/**/
 char *str_duplicate(char *);
 char *string_copy(char *dest, const char *src);
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
 char *get_env_value(char *name, param_t *params);
-char *get_file(param_t *params);
+char *check_current_directory(param_t *params);
+char *search_path_for_command(char *path, param_t *params);
+/**/
 void run_command(param_t *);
 void _printenv(param_t *);
 void sigint_handler(int);
