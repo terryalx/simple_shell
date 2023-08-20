@@ -18,16 +18,16 @@
  */
 int _strcmp_n(char *str1, char *str2, int num)
 {
-	int i = 0;
-	int res = *str1 - *str2;
+    int i = 0;
+    int res = 0;
 
-	while (i <= num)
-	{
-		res = *(str1++) - *(str2++);
-		if (res != 0)
-			break;
-		i++;
-	}
+    while (i < num)
+    {
+        res = *(str1++) - *(str2++);
+        if (res != 0)
+            break;
+        i++;
+    }
 
-	return (res);
+    return (res);
 }
