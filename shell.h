@@ -66,8 +66,7 @@ char *string_copy(char *dest, const char *src);
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
 char *get_env_value(char *name, param_t *params);
-char *check_current_directory(param_t *params);
-char *search_path_for_command(char *path, param_t *params);
+void write_error_message(param_t *params, const char *message)
 /**/
 void run_command(param_t *);
 void _printenv(param_t *);
@@ -137,6 +136,5 @@ int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
-
 
 #endif /*end _SHELL_H*/
