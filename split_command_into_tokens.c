@@ -12,6 +12,7 @@ static void handle_regular(param_t *params, char *token, char *state);
  *
  * Return: number of tokens
  */
+
 int split_command_into_tokens(param_t *params)
 {
     char *token = NULL, *state = NULL;
