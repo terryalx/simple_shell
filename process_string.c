@@ -1,7 +1,4 @@
 #include "shell.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 
 /**
  * process_string - process the next command into string tokens
@@ -9,7 +6,6 @@
  *
  * Return: number of tokens
  */
-
 int process_string(param_t *params)
 {
 	char *token = NULL, *state = NULL;
