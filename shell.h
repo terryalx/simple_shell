@@ -115,9 +115,7 @@ int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
 
-/**
- * LIST
-*/
+/* LIST */
 
 int _putchar(char c);
 size_t print_list(list_t *h);
@@ -135,6 +133,5 @@ int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
-
 
 #endif /*end _SHELL_H*/
