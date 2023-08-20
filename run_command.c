@@ -19,7 +19,7 @@ void run_command(param_t *params)
         return;
     }
 
-    exeFile = search_path_for_command(params);
+    exeFile = search_path_for_command(get_env_value("PATH", params), params);
     if (!exeFile)
     {
         return;
