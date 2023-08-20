@@ -15,6 +15,7 @@ static void handle_regular(param_t *params, char *token, char *state);
 int split_command_into_tokens(param_t *params)
 {
     char *token = NULL, *state = NULL;
+    list_t *node;
 
     token = token_(params->nextCommand, " \n\t", &state);
     if (!token)
@@ -23,7 +24,7 @@ int split_command_into_tokens(param_t *params)
         return (0);
     }
 
-    list_t *node = get_node(params->alias_head, token);
+    node = get_node(params->alias_head, token);
     if (node != NULL)
     {
         handle_alias(params, token, node);
