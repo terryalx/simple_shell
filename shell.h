@@ -55,21 +55,21 @@ typedef struct op
 /**
  * Main functions
 */
-int split_command_into_tokens(param_t *);
-char *_strdup(char *);
-char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
+int split_command_into_tokens(param_t *);
+char *_strdup(char *);
+char *_strcpy(char *dest, const char *src);
+char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);
+char *_getenv(char *name, param_t *params);
+char *get_file(param_t *params);
 void run_command(param_t *);
-char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
 void sigint_handler(int);
-char *_getenv(char *name, param_t *params);
 void _setenv(param_t *params);
 void _unsetenv(param_t *params);
-char *get_file(param_t *params);
 void (*get_builtin(param_t *params))(param_t *);
 void _myExit(param_t *params);
 void _cd(param_t *params);
