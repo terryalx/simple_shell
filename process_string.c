@@ -23,7 +23,7 @@ int process_string(param_t *params)
 	{
 		free(token);
 		token = NULL;
-		alias = _strdup(node->val);
+		alias = _strdup(node->value);
 		if (!alias)
 		{
 			write(STDERR_FILENO,

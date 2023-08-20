@@ -15,7 +15,7 @@ size_t print_list(list_t *h)
 		if (h->str == NULL)
 			break;
 		_printf("%s\n", h->str);
-		h = h->next;
+		h = h->next_node;
 	}
 	return (count);
 }

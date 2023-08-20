@@ -21,9 +21,9 @@ void print_alias(char *name, param_t *params)
 	{
 		if (_strcmp_n(name, ptr->str, len - 1) == 0)
 		{
-			_printf("%s=\'%s\'\n", ptr->str, ptr->val);
+			_printf("%s=\'%s\'\n", ptr->str, ptr->value);
 		}
-		ptr = ptr->next;
+		ptr = ptr->next_node;
 	}
 	params->status = 0;
 }

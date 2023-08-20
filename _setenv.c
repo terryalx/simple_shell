@@ -25,19 +25,19 @@ void _setenv(param_t *params)
 	{
 		if (_strcmp(name, h->str) == 0)
 		{
-			tmp = h->val;
+			tmp = h->value;
 			free(tmp);
-			h->val = _strdup(value);
-			if (!h->val)
+			h->value = _strdup(value);
+			if (!h->value)
 			{
 				write(STDERR_FILENO, "setenv malloc error\n", 18);
 				exit(val);
 			}
-			h->val_len = _strlen(value);
+			h->value = _strlen(value);
 			params->status = 0;
 			return;
 		}
-		h = h->next;
+		h = h->next_node;
 	}
 
 	params->env_head = add_node(&(params->env_head), name, value);

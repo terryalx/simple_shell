@@ -21,19 +21,19 @@ void _unsetenv(param_t *params)
 		if (_strcmp(name, current->str) == 0)
 		{
 			if (current == params->env_head)
-				params->env_head = current->next;
+				params->env_head = current->next_node;
 			else
-				prev->next = current->next;
+				prev->next_node = current->next_node;
 
 			free(current->str);
-			free(current->val);
+			free(current->value);
 			free(current);
 			params->status = 0;
 			return;
 		}
 
 		prev = current;
-		current = current->next;
+		current = current->next_node;
 	}
 
 	params->status = 0;

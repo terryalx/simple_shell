@@ -20,10 +20,10 @@ list_t *add_node(list_t **head, char *str, char *val)
 	}
 
 	new_node->str = _strdup(str);
-	new_node->len = _strlen(new_node->str);
-	new_node->val = _strdup(val);
-	new_node->val_len = _strlen(val);
-	new_node->next = *head;
+	new_node->length = _strlen(new_node->str);
+	new_node->value = _strdup(val);
+	new_node->value_length = _strlen(val);
+	new_node->next_node = *head;
 	*head = new_node;
 
 	return (new_node);

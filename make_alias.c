@@ -16,13 +16,13 @@ void make_alias(char *name, char *val, param_t *params)
 	{
 		if (!_strcmp(name, h->str))
 		{
-			free(h->val);
-			h->val = val;
-			h->val_len = _strlen(val);
+			free(h->value);
+			h->value = val;
+			h->value_length = _strlen(val);
 			params->status = 0;
 			return;
 		}
-		h = h->next;
+		h = h->next_node;
 	}
 	
 	params->alias_head = add_node(&(params->alias_head), name, val);
