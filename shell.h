@@ -59,7 +59,7 @@ int read_dynamic_line(param_t *);
 int string_compare(char *, char *);
 int _strncmp(char *, char *, int n);
 int split_command_into_tokens(param_t *);
-char *_strdup(char *);
+char *str_duplicate(char *);
 char *_strcpy(char *dest, const char *src);
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *token_(char *str, char *delim, char **savePtr);

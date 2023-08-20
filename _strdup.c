@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strdup - Duplicate a string to a new allocated block of memory
+ * str_duplicate - Duplicate a string to a new allocated block of memory
  * @str: String to duplicate
  *
  * Return: Pointer to duplicated string, NULL if insufficient memory
  */
-char *_strdup(char *str)
+char *str_duplicate(char *str)
 {
     char *ptr = NULL;
     int len = 0;
