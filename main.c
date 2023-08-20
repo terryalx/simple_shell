@@ -49,7 +49,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 		params->nextCommand = token_(params->buffer, ";\n", &state);
 		while (params->nextCommand)
 		{
-			params->tokCount = process_string(params);
+			params->tokCount = split_command_into_tokens(params);
 			if (params->tokCount == 0)
 				break;
 			run_command(params);
