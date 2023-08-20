@@ -10,6 +10,7 @@
  */
 char  **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
+	int i;
     char **new_ptr = NULL;
 
     if (!ptr)
@@ -28,10 +29,10 @@ char  **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
     if (!new_ptr)
         return NULL;
 
-    for (unsigned int i = 0; i < new_size; i++)
+    for (i = 0; i < new_size; i++)
         new_ptr[i] = NULL;
 
-    for (unsigned int i = 0; i < old_size && i < new_size; i++)
+    for (i = 0; i < old_size && i < new_size; i++)
         new_ptr[i] = ptr[i];
 
     free(ptr);
