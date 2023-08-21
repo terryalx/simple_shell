@@ -47,7 +47,7 @@ void _cd(param_t *params)
 	}
 	else
 	{
-		target = _strdup(params->args[1]);
+		target = str_duplicate(params->args[1]);
 		if (!target)
 		{
 			write(STDERR_FILENO, "cd target malloc error\n", 18);
