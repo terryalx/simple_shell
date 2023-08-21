@@ -1,19 +1,20 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
- * print_list_alias - Prints the name and value of each alias in a linked list.
- * @head: Pointer to the head of the linked list.
- *
- * Description: This function recursively traverses the linked list and prints
- * the name and value of each alias. It uses the _printf function to format
- * the output.
- */
+ * print_list_alias - function that prints the name
+ * and value of each alias in a linked list.
+ * @head: pointer to the head of the linked list.
+*/
+
 void print_list_alias(list_t *head)
 {
 	if (head)
 	{
-		print_list_alias(head->next_node);
+		print_list_alias(head->next);
 		if (head->str != NULL)
-			_printf("%s=\'%s\'\n", head->str, head->value);
+			_printf("%s=\'%s\'\n", head->str, head->val);
 	}
 }

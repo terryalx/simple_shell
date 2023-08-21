@@ -1,11 +1,13 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 
 /**
  * _printenv - prints environment
  * @params: parameters
- * 
  * Return: void
  */
+
 void _printenv(param_t *params)
 {
 	if (params->tokCount != 1)

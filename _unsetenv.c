@@ -1,40 +1,40 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
- * _unsetenv - Removes an environment variable from the list
- * @params: The parameters containing the environment list and variable name
- */
+ * _unsetenv - function searches the environment list to find the
+ * environment variable name and removes it.
+ * @params: parameters
+*/
+
 void _unsetenv(param_t *params)
 {
 	char *name = params->args[1];
-	list_t *prev = NULL;
-	list_t *current = params->env_head;
+	list_t *prev = NULL, *h = params->env_head;
 
 	if (params->tokCount != 2)
 	{
 		params->status = 0;
 		return;
 	}
-
-	while (current)
+	while (h)
 	{
-		if (string_compare(name, current->str) == 0)
+		if (_strcmp(name, h->str) == 0) /* env var exists */
 		{
-			if (current == params->env_head)
-				params->env_head = current->next_node;
+			if (h == params->env_head)
+				params->env_head = h->next;
 			else
-				prev->next_node = current->next_node;
-
-			free(current->str);
-			free(current->value);
-			free(current);
+				prev->next = h->next;
+			free(h->str);
+			free(h->val);
+			free(h);
 			params->status = 0;
 			return;
 		}
-
-		prev = current;
-		current = current->next_node;
+		prev = h;
+		h = h->next;
 	}
-
 	params->status = 0;
 }

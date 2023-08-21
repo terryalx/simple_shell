@@ -1,10 +1,14 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
  * get_binary - converts an unsigned int to binary
  * @n: integer
  * Return: pointer to binary
  */
+
 char *get_binary(unsigned int n)
 {
 	char *ptr = NULL;

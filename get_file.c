@@ -1,14 +1,17 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <errno.h>
 
 /**
- * get_file - Get the correct path to a command file.
- * @params: The parameters.
- *
- * Return: A string of the valid path to the command file, or NULL if not found.
+ * get_file - get correct path to a command file
+ * @params: parameters
+ * Return: string of valid path to command file, NULL if not found
+ * The string needs to be freed
  */
+
 char *get_file(param_t *params)
 {
 	char *path = NULL;
@@ -18,7 +21,7 @@ char *get_file(param_t *params)
 	if (access(params->args[0], F_OK | X_OK) == 0)
 	{
 		free(path);
-		return (str_duplicate(params->args[0]));
+		return (_strdup(params->args[0]));
 	}
 	if (errno == EACCES)
 	{
@@ -26,13 +29,13 @@ char *get_file(param_t *params)
 		write_error(params, "Permission denied\n");
 		return (NULL);
 	}
-	path = get_env_value("PATH", params);
+	path = _getenv("PATH", params);
 	if (!path)
 	{
 		write_error(params, "not found\n");
 		return (NULL);
 	}
-	exePath = token_(path, ":", &state);
+	exePath = _strtok(path, ":", &state);
 	while (exePath)
 	{
 		tmp = exeArg;
@@ -48,7 +51,7 @@ char *get_file(param_t *params)
 			return (exeArg);
 		}
 		free(exePath);
-		exePath = token_(path, ":", &state);
+		exePath = _strtok(path, ":", &state);
 	}
 	params->status = 127;
 	write_error(params, "not found\n");

@@ -1,12 +1,15 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
- * is_delim - Check if a character is one of the delimiters.
- * @c: The character to be checked.
- * @delim: The string of delimiters.
- *
- * Return: 1 if the character is a delimiter, 0 otherwise.
+ * isDelim - check if a character is one of the delimiters
+ * @c: character
+ * @delim: delimeters
+ * Return: 1 if it is a delimiter, 0 otherwise
  */
+
 int isDelim(char c, char *delim)
 {
 	while (*delim)

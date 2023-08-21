@@ -1,9 +1,13 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
  * rev_string - Reverses the order of characters in a string.
  * @s: A pointer to a null-terminated string to be reversed.
  */
+
 void rev_string(char *s)
 {
 	int head, tail;

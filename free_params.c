@@ -1,9 +1,13 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
  * free_params - Frees the memory allocated for the param_t structure.
  * @params: pointer to the param_t structure
  */
+
 void free_params(param_t *params)
 {
 	unsigned int i;

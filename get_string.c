@@ -1,11 +1,14 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
  * get_string - returns a new duplicated string
  * @s: string to be copied
- *
  * Return: Null if string is null, else pointer of copied string
  */
+
 char *get_string(char *s)
 {
 	char *ptr = NULL;

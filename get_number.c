@@ -1,12 +1,14 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
- * get_number - Convert an integer to a string.
- * @number: The integer to be converted.
- *
- * Return: A pointer to the string representation of the integer,
- *         or NULL if an error occurs.
+ * get_number - put integer into a memory block as string
+ * @n: integer
+ * Return: pointer to integer string, NULL on error
  */
+
 char *get_number(int n)
 {
 	int i, len = 0, tmp;

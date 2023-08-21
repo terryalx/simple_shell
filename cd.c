@@ -1,10 +1,15 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _cd - change current working directory
  * @params: shell parameters
  * Return: void
  */
+
 void _cd(param_t *params)
 {
 	char *target = NULL, cwd[1024];
@@ -13,7 +18,7 @@ void _cd(param_t *params)
 
 	if (params->tokCount == 1)
 	{
-		target = get_env_value("HOME", params);
+		target = _getenv("HOME", params);
 		if (!target)
 		{
 			params->status = 0;
@@ -22,13 +27,13 @@ void _cd(param_t *params)
 	}
 	else if (params->args[1][0] == '-')
 	{
-		if (!string_compare(params->args[1], "-"))
+		if (!_strcmp(params->args[1], "-"))
 		{
-			target = get_env_value("OLDPWD", params);
+			target = _getenv("OLDPWD", params);
 			if (!target)
 			{
 				params->status = 0;
-				target = get_env_value("PWD", params);
+				target = _getenv("PWD", params);
 				_printf("%s\n", target);
 				free(target);
 				return;
@@ -46,7 +51,7 @@ void _cd(param_t *params)
 	}
 	else
 	{
-		target = str_duplicate(params->args[1]);
+		target = _strdup(params->args[1]);
 		if (!target)
 		{
 			write(STDERR_FILENO, "cd target malloc error\n", 18);
@@ -70,21 +75,23 @@ void _cd(param_t *params)
 	originArgs = params->args;
 	params->args = tmpArgs;
 	params->tokCount = 3;
-	tmpArgs[0] = str_duplicate("setenv");
-	tmpArgs[1] = str_duplicate("OLDPWD");
+	/* set OLDPWD to the current PWD */
+	tmpArgs[0] = _strdup("setenv");
+	tmpArgs[1] = _strdup("OLDPWD");
 	if (!tmpArgs[0] || !tmpArgs[1])
 	{
 		write(STDERR_FILENO, "cd old PWD malloc error\n", 18);
 		free_params(params);
 		exit(-1);
 	}
-	tmpArgs[2] = get_env_value("PWD", params);
+	tmpArgs[2] = _getenv("PWD", params);
 	_setenv(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
-	tmpArgs[0] = str_duplicate("setenv");
-	tmpArgs[1] = str_duplicate("PWD");
-	tmpArgs[2] = str_duplicate(getcwd(cwd, 1024));
+	/* set PWD to the target wd */
+	tmpArgs[0] = _strdup("setenv");
+	tmpArgs[1] = _strdup("PWD");
+	tmpArgs[2] = _strdup(getcwd(cwd, 1024));
 	if (!tmpArgs[0] || !tmpArgs[1] || !tmpArgs[2])
 	{
 		write(STDERR_FILENO, "cd new PWD malloc error\n", 18);
@@ -95,5 +102,6 @@ void _cd(param_t *params)
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
 	free(tmpArgs);
+	/* reset params */
 	params->args = originArgs;
 }

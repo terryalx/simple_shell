@@ -1,28 +1,38 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
 
 /**
- * rot13 - performs ROT13 encryption on a string
- * @plaintext: string to be encrypted
- *
+ * rot13 - performs rot13 encryption on a string
+ * @s: string to be encrypted
  * Return: pointer to the encrypted string
  */
+
 char *rot13(char *s)
 {
-    char *ptr;
-    int i;
-    const char *original = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const char *encrypted = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-
-    for (ptr = s; *ptr != '\0'; ptr++)
-    {
-        for (i = 0; i < (int)(sizeof(original) - 1); i++)
-        {
-            if (*ptr == original[i])
-            {
-                *ptr = encrypted[i];
-                break;
-            }
-        }
-    }
-    return (s);
+	char *ptr;
+	int i;
+	char c[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+			'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+			'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+			'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+	char r[] = {'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+			'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+			'j', 'k', 'l', 'm', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+			'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E',
+			'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'};
+	for (ptr = s; *ptr != '\0'; ptr++)
+	{
+		for (i = 0; i < 52; i++)
+		{
+			if (*ptr == c[i])
+			{
+				*ptr = r[i];
+				break;
+			}
+		}
+	}
+	return (s);
 }
