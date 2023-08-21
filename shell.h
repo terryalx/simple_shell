@@ -10,6 +10,7 @@
 #include <limits.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <errno.h>
 
 /*
  * Macro
