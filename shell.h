@@ -58,10 +58,8 @@ typedef struct op
 
 /* M A I N */
 int process_string(param_t *);
-char *_strdup(char *);
 char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
-int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 char *_strtok(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
@@ -139,6 +137,7 @@ int isDelim(char c, char *delim);
 int string_to_int(char *s); /* _atoi */
 int my_printf(const char *, ...); /* _printf */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
-
+int string_compare(char *, char *); /* _strcmp */
+char *str_duplicate(char *); /* _strdup */
 
 #endif /* end __SHELL__H__ */
