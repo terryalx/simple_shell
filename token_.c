@@ -32,10 +32,10 @@ char *token_(char *str, char *delim, char **savePtr)
 	if (*ptr == '\'')
 	{
 		ptr++;
-		modifier = _strchr(ptr, '\'');
+		modifier = find_character_in_string(ptr, '\'');
 		if (!modifier)
 		{
-			_printf("no matching quote found!\n");
+			my_printf("no matching quote found!\n");
 			exit(-1);
 		}
 		*modifier = '\0';

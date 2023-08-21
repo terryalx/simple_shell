@@ -29,7 +29,7 @@ char *get_file(param_t *params)
 		write_error(params, "not found\n");
 		return (NULL);
 	}
-	exePath = _strtok(path, ":", &state);
+	exePath = token_(path, ":", &state);
 	while (exePath)
 	{
 		tmp = exeArg;
@@ -45,7 +45,7 @@ char *get_file(param_t *params)
 			return (exeArg);
 		}
 		free(exePath);
-		exePath = _strtok(path, ":", &state);
+		exePath = token_(path, ":", &state);
 	}
 	params->status = 127;
 	write_error(params, "not found\n");
