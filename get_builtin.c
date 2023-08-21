@@ -10,7 +10,7 @@ void (*get_builtin(param_t *params))(param_t *)
 {
 	op_t ops[] = {
 		{"exit", _myExit},
-		{"clear", _clear},
+		{"clear", clear_terminal_screen},
 		{"env", _printenv},
 		{"setenv", set_or_update_environment_variable},
 		{"cd", change_directory},
