@@ -1,7 +1,5 @@
 #include "shell.h"
 
-static void handle_cd_options(param_t *params)
-
 /**
  * _cd - Change the current working directory.
  *
@@ -55,7 +53,7 @@ void _cd(param_t *params)
  *
  * Return: void.
  */
-static void handle_cd_options(param_t *params)
+void handle_cd_options(param_t *params)
 {
     if (!string_compare(params->args[1], "-"))
     {
@@ -89,7 +87,7 @@ static void handle_cd_options(param_t *params)
  * Return: A dynamically allocated string containing the target directory,
  *         or NULL on failure.
  */
-static char *get_cd_target(param_t *params)
+char *get_cd_target(param_t *params)
 {
     char *target = str_duplicate(params->args[1]);
     if (!target)
@@ -110,7 +108,7 @@ static char *get_cd_target(param_t *params)
  *
  * Return: 0 on success, -1 on failure.
  */
-static int change_directory(char *target, param_t *params)
+int change_directory(char *target, param_t *params)
 {
     int i = chdir(target);
     free(target);
@@ -136,7 +134,7 @@ static int change_directory(char *target, param_t *params)
  *
  * Return: void.
  */
-static void update_environment_variables(param_t *params, char *target)
+void update_environment_variables(param_t *params, char *target)
 {
     char **tmpArgs = malloc(sizeof(char *) * 3);
     if (!tmpArgs)
@@ -182,7 +180,7 @@ static void update_environment_variables(param_t *params, char *target)
  *
  * Return: void.
  */
-static void handle_cd_error(char *target, param_t *params)
+void handle_cd_error(char *target, param_t *params)
 {
     write_error(params, "can't cd to ");
     write(STDERR_FILENO, target, _strlen(target));
