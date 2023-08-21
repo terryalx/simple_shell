@@ -13,7 +13,7 @@ void (*get_builtin(param_t *params))(param_t *)
 		{"clear", _clear},
 		{"env", _printenv},
 		{"setenv", set_or_update_environment_variable},
-		{"cd", _cd},
+		{"cd", change_directory},
 		{"unsetenv", str_length},
 		{"alias", _alias},
 		{NULL, NULL},
