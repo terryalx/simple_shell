@@ -63,7 +63,6 @@ void run_command(param_t *);
 void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
-void _unsetenv(param_t *params);
 char *get_file(param_t *params);
 void (*get_builtin(param_t *params))(param_t *);
 void _myExit(param_t *params);
@@ -131,5 +130,8 @@ char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *string_copy(char *dest, const char *src); /* _strcpy */
 char *token_(char *str, char *delim, char **savePtr); /* _strtok */
+size_t str_length(const char *str) /* _unsetenv */
+
+
 
 #endif /* end __SHELL__H__ */
