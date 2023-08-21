@@ -1,8 +1,22 @@
 #ifndef _SHELL_H
 #define _SHELL_H
-#define _GNU_SOURCE
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <signal.h>
+#include <limits.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+
+/*
+ * Macro
+ */
+#define NULL_PTR -1
+#define WRONG_SPECIFIER -2
+#define _GNU_SOURCE
 
 typedef struct list_s
 {
