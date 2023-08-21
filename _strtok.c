@@ -30,7 +30,7 @@ char *_strtok(char *str, char *delim, char **savePtr)
 	if (*ptr == '\'')
 	{
 		ptr++;
-		modifier = _strchr(ptr, '\'');
+		modifier = find_character_in_string(ptr, '\'');
 		if (!modifier)
 		{
 			my_printf("no matching quote found!\n");

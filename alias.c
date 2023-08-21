@@ -16,7 +16,7 @@ void _alias(param_t *params)
 	}
 	for (i = 1; i < params->tokCount; i++)
 	{
-		if (_strchr(params->args[i], '='))
+		if (find_character_in_string(params->args[i], '='))
 		{
 			set_alias(params->args[i], params);
 		}

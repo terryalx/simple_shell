@@ -15,9 +15,9 @@ void set_alias(char *name, param_t *params)
 		i++;
 	if (name[i + 1] == '\'')
 	{
-		if (_strchr(&name[i + 2], '\''))
+		if (find_character_in_string(&name[i + 2], '\''))
 		{
-			tmp = _strchr(&name[i + 2], '\'');
+			tmp = find_character_in_string(&name[i + 2], '\'');
 			*tmp = '\0';
 			val = str_duplicate(&name[i + 2]);
 			if (tmp[1] != '\0')

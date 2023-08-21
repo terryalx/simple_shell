@@ -43,7 +43,7 @@ param_t *init_param(char **argv, char **env)
 	params->env_head = NULL;
 	for (i = 0; env[i]; i++)
 	{
-		eqs = _strchr(env[i], '=');
+		eqs = find_character_in_string(env[i], '=');
 		*eqs = '\0';
 		params->env_head = add_node(&(params->env_head),
 					    env[i], eqs + 1);
