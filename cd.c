@@ -1,10 +1,12 @@
 #include "shell.h"
 
-void handle_cd_options(param_t *params)
-char *get_cd_target(param_t *params)
-int change_directory(char *target, param_t *params)
-void update_environment_variables(param_t *params, char *target)
-void handle_cd_error(char *target, param_t *params)
+/* Function prototypes */
+void handle_cd_options(param_t *params);
+char *get_cd_target(param_t *params);
+int change_directory(char *target, param_t *params);
+void update_environment_variables(param_t *params, char *target);
+void handle_cd_error(char *target, param_t *params);
+
 /**
  * _cd - Change the current working directory.
  *
