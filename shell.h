@@ -5,6 +5,15 @@
 #include <stdio.h>
 #include "list.h"
 
+typedef struct list_s
+{
+	char *str;
+	char *val;
+	unsigned int len;
+	unsigned int val_len;
+	struct list_s *next;
+} list_t;
+
 typedef struct param_s
 {
 	char **argv;
@@ -56,12 +65,7 @@ void _clear(param_t *params);
 
 param_t *init_param(char **argv, char **env);
 
-
-
-
-
-
-
+/* M A I N */
 
 #define NULL_PTR -1
 #define WRONG_SPECIFIER -2
@@ -86,16 +90,9 @@ int _atoi(char *s);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
-#include <unistd.h>
+/* L I S T */
 
-typedef struct list_s
-{
-	char *str;
-	char *val;
-	unsigned int len;
-	unsigned int val_len;
-	struct list_s *next;
-} list_t;
+#include <unistd.h>
 
 int _putchar(char c);
 size_t print_list(list_t *h);
