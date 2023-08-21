@@ -42,6 +42,6 @@ void set_or_update_environment_variable(param_t *params)
 		h = h->next_node;
 	}
 
-	params->env_head = add_node(&(params->env_head), name, value);
+	params->env_head = prepend_list_node(&(params->env_head), name, value);
 	params->status = 0;
 }

@@ -24,7 +24,7 @@ void make_alias(char *name, char *val, param_t *params)
 		h = h->next_node;
 	}
 	
-	params->alias_head = add_node(&(params->alias_head), name, val);
+	params->alias_head = prepend_list_node(&(params->alias_head), name, val);
 	free(val);
 	params->status = 0;
 }

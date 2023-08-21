@@ -45,7 +45,7 @@ param_t *init_param(char **argv, char **env)
 	{
 		eqs = find_character_in_string(env[i], '=');
 		*eqs = '\0';
-		params->env_head = add_node(&(params->env_head),
+		params->env_head = prepend_list_node(&(params->env_head),
 					    env[i], eqs + 1);
 		if (!(params->env_head))
 		{
