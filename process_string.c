@@ -52,7 +52,7 @@ int process_string(param_t *params)
 		if (params->tokCount == params->argsCap)
 		{
 			params->argsCap += 10;
-			params->args = _realloc(params->args,
+			params->args = array_realloc(params->args,
 						params->argsCap - 10,
 						params->argsCap);
 			if (!(params->args))
