@@ -131,7 +131,7 @@ int isDelim(char c, char *delim);
 int string_to_int(char *s); /* _atoi */
 int my_printf(const char *, ...); /* _printf */
 int string_compare(char *, char *); /* _strcmp */
-int string_compare(char *str1, char *str2) /* _strcmp */
+int string_compare(char *str1, char *str2); /* _strcmp */
 char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *str_duplicate(char *); /* _strdup */
