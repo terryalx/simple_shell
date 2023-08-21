@@ -66,7 +66,6 @@ char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
 void (*get_builtin(param_t *params))(param_t *);
 void _myExit(param_t *params);
-void _cd(param_t *params);
 void _alias(param_t *params);
 void set_alias(char *name, param_t *params);
 void make_alias(char *name, char *val, param_t *params);
@@ -101,7 +100,6 @@ char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 
 /* L I S T */
-int _putchar(char c);
 size_t print_list(list_t *h);
 size_t list_len(list_t *h);
 
@@ -132,6 +130,7 @@ char *string_copy(char *dest, const char *src); /* _strcpy */
 char *token_(char *str, char *delim, char **savePtr); /* _strtok */
 void str_length(param_t *params); /* _unsetenv */
 list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
+void change_directory(param_t *params); /* _cd */
 
 
 #endif /* end __SHELL__H__ */

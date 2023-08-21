@@ -15,7 +15,7 @@ void set_pwd(param_t *params, char **tmpArgs);
  *
  * Return: void
  */
-void _cd(param_t *params)
+void change_directory(param_t *params)
 {
 	char *target = NULL;
 	char **tmpArgs = NULL, **originArgs = NULL;
