@@ -1,6 +1,7 @@
-#ifndef _SHELL_H
-#define _SHELL_H
+#ifndef __SHELL__H__
+#define __SHELL__H__
 
+/* System Calls */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -100,7 +101,7 @@ char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 int _printf(const char *, ...);
 char *_strchr(char *s, char c);
-int _atoi(char *s);
+int string_to_int(char *s); /*_atoi */
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
@@ -125,4 +126,4 @@ void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
 
-#endif /*end _SHELL_H*/
+#endif /* end __SHELL__H__ */
