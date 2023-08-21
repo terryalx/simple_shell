@@ -9,7 +9,7 @@
  *
  * Return: The length of the string.
  */
-size_t str_length(const char *str)
+void str_length(param_t *params)
 {
     size_t length = 0;
 

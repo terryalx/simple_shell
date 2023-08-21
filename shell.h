@@ -130,8 +130,7 @@ char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *string_copy(char *dest, const char *src); /* _strcpy */
 char *token_(char *str, char *delim, char **savePtr); /* _strtok */
-size_t str_length(const char *str); /* _unsetenv */
-
+void str_length(param_t *params); /* _unsetenv */
 
 
 #endif /* end __SHELL__H__ */

@@ -14,7 +14,7 @@ void (*get_builtin(param_t *params))(param_t *)
 		{"env", _printenv},
 		{"setenv", set_or_update_environment_variable},
 		{"cd", _cd},
-		{"unsetenv", _unsetenv},
+		{"unsetenv", str_length},
 		{"alias", _alias},
 		{NULL, NULL},
 	};
