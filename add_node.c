@@ -16,10 +16,10 @@ list_t *add_node(list_t **head, char *str, char *val)
 	if (new == NULL)
 		return (NULL);
 	new->str = _strdup(str);
-	new->len = _strlen(new->str);
-	new->val = _strdup(val);
-	new->val_len = _strlen(val);
-	new->next = *head;
+	new->length = _strlen(new->str);
+	new->value = _strdup(val);
+	new->value_length = _strlen(val);
+	new->next_node = *head;
 	*head = new;
 
 	return (new);

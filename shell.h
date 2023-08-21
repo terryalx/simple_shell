@@ -132,4 +132,8 @@ void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
 
+
+char *_strdup(char *str);
+char *_getenv(char *name, param_t *params);
+char *_strcpy(char *dest, const char *src)
 #endif /* end _SHELL_H */
