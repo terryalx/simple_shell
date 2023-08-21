@@ -72,8 +72,8 @@ void _cd(param_t *params)
 	params->args = tmpArgs;
 	params->tokCount = 3;
 	/* set OLDPWD to the current PWD */
-	tmpArgs[0] = _strdup("setenv");
-	tmpArgs[1] = _strdup("OLDPWD");
+	tmpArgs[0] = str_duplicate("setenv");
+	tmpArgs[1] = str_duplicate("OLDPWD");
 	if (!tmpArgs[0] || !tmpArgs[1])
 	{
 		write(STDERR_FILENO, "cd old PWD malloc error\n", 18);
@@ -85,9 +85,9 @@ void _cd(param_t *params)
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
 	/* set PWD to the target wd */
-	tmpArgs[0] = _strdup("setenv");
-	tmpArgs[1] = _strdup("PWD");
-	tmpArgs[2] = _strdup(getcwd(cwd, 1024));
+	tmpArgs[0] = str_duplicate("setenv");
+	tmpArgs[1] = str_duplicate("PWD");
+	tmpArgs[2] = str_duplicate(getcwd(cwd, 1024));
 	if (!tmpArgs[0] || !tmpArgs[1] || !tmpArgs[2])
 	{
 		write(STDERR_FILENO, "cd new PWD malloc error\n", 18);

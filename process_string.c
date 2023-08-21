@@ -24,7 +24,7 @@ int process_string(param_t *params)
 	{
 		free(token);
 		token = NULL;
-		alias = _strdup(node->value);
+		alias = str_duplicate(node->value);
 		if (!alias)
 		{
 			write(STDERR_FILENO,

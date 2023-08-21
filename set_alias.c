@@ -19,7 +19,7 @@ void set_alias(char *name, param_t *params)
 		{
 			tmp = _strchr(&name[i + 2], '\'');
 			*tmp = '\0';
-			val = _strdup(&name[i + 2]);
+			val = str_duplicate(&name[i + 2]);
 			if (tmp[1] != '\0')
 			{
 				while (tmp[j] &&
@@ -36,7 +36,7 @@ void set_alias(char *name, param_t *params)
 		}
 	}
 	else
-		val = _strdup(&name[i + 1]);
+		val = str_duplicate(&name[i + 1]);
 	name[i] = '\0';
 	make_alias(name, val, params);
 }
