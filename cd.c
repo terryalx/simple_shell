@@ -5,10 +5,9 @@
  * @params: shell parameters
  * Return: void
  */
-
 void _cd(param_t *params)
 {
-	char *target = NULL, cwd[1024];
+	char *target = NULL;
 	char **tmpArgs = NULL, **originArgs = NULL;
 	int i;
 
@@ -71,7 +70,20 @@ void _cd(param_t *params)
 	originArgs = params->args;
 	params->args = tmpArgs;
 	params->tokCount = 3;
-	/* set OLDPWD to the current PWD */
+	set_oldpwd(params, tmpArgs);
+	set_pwd(params, tmpArgs);
+	free(tmpArgs);
+	params->args = originArgs;
+}
+
+/**
+ * set_oldpwd - set OLDPWD to the current PWD
+ * @params: shell parameters
+ * @tmpArgs: temporary arguments
+ * Return: void
+ */
+void set_oldpwd(param_t *params, char **tmpArgs)
+{
 	tmpArgs[0] = str_duplicate("setenv");
 	tmpArgs[1] = str_duplicate("OLDPWD");
 	if (!tmpArgs[0] || !tmpArgs[1])
@@ -82,9 +94,18 @@ void _cd(param_t *params)
 	}
 	tmpArgs[2] = _getenv("PWD", params);
 	set_or_update_environment_variable(params);
-	for (i = 0; i < 3; i++)
-		free(tmpArgs[i]);
-	/* set PWD to the target wd */
+}
+
+/**
+ * set_pwd - set PWD to the target working directory
+ * @params: shell parameters
+ * @tmpArgs: temporary arguments
+ * Return: void
+ */
+void set_pwd(param_t *params, char **tmpArgs)
+{
+	char cwd[1024];
+
 	tmpArgs[0] = str_duplicate("setenv");
 	tmpArgs[1] = str_duplicate("PWD");
 	tmpArgs[2] = str_duplicate(getcwd(cwd, 1024));
@@ -95,9 +116,4 @@ void _cd(param_t *params)
 		exit(-1);
 	}
 	set_or_update_environment_variable(params);
-	for (i = 0; i < 3; i++)
-		free(tmpArgs[i]);
-	free(tmpArgs);
-	/* reset params */
-	params->args = originArgs;
 }
