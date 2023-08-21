@@ -105,7 +105,6 @@ char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 
-char *_strchr(char *s, char c);
 
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
@@ -139,5 +138,6 @@ char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); 
 int string_compare(char *, char *); /* _strcmp */
 char *str_duplicate(char *); /* _strdup */
 void set_or_update_environment_variable(param_t *params); /* _setenv */
+char *find_character_in_string(char *s, char c); /* _strchr */
 
 #endif /* end __SHELL__H__ */
