@@ -75,7 +75,6 @@ void print_list_env(list_t *);
 void print_list_alias(list_t *);
 void free_params(param_t *params);
 void write_error(param_t *params, char *msg);
-void _clear(param_t *params);
 
 param_t *init_param(char **argv, char **env);
 
@@ -131,6 +130,6 @@ char *token_(char *str, char *delim, char **savePtr); /* _strtok */
 void str_length(param_t *params); /* _unsetenv */
 list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 void change_directory(param_t *params); /* _cd */
-
+void clear_terminal_screen(param_t *params); /* _clear */
 
 #endif /* end __SHELL__H__ */
