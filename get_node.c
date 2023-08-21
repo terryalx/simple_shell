@@ -15,7 +15,7 @@ list_t *get_node(list_t *head, char *str)
 	h = head;
 	while (h)
 	{
-		if (!_strcmp(h->str, str))
+		if (!string_compare(h->str, str))
 			break;
 		h = h->next_node;
 	}

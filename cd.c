@@ -23,7 +23,7 @@ void _cd(param_t *params)
 	}
 	else if (params->args[1][0] == '-')
 	{
-		if (!_strcmp(params->args[1], "-"))
+		if (!string_compare(params->args[1], "-"))
 		{
 			target = _getenv("OLDPWD", params);
 			if (!target)
