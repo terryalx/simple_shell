@@ -2,6 +2,9 @@
 
 #define BUFFER_SIZE 1024
 
+int process_format(const char *format, va_list params, char *buffer, int *bufferIndex)
+int handle_format(const char *format, va_list params, char *buffer, int *bufferIndex, int *charCount, int formatIndex)
+int print_arg(char *arg)
 /**
  * _printf - Format and print data to the standard output.
  * @format: A format string specifying the format of the output.
