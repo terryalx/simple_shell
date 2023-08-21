@@ -106,9 +106,6 @@ char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 
 /* L I S T */
-
-#include <unistd.h>
-
 int _putchar(char c);
 size_t print_list(list_t *h);
 size_t list_len(list_t *h);
@@ -136,5 +133,7 @@ void set_or_update_environment_variable(param_t *params); /* _setenv */
 char *str_duplicate(char *); /* _strdup */
 char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
+
+
 
 #endif /* end __SHELL__H__ */
