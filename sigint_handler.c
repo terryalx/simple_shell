@@ -17,5 +17,5 @@
 void sigint_handler(int __attribute__((unused)) s)
 {
 	char prompt[] = "\n($) ";
-	write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+	write(STDOUT_FILENO, prompt, 5);
 }
