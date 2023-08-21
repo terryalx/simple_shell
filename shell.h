@@ -105,10 +105,6 @@ char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 
-
-int _strcmp(char *, char *);
-int _strcmp_n(char *, char *, int n);
-
 /* L I S T */
 
 #include <unistd.h>
@@ -134,10 +130,12 @@ int isDelim(char c, char *delim);
 /* M A I N */
 int string_to_int(char *s); /* _atoi */
 int my_printf(const char *, ...); /* _printf */
-char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 int string_compare(char *, char *); /* _strcmp */
+int string_compare(char *str1, char *str2) /* _strcmp */
+char *find_character_in_string(char *s, char c); /* _strchr */
+char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *str_duplicate(char *); /* _strdup */
 void set_or_update_environment_variable(param_t *params); /* _setenv */
-char *find_character_in_string(char *s, char c); /* _strchr */
+
 
 #endif /* end __SHELL__H__ */

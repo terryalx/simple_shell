@@ -1,25 +1,19 @@
 #include "shell.h"
 
 /**
- * _strcmp_n - compares n bytes of two strings
- * @s1: string 1
- * @s2: string 2
- * @n: number of bytes to comp
- * Return: int less than, equal to, or greater than 0 if s1 is, respectively
- * less than, equal to, or greater than s2
+ * string_compare - compares two strings
+ * @str1: string 1
+ * @str2: string 2
+ *
+ * Return: an integer less than, equal to, or greater than 0 if str1 is,
+ * respectively, less than, equal to, or greater than str2
  */
-
-int _strcmp_n(char *s1, char *s2, int n)
+int string_compare(char *str1, char *str2)
 {
-	int i = 0, res = *s1 - *s2;
+    while (*str1 != '\0' && *str2 != '\0' && *str1 == *str2) {
+        str1++;
+        str2++;
+    }
 
-	while (i <= n)
-	{
-		res = *(s1++) - *(s2++);
-		if (res != 0)
-			break;
-		i++;
-	}
-
-	return (res);
+    return (*str1 - *str2);
 }
