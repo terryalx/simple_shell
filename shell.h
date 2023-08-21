@@ -58,9 +58,7 @@ typedef struct op
 
 /* M A I N */
 int process_string(param_t *);
-char *_strcpy(char *dest, const char *src);
 int _getline(param_t *);
-int _strcmp_n(char *, char *, int n);
 char *_strtok(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
@@ -133,7 +131,7 @@ void set_or_update_environment_variable(param_t *params); /* _setenv */
 char *str_duplicate(char *); /* _strdup */
 char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
-
+char *string_copy(char *dest, const char *src); /* _strcpy */
 
 
 #endif /* end __SHELL__H__ */
