@@ -3,7 +3,6 @@
 #define _GNU_SOURCE
 
 #include <stdio.h>
-#include "list.h"
 
 typedef struct list_s
 {
