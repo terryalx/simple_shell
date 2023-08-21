@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _setenv - Set or update an environment variable.
+ * set_or_update_environment_variable - Set or update an environment variable.
  * @params: Parameters struct.
  *
  * This function sets or updates an environment variable.

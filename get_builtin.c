@@ -12,7 +12,7 @@ void (*get_builtin(param_t *params))(param_t *)
 		{"exit", _myExit},
 		{"clear", _clear},
 		{"env", _printenv},
-		{"setenv", _setenv},
+		{"setenv", set_or_update_environment_variable},
 		{"cd", _cd},
 		{"unsetenv", _unsetenv},
 		{"alias", _alias},

@@ -81,7 +81,7 @@ void _cd(param_t *params)
 		exit(-1);
 	}
 	tmpArgs[2] = _getenv("PWD", params);
-	_setenv(params);
+	set_or_update_environment_variable(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
 	/* set PWD to the target wd */
@@ -94,7 +94,7 @@ void _cd(param_t *params)
 		free_params(params);
 		exit(-1);
 	}
-	_setenv(params);
+	set_or_update_environment_variable(params);
 	for (i = 0; i < 3; i++)
 		free(tmpArgs[i]);
 	free(tmpArgs);
