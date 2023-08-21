@@ -11,19 +11,19 @@ void write_error(param_t *params, char *msg)
 	char errBuffer[1024] = {0};
 	char *writeHead = errBuffer, *bufPtr = errBuffer;
 
-	_strcpy(writeHead, params->argv[0]);
+	string_copy(writeHead, params->argv[0]);
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, ": ");
+	string_copy(writeHead, ": ");
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, get_number(params->lineCount));
+	string_copy(writeHead, get_number(params->lineCount));
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, ": ");
+	string_copy(writeHead, ": ");
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, params->args[0]);
+	string_copy(writeHead, params->args[0]);
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, ": ");
+	string_copy(writeHead, ": ");
 	writeHead = bufPtr + _strlen(bufPtr);
-	_strcpy(writeHead, msg);
+	string_copy(writeHead, msg);
 	writeHead = bufPtr + _strlen(bufPtr);
 
 	write(STDERR_FILENO, errBuffer, _strlen(bufPtr));
