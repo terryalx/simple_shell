@@ -1,5 +1,8 @@
 #include "shell.h"
 
+void set_oldpwd(param_t *params, char **tmpArgs);
+void set_pwd(param_t *params, char **tmpArgs);
+
 /**
  * _cd - change current working directory
  * @params: shell parameters
