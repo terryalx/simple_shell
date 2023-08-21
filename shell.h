@@ -67,7 +67,6 @@ char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Her
 void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
-void _setenv(param_t *params);
 void _unsetenv(param_t *params);
 char *get_file(param_t *params);
 void (*get_builtin(param_t *params))(param_t *);
@@ -139,5 +138,6 @@ int my_printf(const char *, ...); /* _printf */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 int string_compare(char *, char *); /* _strcmp */
 char *str_duplicate(char *); /* _strdup */
+void set_or_update_environment_variable(param_t *params); /* _setenv */
 
 #endif /* end __SHELL__H__ */
