@@ -130,5 +130,6 @@ int isDelim(char c, char *delim);
 /* M A I N */
 int string_to_int(char *s); /* _atoi */
 int my_printf(const char *, ...); /* _printf */
+char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*  */
 
 #endif /* end __SHELL__H__ */
