@@ -1,9 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
 #define BUFFER_SIZE 1024
 /**
  * flush_buffer - print out the buffer upto index and reset

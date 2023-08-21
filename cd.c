@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 /**
  * _cd - change current working directory

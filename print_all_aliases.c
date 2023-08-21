@@ -1,7 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
  * print_all_aliases - prints all aliases in the alias list

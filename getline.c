@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 #define BUFFER_SIZE 4096
 #define READ_SIZE 1024

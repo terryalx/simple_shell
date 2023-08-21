@@ -1,7 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
  * make_alias - creates a new alias and adds to alias list

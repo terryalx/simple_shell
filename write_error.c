@@ -1,7 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
 
 /**
  * write_error - write error message to stderr

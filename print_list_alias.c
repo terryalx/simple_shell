@@ -1,7 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
  * print_list_alias - function that prints the name

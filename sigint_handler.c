@@ -1,7 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
 
 /**
  * sigint_handler - handle terminate signal

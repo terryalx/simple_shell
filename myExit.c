@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <limits.h>
 
 /**
  * _myExit - buildin exit function

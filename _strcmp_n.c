@@ -1,9 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
 
 /**
  * _strcmp_n - compares n bytes of two strings

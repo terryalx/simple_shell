@@ -1,10 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
-
 /**
  * _strcmp - compares two strings
  * @s1: string 1

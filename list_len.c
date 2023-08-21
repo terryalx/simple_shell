@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * list_len - the number of elements in a linked list_t list.

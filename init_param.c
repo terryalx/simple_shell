@@ -1,10 +1,5 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
 #define _GNU_SOURCE
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 #define BUFFER_SIZE 4096
 
 /**

@@ -1,9 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 
 /**
  * process_string - process the next command into string tokens

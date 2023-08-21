@@ -1,9 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 /**
  * get_node - search for a node
  * @head: start of list

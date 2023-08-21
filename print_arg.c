@@ -1,9 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
 
 /**
  * print_arg - print argument string

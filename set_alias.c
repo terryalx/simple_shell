@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-
 /**
  * set_alias - creates a new or updates an existing alias
  * @name: the name of the alias

@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdarg.h>
 
 /**
  * get_arg - Returns formatted argument based on the type specifier.

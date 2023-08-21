@@ -1,10 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-
 /**
  * get_file - get correct path to a command file
  * @params: parameters

@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * _realloc - reallocates a memory block using malloc
