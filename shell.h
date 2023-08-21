@@ -101,7 +101,7 @@ char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
 int _printf(const char *, ...);
 char *_strchr(char *s, char c);
-int string_to_int(char *s); /*_atoi */
+
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
@@ -125,5 +125,9 @@ int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
+
+
+/* M A I N */
+int string_to_int(char *s); /*_atoi */
 
 #endif /* end __SHELL__H__ */
