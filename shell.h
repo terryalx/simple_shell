@@ -14,21 +14,27 @@
 #include <errno.h>
 
 /*
- * Macro
+ * M a c r o
  */
 #define NULL_PTR -1
 #define WRONG_SPECIFIER -2
 #define _GNU_SOURCE
 
-typedef struct list_s
-{
-	char *str;
-	char *val;
-	unsigned int len;
-	unsigned int val_len;
-	struct list_s *next;
+/**
+ * Linked List
+ * Data structure to hold information about environment variables.
+*/
+typedef struct list_s {
+    char *str;
+    char *value;
+    unsigned int length;
+    unsigned int value_length;
+    struct list_s *next_node;
 } list_t;
 
+/**
+ * param_t struct holds parameters
+*/
 typedef struct param_s
 {
 	char **argv;
@@ -43,12 +49,14 @@ typedef struct param_s
 	list_t *alias_head;
 } param_t;
 
+/* */
 typedef struct op
 {
 	char *name;
 	void (*func)(param_t *);
 } op_t;
 
+/* M A I N */
 int process_string(param_t *);
 char *_strdup(char *);
 char *_strcpy(char *dest, const char *src);
