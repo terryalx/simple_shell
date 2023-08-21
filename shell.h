@@ -59,9 +59,7 @@ typedef struct op
 /* M A I N */
 int process_string(param_t *);
 int _getline(param_t *);
-char *_strtok(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
-char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
@@ -132,6 +130,6 @@ char *str_duplicate(char *); /* _strdup */
 char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *string_copy(char *dest, const char *src); /* _strcpy */
-
+char *token_(char *str, char *delim, char **savePtr)
 
 #endif /* end __SHELL__H__ */
