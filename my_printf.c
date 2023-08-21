@@ -3,11 +3,12 @@
 #define BUFFER_SIZE 1024
 
 /**
- * _printf - Output text to standard output specified by format
+ * my_printf - Output text to standard output specified by format
  * @format: Directives for outputting text
+ * 
  * Return: Number of characters output
  */
-int _printf(const char *format, ...)
+int my_printf(const char *format, ...)
 {
     int formatIndex, charCount = 0, returnValue = -1, bufferIndex = 0;
     char buffer[BUFFER_SIZE] = {0};

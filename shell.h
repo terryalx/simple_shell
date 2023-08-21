@@ -99,7 +99,7 @@ char *get_rot13(char *s);
 char *str_concat(char *, char *);
 char *string_nconcat(char *, char *, unsigned int);
 int _strlen(char *);
-int _printf(const char *, ...);
+
 char *_strchr(char *s, char c);
 
 int _strcmp(char *, char *);
@@ -128,6 +128,7 @@ int isDelim(char c, char *delim);
 
 
 /* M A I N */
-int string_to_int(char *s); /*_atoi */
+int string_to_int(char *s); /* _atoi */
+int my_printf(const char *, ...); /* _printf */
 
 #endif /* end __SHELL__H__ */
