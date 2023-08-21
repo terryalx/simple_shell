@@ -104,7 +104,7 @@ int _strlen(char *);
 int _putchar(char c);
 size_t print_list(list_t *h);
 size_t list_len(list_t *h);
-list_t *add_node(list_t **head, char *str, char *val);
+
 void free_list(list_t *head);
 list_t *get_node(list_t *head, char *str);
 
@@ -131,6 +131,7 @@ char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); 
 char *string_copy(char *dest, const char *src); /* _strcpy */
 char *token_(char *str, char *delim, char **savePtr); /* _strtok */
 void str_length(param_t *params); /* _unsetenv */
+list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 
 
 #endif /* end __SHELL__H__ */

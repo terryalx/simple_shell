@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * add_node - Add a new node at the beginning of a list.
+ * prepend_list_node - Prepend a new node at the beginning of a list.
  *
  * This function allocates memory for a new node and adds it to the beginning
  * of a linked list. It stores the provided string and value in the new node.
@@ -12,7 +12,7 @@
  *
  * Return: Pointer to the new head of the list (the newly added node).
  */
-list_t *add_node(list_t **head, char *str, char *val)
+list_t *prepend_list_node(list_t **head, char *str, char *val)
 {
     list_t *new_node;
 
