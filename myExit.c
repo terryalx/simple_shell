@@ -17,7 +17,7 @@ void _myExit(param_t *params)
 	}
 	if (validNum(params->args[1]))
 	{
-		status = _atoi((params->args)[1]);
+		status = string_to_int((params->args)[1]);
 		if (status == -1)
 		{
 			write_error(params, "Illegal number: ");
