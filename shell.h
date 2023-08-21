@@ -1,37 +1,10 @@
-#ifndef SHELL_H
-#define SHELL_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <signal.h>
-#include <limits.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-
-/*
- * Macro
- */
-#define NULL_PTR -1
-#define WRONG_SPECIFIER -2
+#ifndef _SHELL_H
+#define _SHELL_H
 #define _GNU_SOURCE
 
-/**
- * Data structure to hold information about environment variables.
- */
-typedef struct list_s {
-    char *str;
-    char *value;
-    unsigned int length;
-    unsigned int value_length;
-    struct list_s *next_node;
-} list_t;
+#include <stdio.h>
+#include "list.h"
 
-/**
- * param_t struct holds parameters
-*/
 typedef struct param_s
 {
 	char **argv;
@@ -52,26 +25,21 @@ typedef struct op
 	void (*func)(param_t *);
 } op_t;
 
-/**
- * Main functions
-*/
-/*int read_dynamic_line(param_t *);
-int string_compare(char *, char *);
-int _strncmp(char *, char *, int n);*/
-int split_command_into_tokens(param_t *);
-/**/
-/*char *str_duplicate(char *);
-char *string_copy(char *dest, const char *src);
-char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
-char *token_(char *str, char *delim, char **savePtr);
-char *get_env_value(char *name, param_t *params);*/
-char *get_file(param_t *params);
-/**/
+int process_string(param_t *);
+char *_strdup(char *);
+char *_strcpy(char *dest, const char *src);
+int _getline(param_t *);
+int _strcmp(char *, char *);
+int _strcmp_n(char *, char *, int n);
+char *_strtok(char *str, char *delim, char **savePtr);
 void run_command(param_t *);
+char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /*Here*/
 void _printenv(param_t *);
 void sigint_handler(int);
+char *_getenv(char *name, param_t *params);
 void _setenv(param_t *params);
 void _unsetenv(param_t *params);
+char *get_file(param_t *params);
 void (*get_builtin(param_t *params))(param_t *);
 void _myExit(param_t *params);
 void _cd(param_t *params);
@@ -85,18 +53,23 @@ void print_list_alias(list_t *);
 void free_params(param_t *params);
 void write_error(param_t *params, char *msg);
 void _clear(param_t *params);
-/*void handle_alias(param_t *params, char *token, list_t *node);
-void handle_regular(param_t *params, char *token, char *state);*/
 
 param_t *init_param(char **argv, char **env);
 
 
-/**
- * MAIN
-*/
+
+
+
+
+
+
+#define NULL_PTR -1
+#define WRONG_SPECIFIER -2
+
 /*
  * List of my main.h prototypes
  */
+
 char *get_char(char c);
 char *get_string(char *s);
 char *get_number(int n);
@@ -113,8 +86,17 @@ int _atoi(char *s);
 int _strcmp(char *, char *);
 int _strcmp_n(char *, char *, int n);
 
+#include <unistd.h>
 
-/* LIST */
+typedef struct list_s
+{
+	char *str;
+	char *val;
+	unsigned int len;
+	unsigned int val_len;
+	struct list_s *next;
+} list_t;
+
 int _putchar(char c);
 size_t print_list(list_t *h);
 size_t list_len(list_t *h);
@@ -132,8 +114,4 @@ void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
 
-
-char *_strdup(char *str);
-char *_getenv(char *name, param_t *params);
-char *_strcpy(char *dest, const char *src)
-#endif /* end _SHELL_H */
+#endif /*end _SHELL_H*/
