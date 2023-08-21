@@ -1,25 +1,26 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * print_list - Prints all the elements of a list_t list.
- * @h: Start of the list
+ * print_list - prints all the elements of a list_t list.
+ * @h: start of list
  *
- * Return: Length of the list
+ * Return: length of list
  */
+
 size_t print_list(list_t *h)
 {
-	int count = 0;
+	int count;
 
-	while (h != NULL)
+	for (count = 0; h != 0; count++)
 	{
 		if (h->str == NULL)
 			break;
-		printf("%s\n", h->str);
+		_printf("%s\n", h->str);
 		h = h->next;
-		count++;
 	}
-
-	return count;
+	return (count);
 }

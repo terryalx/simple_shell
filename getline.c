@@ -1,4 +1,6 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -6,14 +8,12 @@
 #define READ_SIZE 1024
 
 /**
- * _getline - Fetches a line of characters from stdin
- * @params: Pointer to the parameters struct
+ * _getline - fetches a line of chars from stdin
+ * @params: parameters
  *
- * This function reads characters from the standard input until a newline character is encountered.
- * It dynamically allocates memory for the line and increases the buffer size if necessary.
- *
- * Return: The number of characters read
+ * Return: number of char read
  */
+
 int _getline(param_t *params)
 {
 	char *line = NULL;

@@ -1,13 +1,17 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
+#include <stdlib.h>
+#include <stdarg.h>
 #include <unistd.h>
 
 /**
- * print_arg - Prints a string to the standard output
- * @arg: The string to be printed
- *
- * Return: The number of bytes printed
+ * print_arg - print argument string
+ * @arg: string
+ * Return: number of bytes printed
  */
+
 int print_arg(char *arg)
 {
-	return (write(STDOUT_FILENO, arg, _strlen(arg)));
+	return (write(1, arg, _strlen(arg)));
 }

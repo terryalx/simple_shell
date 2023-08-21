@@ -1,22 +1,24 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
- * get_rot13 - Applies the ROT13 encryption algorithm to a string.
- * @s: The input string.
- *
- * Return: A pointer to the encrypted string.
+ * get_rot13 - get rot13
+ * @s: string
+ * Return: ptr to string
  */
+
 char *get_rot13(char *s)
 {
-	char *encrypted_str = NULL;
+	char *ptr = NULL;
 
-	encrypted_str = get_string(s);
-	if (!encrypted_str)
+	ptr = get_string(s);
+	if (!ptr)
 		return (NULL);
-
 	if (s)
-		rot13(encrypted_str);
-
-	return (encrypted_str);
+	{
+		rot13(ptr);
+	}
+	return (ptr);
 }

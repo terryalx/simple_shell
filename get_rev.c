@@ -1,24 +1,26 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
  * get_rev - returns a reversed copy of a string
  * @s: string to be reversed
- *
- * Return: reversed string
+ * Return: string reversed
  */
+
 char *get_rev(char *s)
 {
-	char *reversed = NULL;
+	char *ptr = NULL;
 
-	reversed = get_string(s);
-	if (!reversed)
+	ptr = get_string(s);
+	if (!ptr)
 	{
 		return (NULL);
 	}
 	if (s)
 	{
-		rev_string(reversed);
+		rev_string(ptr);
 	}
-	return (reversed);
+	return (ptr);
 }

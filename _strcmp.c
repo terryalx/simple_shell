@@ -1,16 +1,18 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <limits.h>
 
 /**
  * _strcmp - compares two strings
- * @str1: string 1
- * @str2: string 2
- *
- * Return: an integer less than, equal to, or greater than 0 if str1 is,
- * respectively, less than, equal to, or greater than str2
+ * @s1: string 1
+ * @s2: string 2
+ * Return: int less than, equal to, or greater than 0 if s1 is, respectively
+ * less than, equal to, or greater than s2
  */
+
 int _strcmp(char *s1, char *s2)
 {
 	int res = 0;

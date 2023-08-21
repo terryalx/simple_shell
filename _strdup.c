@@ -1,4 +1,6 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
@@ -6,6 +8,7 @@
  * @str: string
  * Return: pointer to duplicated string, NULL if insufficient memory
  */
+
 char *_strdup(char *str)
 {
 	int len = 0; /* index of terminating null byte */

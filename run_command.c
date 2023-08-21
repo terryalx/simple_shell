@@ -1,13 +1,16 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 
 /**
- * run_command - searches path directories for command and executes it
+ * run_command - searches path dirs for command and execs
  * @params: parameters
  */
+
 void run_command(param_t *params)
 {
 	char *exeFile = NULL;

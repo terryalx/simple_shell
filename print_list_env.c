@@ -1,20 +1,18 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 
 /**
- * print_list_env - prints environment variables
- * @head: pointer to the head of the environment list
- *
- * This function recursively prints the environment variables in the list.
- * Each variable is printed in the format "variable=value".
- */
+ * print_list_env - prins environment variables
+ * @head: pointer -> head of the environment list
+*/
+
 void print_list_env(list_t *head)
 {
 	if (head)
 	{
 		print_list_env(head->next);
 		if (head->str)
-		{
 			_printf("%s=%s\n", head->str, head->val);
-		}
 	}
 }

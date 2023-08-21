@@ -1,21 +1,24 @@
+#include "main.h"
 #include "shell.h"
+#include "list.h"
 #include <stdlib.h>
 
 /**
  * get_char - returns a copied char
  * @c: char to be copied
- *
- * Return: pointer to the copied char
+ * Return: ptr of copied char
  */
+
 char *get_char(char c)
 {
-	char *ptr = malloc(2);
+	char *ptr = NULL;
 
+	ptr = malloc(2);
 	if (ptr == NULL)
+	{
 		return (NULL);
-
+	}
 	ptr[0] = c;
 	ptr[1] = '\0';
-
 	return (ptr);
 }
