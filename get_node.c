@@ -17,7 +17,7 @@ list_t *get_node(list_t *head, char *str)
 	{
 		if (!_strcmp(h->str, str))
 			break;
-		h = h->next;
+		h = h->next_node;
 	}
 	return (h);
 }

@@ -11,6 +11,6 @@ size_t list_len(list_t *h)
 	size_t i;
 
 	for (i = 0; h != 0; i++)
-		h = h->next;
+		h = h->next_node;
 	return (i);
 }

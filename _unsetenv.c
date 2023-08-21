@@ -21,17 +21,17 @@ void _unsetenv(param_t *params)
 		if (_strcmp(name, h->str) == 0) /* env var exists */
 		{
 			if (h == params->env_head)
-				params->env_head = h->next;
+				params->env_head = h->next_node;
 			else
-				prev->next = h->next;
+				prev->next_node = h->next_node;
 			free(h->str);
-			free(h->val);
+			free(h->value);
 			free(h);
 			params->status = 0;
 			return;
 		}
 		prev = h;
-		h = h->next;
+		h = h->next_node;
 	}
 	params->status = 0;
 }
