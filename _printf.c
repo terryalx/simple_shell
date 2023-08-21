@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
     int charCount = 0, returnValue = -1, bufferIndex = 0;
     char buffer[BUFFER_SIZE] = {0};
     va_list params;
+    int formatIndex;
 
     if (!format)
         return (returnValue);
@@ -22,10 +23,12 @@ int _printf(const char *format, ...)
 
     va_start(params, format);
 
-    for (int formatIndex = 0; format[formatIndex]; formatIndex++)
+    for (formatIndex = 0; format[formatIndex]; formatIndex++)
     {
         if (bufferIndex == BUFFER_SIZE)
+        {
             charCount += flush_buffer(buffer, &bufferIndex);
+        }
 
         if (format[formatIndex] == '%')
         {
