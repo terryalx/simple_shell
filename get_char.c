@@ -1,14 +1,11 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
  * get_char - returns a copied char
  * @c: char to be copied
- * Return: ptr of copied char
+ *
+ * Return: pointer to the copied char
  */
-
 char *get_char(char c)
 {
 	char *ptr = NULL;
@@ -18,7 +15,9 @@ char *get_char(char c)
 	{
 		return (NULL);
 	}
+	
 	ptr[0] = c;
 	ptr[1] = '\0';
+	
 	return (ptr);
 }

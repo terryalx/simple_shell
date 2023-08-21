@@ -1,8 +1,4 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * print_list - prints all the elements of a list_t list.
@@ -10,7 +6,6 @@
  *
  * Return: length of list
  */
-
 size_t print_list(list_t *h)
 {
 	int count;
@@ -20,7 +15,7 @@ size_t print_list(list_t *h)
 		if (h->str == NULL)
 			break;
 		_printf("%s\n", h->str);
-		h = h->next;
+		h = h->next_node;
 	}
 	return (count);
 }

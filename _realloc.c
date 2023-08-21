@@ -1,23 +1,18 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
- * _realloc - reallocates a memory block using malloc
- * @ptr: old block
- * @old_size: size of the old block
- * @new_size: size of the new block
- * Return: pointer to new block
+ * _realloc - Reallocates a memory block using malloc.
+ * @ptr: Pointer to the old block.
+ * @old_size: Size of the old block.
+ * @new_size: Size of the new block.
+ *
+ * Return: Pointer to the new block.
  */
-
-/*R - Type Char*/
-
 char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 {
-	char **newPtr = NULL;
-	unsigned int num, i;
+	char **new_ptr = NULL;
+	unsigned int min_size;
+	unsigned int i;
 
 	if (!ptr)
 	{
@@ -30,16 +25,18 @@ char **_realloc(char **ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 	if (new_size == old_size)
+	{
 		return (ptr);
-	num = old_size < new_size ? old_size : new_size;
-	newPtr = malloc(8 * new_size);
-	if (newPtr)
+	}
+	min_size = old_size < new_size ? old_size : new_size;
+	new_ptr = malloc(sizeof(*new_ptr) * new_size);
+	if (new_ptr)
 	{
 		for (i = 0; i < new_size; i++)
-			newPtr[i] = NULL;
-		for (i = 0; i < num; i++)
-			newPtr[i] = ptr[i];
+			new_ptr[i] = NULL;
+		for (i = 0; i < min_size; i++)
+			new_ptr[i] = ptr[i];
 		free(ptr);
 	}
-	return (newPtr);
+	return (new_ptr);
 }

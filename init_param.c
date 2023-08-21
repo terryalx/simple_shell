@@ -1,19 +1,15 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
+
 #define _GNU_SOURCE
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 #define BUFFER_SIZE 4096
 
 /**
  * init_param - initialize params
  * @argv: command line argument
  * @env: environment variables
+ * 
  * Return: param on success
  */
-
 param_t *init_param(char **argv, char **env)
 {
 	unsigned int i;

@@ -1,16 +1,13 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
- * move_left -removes leading 0's
- * @a: buffer
- * @size: size of array
- * @num: number of digits in the binary number
- * Return: buffer
+ * move_left - Removes leading 0's from a binary number
+ * @binaryNumber: Buffer containing the binary number
+ * @bufferSize: Size of the buffer
+ * @numDigits: Number of digits in the binary number
+ *
+ * Return: Pointer to the modified buffer
  */
-
 char *move_left(char *a, int size, int num)
 {
 	int i;

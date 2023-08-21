@@ -1,19 +1,13 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <stdarg.h>
 
 /**
  * get_arg - Returns formatted argument based on the type specifier.
  * @type: specifier ('c', 's', 'd', 'i', 'b', 'r', 'R').
  * @...: Arguments depending on the type specifier.
- * Return: A dynamically allocated string representation of the argument based
- *        on the type specifier,
- *        or NULL if an unsupported type specifier is provided.
+ *
+ * Return: Dynamically allocated string -> argument
+ *         or NULL if an unsupported type specifier
  */
-
-
 char *get_arg(char type, ...)
 {
 	va_list params;

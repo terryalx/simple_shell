@@ -1,16 +1,11 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 
 /**
- * get_builtin - All built-in function
- * @params: Pointer to param_t
- * Return: Built-in function pionter. NULL if not found.
+ * get_builtin - Get the built-in function based on the input parameters
+ * @input_params: Pointer to the input parameters
+ *
+ * Return: Pointer to the built-in function. NULL if not found.
  */
-
 void (*get_builtin(param_t *params))(param_t *)
 {
 	op_t ops[] = {
@@ -27,7 +22,7 @@ void (*get_builtin(param_t *params))(param_t *)
 
 	while (op->name)
 	{
-		if (!_strcmp(params->args[0], op->name))
+		if (!string_compare(params->args[0], op->name))
 			return (op->func);
 		op++;
 	}

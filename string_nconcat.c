@@ -1,16 +1,13 @@
-#include "main.h"
 #include "shell.h"
-#include "list.h"
-#include <stdlib.h>
 
 /**
  * string_nconcat - concatenates two strings
  * @s1: first string argument
  * @s2: second string argument
  * @n: amount of bytes for s2
- * Return: Null on failure, else ptr to malloc
+ *
+ * Return: Pointer to the concatenated string, or NULL on failure
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;
