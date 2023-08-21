@@ -18,7 +18,7 @@ void _unsetenv(param_t *params)
 	}
 	while (h)
 	{
-		if (_strcmp(name, h->str) == 0) /* env var exists */
+		if (string_compare(name, h->str) == 0) /* env var exists */
 		{
 			if (h == params->env_head)
 				params->env_head = h->next_node;
