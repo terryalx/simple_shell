@@ -27,7 +27,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 		if (cond == -1)
 		{
 			status = params->status;
-			_printf("$ :\n");
+			my_printf("$ :\n");
 			free_params(params);
 			return (status);
 		}
@@ -35,7 +35,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			(params->buffer)[i] = 0;
 		params->tokCount = 0;
 		if (isatty(STDIN_FILENO))
-			_printf("$: ");
+			my_printf("$: ");
 		cond = getline(&params->buffer, &size, stdin);
 		params->lineCount++;
 		if (cond == -1 && _strlen(params->buffer) == 0)

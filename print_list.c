@@ -15,7 +15,7 @@ size_t print_list(list_t *h)
 	{
 		if (h->str == NULL)
 			break;
-		_printf("%s\n", h->str);
+		my_printf("%s\n", h->str);
 		h = h->next;
 	}
 	return (count);

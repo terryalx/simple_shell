@@ -31,7 +31,7 @@ void set_alias(char *name, param_t *params)
 		}
 		else
 		{
-			_printf("Usage: alias name='value' [...]\n");
+			my_printf("Usage: alias name='value' [...]\n");
 			return;
 		}
 	}

@@ -12,6 +12,6 @@ void print_list_alias(list_t *head)
 	{
 		print_list_alias(head->next);
 		if (head->str != NULL)
-			_printf("%s=\'%s\'\n", head->str, head->val);
+			my_printf("%s=\'%s\'\n", head->str, head->val);
 	}
 }

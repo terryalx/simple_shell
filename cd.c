@@ -30,16 +30,16 @@ void _cd(param_t *params)
 			{
 				params->status = 0;
 				target = _getenv("PWD", params);
-				_printf("%s\n", target);
+				my_printf("%s\n", target);
 				free(target);
 				return;
 			}
-			_printf("%s\n", target);
+			my_printf("%s\n", target);
 		}
 		else
 		{
 			params->status = 2;
-			_printf("%s: %d: cd: Illegal option %c%c\n",
+			my_printf("%s: %d: cd: Illegal option %c%c\n",
 				params->argv[0], params->lineCount,
 				'-', params->args[1][1]);
 			return;

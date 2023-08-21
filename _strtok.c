@@ -33,7 +33,7 @@ char *_strtok(char *str, char *delim, char **savePtr)
 		modifier = _strchr(ptr, '\'');
 		if (!modifier)
 		{
-			_printf("no matching quote found!\n");
+			my_printf("no matching quote found!\n");
 			exit(-1);
 		}
 		*modifier = '\0';

@@ -16,7 +16,7 @@ void print_alias(char *name, param_t *params)
 	{
 		if (_strcmp_n(name, ptr->str, len - 1) == 0)
 		{
-			_printf("%s=\'%s\'\n", ptr->str, ptr->val);
+			my_printf("%s=\'%s\'\n", ptr->str, ptr->val);
 		}
 		ptr = ptr->next;
 	}
