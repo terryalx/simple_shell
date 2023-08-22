@@ -12,14 +12,14 @@
  */
 void free_list(list_t *head)
 {
-    list_t *ptr = head;
+	list_t *ptr = head;
 
-    while (head)
-    {
-        ptr = head->next_node;
-        free(head->str);
-        free(head->value);
-        free(head);
-        head = ptr;
-    }
+	while (head)
+	{
+		ptr = head->next_node;
+		free(head->str);
+		free(head->value);
+		free(head);
+		head = ptr;
+	}
 }
