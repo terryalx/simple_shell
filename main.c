@@ -21,24 +21,24 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
     params = init_param(argv, env);
     if (!params)
         exit(-1);
-
     signal(SIGINT, sigint_handler);
-
     while (1)
     {
         if (cond == -1)
         {
             status = params->status;
-            _printf("$: ");
+            my_printf("$ :\n");
             free_params(params);
             return (status);
         }
 
-        if (params->tokCount != 0 && _strcmp(params->args[0], "exit") == 0)
+        /* ... Read input and process logic ... */
+
+        if (params->tokCount != 0 && my_strcmp(params->args[0], "exit") == 0)
         {
             if (params->tokCount > 2)
             {
-                write_error(params, "exit: too many arguments\n");
+                my_write_error(params, "exit: too many arguments\n");
                 params->status = 2;
             }
             else if (params->tokCount == 1)
@@ -48,22 +48,23 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
             }
             else
             {
-                if (validNum(params->args[1]))
+                if (my_validNum(params->args[1]))
                 {
-                    status = _atoi(params->args[1]);
+                    status = my_atoi(params->args[1]);
                     free_params(params);
                     exit(status);
                 }
                 else
                 {
-                    write_error(params, "exit: Illegal number: ");
-                    write(STDERR_FILENO, params->args[1], _strlen(params->args[1]));
-                    write(STDERR_FILENO, "\n", 1);
+                    my_write_error(params, "exit: Illegal number: ");
+                    my_write(STDERR_FILENO, params->args[1], my_strlen(params->args[1]));
+                    my_write(STDERR_FILENO, "\n", 1);
                     params->status = 2;
                 }
             }
         }
 
+        /* ... Continue processing other commands ... */
     }
 
     return (0);
