@@ -4,14 +4,14 @@
 #define BUFFER_SIZE 4096
 
 /**
- * main - entry point for simple shell
+ * start_shell - entry point for simple shell
  * @argc: argument count
  * @argv: Null terminated argument list
  * @env: Null terminated environment variables list
  * 
  * Return: 0 on success
  */
-int main(int __attribute__((unused)) argc, char **argv, char **env)
+int start_shell(int __attribute__((unused)) argc, char **argv, char **env)
 {
     param_t *params = NULL;
     int cond = -2, status;
