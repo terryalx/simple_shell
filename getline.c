@@ -4,12 +4,11 @@
 #define READ_SIZE 1024
 
 /**
- * _getline - fetches a line of chars from stdin
+ * _getline - fetches a line of characters from stdin
  * @params: parameters
  *
- * Return: number of char read
+ * Return: number of characters read
  */
-
 int _getline(param_t *params)
 {
 	char *line = NULL;
