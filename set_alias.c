@@ -38,5 +38,5 @@ void set_alias(char *name, param_t *params)
 	else
 		val = str_duplicate(&name[i + 1]);
 	name[i] = '\0';
-	make_alias(name, val, params);
+	create_alias(name, val, params);
 }
