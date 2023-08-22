@@ -70,7 +70,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
                 exit(exit_status);
             }
 
-            run_command(params);
+            execute_external_command(params);
 
             for (i = 0; i < params->argsCap; i++)
             {
