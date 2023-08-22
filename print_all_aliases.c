@@ -9,6 +9,6 @@
  */
 void print_all_aliases(param_t *params)
 {
-    print_list_alias(params->alias_head);
-    params->status = 0;
+	print_list_alias(params->alias_head);
+	params->status = 0;
 }

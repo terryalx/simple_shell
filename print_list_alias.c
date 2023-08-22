@@ -8,12 +8,12 @@
  * name and value of each alias to stdout. It starts from the beginning of
  * the list and works its way to the end.
  */
-void print_alias_list(list_t *head)
+void print_list_alias(list_t *head)
 {
 	if (head)
 	{
-		print_list_alias(head->next);
+		print_list_alias(head->next_node);
 		if (head->str != NULL)
-			_printf("%s=\'%s\'\n", head->str, head->val);
+			my_printf("%s=\'%s\'\n", head->str, head->value);
 	}
 }
