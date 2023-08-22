@@ -21,7 +21,7 @@ void (*find_builtin_function(param_t *params))(param_t *)
         {"clear", clear_terminal_screen},
         {"env", _printenv},
         {"setenv", set_or_update_environment_variable},
-        {"unsetenv", str_length},
+        {"unsetenv", remove_environment_variable},
         {NULL, NULL}
     };
 
