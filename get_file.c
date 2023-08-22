@@ -48,7 +48,7 @@ char *get_file(param_t *params)
 		exePath = token_(path, ":", &state);
 	}
 	params->status = 127;
-	write_error(params, "not found\n");
+	__write_error__(params, "not found\n");
 	free(path);
 	free(exePath);
 	free(exeArg);
