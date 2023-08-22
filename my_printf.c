@@ -28,7 +28,7 @@ int my_printf(const char *format, ...)
     {
         if (bufferIndex == BUFFER_SIZE)
         {
-            charCount += flush_buffer(buffer, &bufferIndex);
+            charCount += write_and_reset_buffer(buffer, &bufferIndex);
         }
 
         if (format[formatIndex] == '%')
