@@ -26,7 +26,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
         if (cond == -1)
         {
             status = params->status;
-            my_printf("$ :\n");
+            my_printf("$: ");
             free_params(params);
             return (status);
         }
@@ -68,4 +68,3 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
         }
     }
 }
-
