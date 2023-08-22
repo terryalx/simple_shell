@@ -4,47 +4,33 @@
  * str_concat - concatenates two strings
  * @s1: first string argument
  * @s2: second string argument
- * Return: Null on failure, else ptr to malloc
+ * Return: pointer to the concatenated string, or NULL on failure
  */
-
 char *str_concat(char *s1, char *s2)
 {
-	char *ptr;
-	int i = 0;
-	int j = 0;
-	int x = 0;
+	char *concatenated;
+	int len1 = 0, len2 = 0, i = 0;
 
 	if (s1 == NULL)
-	{
 		s1 = "";
-	}
 	if (s2 == NULL)
-	{
 		s2 = "";
-	}
-	while (s1[i] != '\0')
-	{
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		j++;
-	}
-	ptr = malloc((i * sizeof(char)) + (j * sizeof(char)) + 1);
-	if (ptr == NULL)
-	{
+
+	while (s1[len1] != '\0')
+		len1++;
+	while (s2[len2] != '\0')
+		len2++;
+
+	concatenated = malloc((len1 + len2 + 1) * sizeof(char));
+	if (concatenated == NULL)
 		return (NULL);
-	}
-	for (i = 0; s1[i] != '\0'; i++)
-	{
-		ptr[i] = s1[i];
-		x++;
-	}
-	for (j = 0; s2[j] != '\0'; j++)
-	{
-		ptr[x] = s2[j];
-		x++;
-	}
-	ptr[x] = '\0';
-	return (ptr);
+
+	for (i = 0; i < len1; i++)
+		concatenated[i] = s1[i];
+	for (i = 0; i < len2; i++)
+		concatenated[len1 + i] = s2[i];
+
+	concatenated[len1 + len2] = '\0';
+
+	return (concatenated);
 }
