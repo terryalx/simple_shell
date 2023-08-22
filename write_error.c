@@ -15,20 +15,32 @@ void write_error(param_t *params, char *msg)
     char *writeHead = errBuffer;  /* Pointer to the current write position */
     size_t len = 0;  /* Length of the error message */
 
-    len += string_copy(writeHead, params->argv[0]);  /* Copy program name */
+    len += strlen(params->argv[0]);  /* Calculate program name length */
+    strcpy(writeHead, params->argv[0]);  /* Copy program name */
     writeHead += len;
-    len += string_copy(writeHead, ": ");  /* Copy separator */
+
+    len += strlen(": ");  /* Calculate separator length */
+    strcpy(writeHead, ": ");  /* Copy separator */
     writeHead += len;
-    len += string_copy(writeHead, get_number(params->lineCount));  /* Copy line number */
+
+    len += strlen(get_number(params->lineCount));  /* Calculate line number length */
+    strcpy(writeHead, get_number(params->lineCount));  /* Copy line number */
     writeHead += len;
-    len += string_copy(writeHead, ": ");  /* Copy separator */
+
+    len += strlen(": ");  /* Calculate separator length */
+    strcpy(writeHead, ": ");  /* Copy separator */
     writeHead += len;
-    len += string_copy(writeHead, params->args[0]);  /* Copy argument */
+
+    len += strlen(params->args[0]);  /* Calculate argument length */
+    strcpy(writeHead, params->args[0]);  /* Copy argument */
     writeHead += len;
-    len += string_copy(writeHead, ": ");  /* Copy separator */
+
+    len += strlen(": ");  /* Calculate separator length */
+    strcpy(writeHead, ": ");  /* Copy separator */
     writeHead += len;
-    len += string_copy(writeHead, msg);  /* Copy error message */
-    writeHead += len;
+
+    len += strlen(msg);  /* Calculate error message length */
+    strcpy(writeHead, msg);  /* Copy error message */
 
     write(STDERR_FILENO, errBuffer, len);  /* Write error message to stderr */
 }
