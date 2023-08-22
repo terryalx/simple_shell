@@ -106,7 +106,6 @@ void free_list(list_t *head);
 list_t *get_node(list_t *head, char *str);
 
 char *move_left(char *a, int size, int num);
-char *rlLine(char **line, unsigned int oldSize, unsigned int newSize);
 void rev_string(char *s);
 char *rot13(char *s);
 int validNum(char *s);
@@ -136,5 +135,6 @@ void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
 void create_alias(char *name, char *value, param_t *params); /* make_alias */
 void myExit(param_t *params); /* _myExit */
 int read_line(param_t *); /* _getline */
+char *realloc_line_buffer(char **line, unsigned int oldSize, unsigned int newSize); /* rlLine */
 
 #endif /* end __SHELL__H__ */
