@@ -10,13 +10,10 @@
  */
 void print_alias_list(list_t *head)
 {
-    if (head == NULL)
-        return;
-
-    print_alias_list(head->next_node);
-
-    if (head->str != NULL)
-    {
-        my_printf("%s='%s'\n", head->str, head->value);
-    }
+	if (head)
+	{
+		print_list_alias(head->next);
+		if (head->str != NULL)
+			_printf("%s=\'%s\'\n", head->str, head->val);
+	}
 }
