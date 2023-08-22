@@ -25,7 +25,9 @@ void (*get_builtin(param_t *params))(param_t *)
         {NULL, NULL}
     };
 
-    for (const op_t *op = ops; op->name != NULL; op++)
+    const op_t *op;
+
+    for (op = ops; op->name != NULL; op++)
     {
         if (!string_compare(params->args[0], op->name))
         {
