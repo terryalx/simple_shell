@@ -14,7 +14,7 @@ void myExit(param_t *params)
 		free_params(params);
 		exit(status);
 	}
-	
+
 	if (validNum(params->args[1]))
 	{
 		status = string_to_int((params->args)[1]);
@@ -22,7 +22,7 @@ void myExit(param_t *params)
 		{
 			__write_error__(params, "Illegal number: ");
 			write(STDERR_FILENO, params->args[1],
-			      _strlen(params->args[1]));
+					_strlen(params->args[1]));
 			write(STDERR_FILENO, "\n", 1);
 			params->status = 2;
 			return;
@@ -35,7 +35,7 @@ void myExit(param_t *params)
 		params->status = 2;
 		__write_error__(params, "Illegal number: ");
 		write(STDERR_FILENO, params->args[1],
-		      _strlen(params->args[1]));
+				_strlen(params->args[1]));
 		write(STDERR_FILENO, "\n", 1);
 	}
 }
