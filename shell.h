@@ -135,6 +135,6 @@ void create_alias(char *name, char *value, param_t *params);
 void myExit(param_t *params);
 int read_line(param_t *);
 char *realloc_line_buffer(char **line, unsigned int oldSize, unsigned int newSize);
-int write_and_reset_buffer(char *buffer, int *index); /* flush_buffer */
+int write_and_reset_buffer(char *buffer, int *index);
 
 #endif /* end __SHELL__H__ */
