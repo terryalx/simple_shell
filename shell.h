@@ -64,7 +64,6 @@ void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
-void (*get_builtin(param_t *params))(param_t *);
 void _myExit(param_t *params);
 void _alias(param_t *params);
 void set_alias(char *name, param_t *params);
@@ -131,5 +130,6 @@ void str_length(param_t *params); /* _unsetenv */
 list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
+void (*find_builtin_function(param_t *params))(param_t *) /* get_builtin */
 
 #endif /* end __SHELL__H__ */

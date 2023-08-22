@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * get_builtin - Get the appropriate built-in function based on the provided command.
+ * find_builtin_function - Find the appropriate built-in function based on the provided command.
  * @params: Pointer to the param_t structure.
  *
  * This function takes a command as input and returns a pointer to the corresponding
@@ -12,16 +12,16 @@
  *
  * Return: Pointer to the matched built-in function, or NULL if not found.
  */
-void (*get_builtin(param_t *params))(param_t *)
+void (*find_builtin_function(param_t *params))(param_t *)
 {
     static const op_t ops[] = {
+        {"cd", change_directory},
+        {"alias", _alias},
         {"exit", _myExit},
         {"clear", clear_terminal_screen},
         {"env", _printenv},
         {"setenv", set_or_update_environment_variable},
-        {"cd", change_directory},
         {"unsetenv", str_length},
-        {"alias", _alias},
         {NULL, NULL}
     };
 
