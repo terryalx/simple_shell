@@ -116,7 +116,7 @@ int isDelim(char c, char *delim);
 
 /* M A I N */
 
-int string_to_int(char *s); /* _atoi */
+int string_to_int(char *s);
 int my_printf(const char *, ...); /* _printf */
 int string_compare(char *, char *); /* _strcmp */
 int strncmp_custom(char *str1, char *str2, int n); /* _strcmp_n */
