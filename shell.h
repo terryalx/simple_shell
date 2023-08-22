@@ -75,7 +75,7 @@ void print_all_aliases(param_t *params);
 void print_list_env(list_t *);
 void print_list_alias(list_t *);
 void free_params(param_t *params);
-void write_error(param_t *params, char *msg);
+void __write_error__(param_t *params, char *msg);
 
 param_t *init_param(char **argv, char **env);
 

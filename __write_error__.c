@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * write_error - Write an error message to stderr.
+ * __write_error__ - Write an error message to stderr.
  * @params: Parameters struct containing program information.
  * @msg: Error message to be written.
  *
@@ -9,7 +9,7 @@
  * It constructs an error message including the program name, line number, and
  * the provided error message, and then writes it to stderr.
  */
-void write_error(param_t *params, char *msg)
+void __write_error__(param_t *params, char *msg)
 {
     char errBuffer[1024] = {0};
     char *writeHead = errBuffer;
