@@ -12,33 +12,29 @@
 void remove_environment_variable(param_t *params)
 {
 	char *name = params->args[1];
-	list_t *prev = NULL, *current = params->env_head;
+	list_t *prev = NULL, *h = params->env_head;
 
 	if (params->tokCount != 2)
 	{
 		params->status = 0;
 		return;
 	}
-
-	while (current)
+	while (h)
 	{
-		if (string_compare(name, current->str) == 0)
+		if (string_compare(name, h->str) == 0)
 		{
-			if (current == params->env_head)
-				params->env_head = current->next_node;
+			if (h == params->env_head)
+				params->env_head = h->next_node;
 			else
-				prev->next_node = current->next_node;
-
-			free(current->str);
-			free(current->value);
-			free(current);
+				prev->next_node = h->next_node;
+			free(h->str);
+			free(h->value);
+			free(h);
 			params->status = 0;
 			return;
 		}
-
-		prev = current;
-		current = current->next_node;
+		prev = h;
+		h = h->next_node;
 	}
-
 	params->status = 0;
 }
