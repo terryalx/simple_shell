@@ -12,6 +12,7 @@
 static param_t *allocate_param(char **argv, char **env)
 {
     param_t *params = malloc(sizeof(*params));
+    unsigned int i;
 
     if (!params)
         return (NULL);
@@ -29,7 +30,7 @@ static param_t *allocate_param(char **argv, char **env)
         free(params);
         exit(-1);
     }
-    for (unsigned int i = 0; i < BUFFER_SIZE; i++)
+    for (i = 0; i < BUFFER_SIZE; i++)
         params->buffer[i] = 0;
 
     params->args = malloc(sizeof(char *) * params->argsCap);
@@ -39,27 +40,13 @@ static param_t *allocate_param(char **argv, char **env)
         free(params);
         exit(-1);
     }
-    for (unsigned int i = 0; i < params->argsCap; i++)
+    for (i = 0; i < params->argsCap; i++)
         params->args[i] = NULL;
 
     params->env_head = NULL;
-    params->alias_head = NULL;
-
-    return params;
-}
-
-/**
- * populate_environment - Populate environment variables in param_t structure.
- * @params: Pointer to the param_t structure.
- * @env: Environment variables.
- */
-static void populate_environment(param_t *params, char **env)
-{
-    char *eqs = NULL;
-
-    for (unsigned int i = 0; env[i]; i++)
+    for (i = 0; env[i]; i++)
     {
-        eqs = find_character_in_string(env[i], '=');
+        char *eqs = find_character_in_string(env[i], '=');
         *eqs = '\0';
 
         params->env_head = prepend_list_node(&(params->env_head),
@@ -74,6 +61,10 @@ static void populate_environment(param_t *params, char **env)
             exit(-1);
         }
     }
+
+    params->alias_head = NULL;
+
+    return params;
 }
 
 /**
@@ -84,12 +75,5 @@ static void populate_environment(param_t *params, char **env)
  */
 param_t *init_param(char **argv, char **env)
 {
-    param_t *params = allocate_param(argv, env);
-
-    if (!params)
-        return (NULL);
-
-    populate_environment(params, env);
-
-    return (params);
+    return allocate_param(argv, env);
 }
