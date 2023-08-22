@@ -10,76 +10,50 @@
  * @env: Null terminated environment variables list
  * Return: 0 on success
  */
-int main(int __attribute__((unused)) argc, char **argv, char **env)
+int process_string(param_t *params)
 {
-    param_t *params = NULL;
-    int cond = -2, status;
-    unsigned int i;
     char *state = NULL;
-    size_t size = BUFFER_SIZE;
+    int arg_count = 0;
+    char *token;
 
-    params = init_param(argv, env);
-    if (!params)
-        exit(-1);
+    if (!params->nextCommand)
+        return 0;
 
-    signal(SIGINT, sigint_handler);
+    token = token_(params->nextCommand, " \t\r\n", &state);
 
-    while (1)
+    while (token != NULL)
     {
-        if (cond == -1)
+        if (token[0] == '$' && token[1] != '\0')
         {
-            status = params->status;
-            my_printf("$ :\n");
-            free_params(params);
-            return (status);
-        }
-
-        for (i = 0; i < BUFFER_SIZE; i++)
-            (params->buffer)[i] = 0;
-
-        params->tokCount = 0;
-
-        if (isatty(STDIN_FILENO))
-            my_printf("$: ");
-
-        cond = getline(&params->buffer, &size, stdin);
-
-        params->lineCount++;
-
-        if (cond == -1 && _strlen(params->buffer) == 0)
-        {
-            status = params->status;
-            free_params(params);
-            return (status);
-        }
-
-        state = NULL;
-        params->nextCommand = token_(params->buffer, ";\n", &state);
-
-        while (params->nextCommand)
-        {
-            params->tokCount = process_string(params);
-            if (params->tokCount == 0)
-                break;
-
-            if (strcmp(params->args[0], "exit") == 0 && params->tokCount == 2)
+            char *var_name = token + 1; 
+            char *var_value = _getenv(var_name, params);
+            if (var_value)
             {
-                int exit_status = atoi(params->args[1]);
-                free_params(params);
-                exit(exit_status);
+                params->args[arg_count] = str_duplicate(var_value);
+                free(var_value);
             }
-
-            run_command(params);
-
-            for (i = 0; i < params->argsCap; i++)
+            else
             {
-                free(params->args[i]);
-                params->args[i] = NULL;
+                __write_error__(params, "Undefined environment variable");
+                return -1;
             }
-
-            params->tokCount = 0;
-            free(params->nextCommand);
-            params->nextCommand = token_(params->buffer, ";\n", &state);
         }
+        else
+        {
+            params->args[arg_count] = str_duplicate(token);
+        }
+
+        if (params->args[arg_count] == NULL)
+        {
+            __write_error__(params, "Memory allocation error");
+            return -1;
+        }
+
+        arg_count++;
+        token = token_(NULL, " \t\r\n", &state);
     }
+
+    params->args[arg_count] = NULL;
+
+    return arg_count;
 }
