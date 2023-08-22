@@ -36,5 +36,5 @@ void write_error(param_t *params, char *msg)
     writeHead += string_copy(writeHead, msg);
 
     /* Write error message to stderr */
-    write(STDERR_FILENO, errBuffer, string_length(errBuffer));
+    write(STDERR_FILENO, errBuffer, strlen(errBuffer));
 }
