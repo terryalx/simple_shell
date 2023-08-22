@@ -118,7 +118,7 @@ int isDelim(char c, char *delim);
 
 int string_to_int(char *s);
 int my_printf(const char *, ...);
-int string_compare(char *, char *); /* _strcmp */
+int string_compare(char *, char *);
 int strncmp_custom(char *str1, char *str2, int n); /* _strcmp_n */
 void set_or_update_environment_variable(param_t *params); /* _setenv */
 char *str_duplicate(char *); /* _strdup */
