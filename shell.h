@@ -133,7 +133,7 @@ void clear_terminal_screen(param_t *params);
 void (*find_builtin_function(param_t *params))(param_t *);
 void create_alias(char *name, char *value, param_t *params);
 void myExit(param_t *params);
-int read_line(param_t *); /* _getline */
+int read_line(param_t *);
 char *realloc_line_buffer(char **line, unsigned int oldSize, unsigned int newSize); /* rlLine */
 int write_and_reset_buffer(char *buffer, int *index); /* flush_buffer */
 
