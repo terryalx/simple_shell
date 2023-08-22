@@ -1,5 +1,4 @@
 #include "shell.h"
-
 #define _GNU_SOURCE
 #define BUFFER_SIZE 4096
 
@@ -10,6 +9,7 @@
  * @env: Null terminated environment variables list
  * Return: 0 on success
  */
+
 int main(int __attribute__((unused)) argc, char **argv, char **env)
 {
 	param_t *params = NULL;
