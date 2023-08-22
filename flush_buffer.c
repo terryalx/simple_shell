@@ -1,6 +1,6 @@
 #include "shell.h"
 
-#define BUFFER_SIZE 
+#define BUFFER_SIZE 1024
 
 /**
  * flush_buffer - Prints the contents of the buffer up to a specified index and resets it.
@@ -18,11 +18,12 @@ int flush_buffer(char *buffer, int *index)
 
     num = write(1, buffer, *index);
     *index = BUFFER_SIZE - 1;
-    while (*index >= 0)
+
+    for (int i = *index; i >= 0; i--)
     {
-        buffer[*index] = 0;
-        *index -= 1;
+        buffer[i] = 0;
     }
+
     *index = 0;
-    return (num);
+    return num;
 }
