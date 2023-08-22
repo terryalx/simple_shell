@@ -18,12 +18,11 @@ int flush_buffer(char *buffer, int *index)
 
     num = write(1, buffer, *index);
     *index = BUFFER_SIZE - 1;
-
-    for (int i = *index; i >= 0; i--)
+    while (*index >= 0)
     {
-        buffer[i] = 0;
+        buffer[*index] = 0;
+        *index -= 1;
     }
-
     *index = 0;
-    return num;
+    return (num);
 }
