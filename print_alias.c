@@ -1,24 +1,25 @@
 #include "shell.h"
 
 /**
- * print_alias - prints the value of an alias
- * @name: name of alias
- * @params: alias list
-*/
-
+ * print_alias - Prints the value of an alias.
+ * @name: Name of the alias.
+ * @params: Alias list.
+ *
+ * Return: None.
+ */
 void print_alias(char *name, param_t *params)
 {
-	unsigned int len = 0;
+	unsigned int len = _strlen(name);
 	list_t *ptr = params->alias_head;
 
-	len = _strlen(name);
 	while (ptr)
 	{
 		if (strncmp_custom(name, ptr->str, len - 1) == 0)
 		{
-			my_printf("%s=\'%s\'\n", ptr->str, ptr->value);
+			my_printf("%s='%s'\n", ptr->str, ptr->value);
 		}
 		ptr = ptr->next_node;
 	}
+
 	params->status = 0;
 }
