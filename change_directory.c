@@ -49,8 +49,8 @@ void change_directory(param_t *params)
 		{
 			params->status = 2;
 			my_printf("%s: %d: cd: Illegal option %c%c\n",
-				params->argv[0], params->lineCount,
-				'-', params->args[1][1]);
+					params->argv[0], params->lineCount,
+					'-', params->args[1][1]);
 			return;
 		}
 	}

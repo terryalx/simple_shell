@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * concatenate_strings_with_limit - Concatenates two strings with a byte limit for the second string.
+ * concatenate_strings_with_limit - Concatenates two strings.
  * @s1: First string argument.
  * @s2: Second string argument.
  * @n: Maximum number of bytes to concatenate from s2.
  *
- * Return: Pointer to a newly allocated string containing the concatenated result,
- * or NULL on failure.
+ * Return: Pointer to a newly allocated string containing the
+ * concatenated result, or NULL on failure.
  */
 char *concatenate_strings_with_limit(char *s1, char *s2, unsigned int n)
 {

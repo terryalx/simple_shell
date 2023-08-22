@@ -1,8 +1,10 @@
 #include "shell.h"
 
 /**
- * execute_external_command - Searches path directories for a command and executes it.
- * @params: Parameters containing the command to be executed.
+ * execute_external_command - Searches path
+ * directories for a command and executes it.
+ * @params: Parameters containing the command
+ * to be executed.
  */
 void execute_external_command(param_t *params)
 {

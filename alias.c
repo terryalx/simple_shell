@@ -4,8 +4,8 @@
  * _alias - Implements the "alias" shell command.
  * @params: Pointer to param_t struct.
  *
- * This function handles the "alias" command in the shell. It allows the user to
- * create and manage aliases for commands. If no arguments are provided, it
+ * This function handles the "alias" command in the shell. It allows the user
+ * to create and manage aliases for commands. If no arguments are provided, it
  * prints all the aliases currently defined. If an argument is provided in the
  * form of "alias_name=command", it sets the alias. If an argument is provided
  * without the "=" sign, it prints the command associated with the alias.

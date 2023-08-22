@@ -10,6 +10,6 @@
  */
 void clear_terminal_screen(param_t *params)
 {
-    (void)params;
-    my_printf("\033[2J\033[1;1H");
+	(void)params;
+	my_printf("\033[2J\033[1;1H");
 }
