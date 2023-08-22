@@ -127,7 +127,7 @@ char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size);
 char *string_copy(char *dest, const char *src);
 char *token_(char *str, char *delim, char **savePtr);
 void remove_environment_variable(param_t *params);
-list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
+list_t *prepend_list_node(list_t **head, char *str, char *val);
 void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
 void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
