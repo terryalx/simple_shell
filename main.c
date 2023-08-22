@@ -14,9 +14,6 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 {
     param_t *params = NULL;
     int cond = -2, status;
-    unsigned int i;
-    char *state = NULL;
-    size_t size = BUFFER_SIZE;
 
     params = init_param(argv, env);
     if (!params)
