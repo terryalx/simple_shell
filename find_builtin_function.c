@@ -17,7 +17,7 @@ void (*find_builtin_function(param_t *params))(param_t *)
     static const op_t ops[] = {
         {"cd", change_directory},
         {"alias", _alias},
-        {"exit", _myExit},
+        {"exit", myExit},
         {"clear", clear_terminal_screen},
         {"env", _printenv},
         {"setenv", set_or_update_environment_variable},

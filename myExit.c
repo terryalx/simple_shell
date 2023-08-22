@@ -1,5 +1,6 @@
 #include "shell.h"
 
+void write_error_message(param_t *params, const char *message, const char *arg);
 /**
  * myExit - built-in exit function
  * @params: parameters
