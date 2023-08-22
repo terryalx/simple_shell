@@ -58,7 +58,7 @@ typedef struct op
 
 /* M A I N */
 int process_string(param_t *);
-void execute_external_command(param_t *); /* run_command */
+void execute_external_command(param_t *);
 void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
