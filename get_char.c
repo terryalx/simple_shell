@@ -5,7 +5,6 @@
  * @c: char to be copied
  * Return: ptr of copied char
  */
-
 char *get_char(char c)
 {
 	char *ptr = NULL;

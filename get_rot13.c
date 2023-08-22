@@ -5,7 +5,6 @@
  * @s: string
  * Return: ptr to string
  */
-
 char *get_rot13(char *s)
 {
 	char *ptr = NULL;

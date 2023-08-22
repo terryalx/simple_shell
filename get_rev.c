@@ -5,7 +5,6 @@
  * @s: string to be reversed
  * Return: string reversed
  */
-
 char *get_rev(char *s)
 {
 	char *ptr = NULL;

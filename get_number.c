@@ -5,7 +5,6 @@
  * @n: integer
  * Return: pointer to integer string, NULL on error
  */
-
 char *get_number(int n)
 {
 	int i, len = 0, tmp;

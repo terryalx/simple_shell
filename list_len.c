@@ -5,7 +5,6 @@
  * @h: start of list
  * Return: length of list
  */
-
 size_t list_len(list_t *h)
 {
 	size_t i;

@@ -1,7 +1,6 @@
 #ifndef __SHELL__H__
 #define __SHELL__H__
 
-/* System Calls */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -63,30 +62,15 @@ void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
-
 void _alias(param_t *params);
 void set_alias(char *name, param_t *params);
-
-
-
 void print_alias(char *name, param_t *params);
 void print_all_aliases(param_t *params);
 void print_list_env(list_t *);
 void print_list_alias(list_t *);
 void free_params(param_t *params);
 void __write_error__(param_t *params, char *msg);
-
 param_t *init_param(char **argv, char **env);
-
-/* M A I N */
-
-#define NULL_PTR -1
-#define WRONG_SPECIFIER -2
-
-/*
- * List of my main.h prototypes
- */
-
 char *get_char(char c);
 char *get_string(char *s);
 char *get_number(int n);
@@ -97,14 +81,10 @@ char *get_rot13(char *s);
 char *str_concat(char *, char *);
 char *concatenate_strings_with_limit(char *, char *, unsigned int);
 int _strlen(char *);
-
-/* L I S T */
 size_t print_list(list_t *h);
 size_t list_len(list_t *h);
-
 void free_list(list_t *head);
 list_t *get_node(list_t *head, char *str);
-
 char *move_left(char *a, int size, int num);
 void rev_string(char *s);
 char *rot13(char *s);
@@ -112,10 +92,6 @@ int validNum(char *s);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
-
-
-/* M A I N */
-
 int string_to_int(char *s);
 int my_printf(const char *, ...);
 int string_compare(char *, char *);

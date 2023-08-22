@@ -1,4 +1,5 @@
 #include "shell.h"
+
 #define _GNU_SOURCE
 #define BUFFER_SIZE 4096
 
@@ -8,7 +9,6 @@
  * @env: environment variables
  * Return: param on success
  */
-
 param_t *init_param(char **argv, char **env)
 {
 	unsigned int i;

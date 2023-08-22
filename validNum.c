@@ -5,7 +5,6 @@
  * @s: string
  * Return: 0 if false, 1 otherwise
  */
-
 int validNum(char *s)
 {
 	while (*s)

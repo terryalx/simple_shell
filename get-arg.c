@@ -8,8 +8,6 @@
  *        on the type specifier,
  *        or NULL if an unsupported type specifier is provided.
  */
-
-
 char *get_arg(char type, ...)
 {
 	va_list params;

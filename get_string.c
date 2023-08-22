@@ -5,7 +5,6 @@
  * @s: string to be copied
  * Return: Null if string is null, else pointer of copied string
  */
-
 char *get_string(char *s)
 {
 	char *ptr = NULL;

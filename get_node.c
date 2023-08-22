@@ -5,7 +5,6 @@
  * @str: key
  * Return: ptr to desired node, NULL if not found
  */
-
 list_t *get_node(list_t *head, char *str)
 {
 	list_t *h;

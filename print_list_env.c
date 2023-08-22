@@ -1,9 +1,9 @@
 #include "shell.h"
+
 /**
  * print_list_env - prins environment variables
  * @head: pointer -> head of the environment list
 */
-
 void print_list_env(list_t *head)
 {
 	if (head)

@@ -5,7 +5,6 @@
  * @s: string to be encrypted
  * Return: pointer to the encrypted string
  */
-
 char *rot13(char *s)
 {
 	char *ptr;

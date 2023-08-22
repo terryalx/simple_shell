@@ -6,7 +6,6 @@
  * @delim: delimeters
  * Return: 1 if it is a delimiter, 0 otherwise
  */
-
 int isDelim(char c, char *delim)
 {
 	while (*delim)

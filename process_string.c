@@ -6,7 +6,6 @@
  *
  * Return: number of tokens
  */
-
 int process_string(param_t *params)
 {
 	char *token = NULL, *state = NULL;

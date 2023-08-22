@@ -4,7 +4,6 @@
  * rev_string - Reverses the order of characters in a string.
  * @s: A pointer to a null-terminated string to be reversed.
  */
-
 void rev_string(char *s)
 {
 	int head, tail;

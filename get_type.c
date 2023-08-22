@@ -5,7 +5,6 @@
  * @format: format string
  * @index: current index of format string
  */
-
 void get_type(char *format, int *index)
 {
 	do {

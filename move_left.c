@@ -7,7 +7,6 @@
  * @num: number of digits in the binary number
  * Return: buffer
  */
-
 char *move_left(char *a, int size, int num)
 {
 	int i;
