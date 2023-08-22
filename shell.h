@@ -130,6 +130,6 @@ void str_length(param_t *params); /* _unsetenv */
 list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
-void (*find_builtin_function(param_t *params))(param_t *) /* get_builtin */
+void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
 
 #endif /* end __SHELL__H__ */
