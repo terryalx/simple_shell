@@ -94,7 +94,7 @@ int my_printf(const char *format, ...)
         }
         else
         {
-            charCount += flush_buffer(buffer, &bufferIndex);
+            charCount += write_and_reset_buffer(buffer, &bufferIndex);
             va_end(params);
             return (charCount);
         }
