@@ -20,13 +20,13 @@ char *get_file(param_t *params)
 	if (errno == EACCES)
 	{
 		params->status = 126;
-		write_error(params, "Permission denied\n");
+		__write_error__(params, "Permission denied\n");
 		return (NULL);
 	}
 	path = _getenv("PATH", params);
 	if (!path)
 	{
-		write_error(params, "not found\n");
+		__write_error__(params, "not found\n");
 		return (NULL);
 	}
 	exePath = token_(path, ":", &state);

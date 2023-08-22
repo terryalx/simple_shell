@@ -66,7 +66,7 @@ void change_directory(param_t *params)
 	i = chdir(target);
 	if (i)
 	{
-		write_error(params, "can't cd to ");
+		__write_error__(params, "can't cd to ");
 		write(STDERR_FILENO, target, _strlen(target));
 		write(STDERR_FILENO, "\n", 1);
 		params->status = 0;
