@@ -3,16 +3,16 @@
 #define BUFFER_SIZE 1024
 
 /**
- * flush_buffer - Prints the contents of the buffer up to a specified index and resets it.
+ * write_and_reset_buffer - Writes the buffer up to a specified index and resets it.
  * @buffer: Pointer to the buffer string.
  * @index: Pointer to the index of the buffer.
  *
  * This function writes the characters in the buffer up to the specified index to the standard output (stdout)
- * and then resets the buffer contents and index.
+ * and then resets the buffer contents and index to be ready for new data.
  *
- * Return: The total number of characters printed.
+ * Return: The total number of characters successfully written, or -1 on error.
  */
-int flush_buffer(char *buffer, int *index)
+int write_and_reset_buffer(char *buffer, int *index)
 {
     int num = 0;
 

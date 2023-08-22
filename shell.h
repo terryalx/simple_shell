@@ -109,7 +109,6 @@ char *move_left(char *a, int size, int num);
 void rev_string(char *s);
 char *rot13(char *s);
 int validNum(char *s);
-int flush_buffer(char *buffer, int *index);
 void get_type(char *format, int *index);
 int print_arg(char *arg);
 int isDelim(char c, char *delim);
@@ -136,5 +135,6 @@ void create_alias(char *name, char *value, param_t *params); /* make_alias */
 void myExit(param_t *params); /* _myExit */
 int read_line(param_t *); /* _getline */
 char *realloc_line_buffer(char **line, unsigned int oldSize, unsigned int newSize); /* rlLine */
+int write_and_reset_buffer(char *buffer, int *index); /* flush_buffer */
 
 #endif /* end __SHELL__H__ */
