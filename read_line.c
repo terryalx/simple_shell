@@ -4,12 +4,12 @@
 #define READ_SIZE 1024
 
 /**
- * _getline - fetches a line of characters from stdin
+ * read_line - fetches a line of characters from stdin
  * @params: parameters
  *
  * Return: number of characters read
  */
-int _getline(param_t *params)
+int read_line(param_t *params)
 {
 	char *line = NULL;
 	static unsigned int bufSize = BUFFER_SIZE;

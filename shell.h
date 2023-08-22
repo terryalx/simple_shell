@@ -58,7 +58,6 @@ typedef struct op
 
 /* M A I N */
 int process_string(param_t *);
-int _getline(param_t *);
 void run_command(param_t *);
 void _printenv(param_t *);
 void sigint_handler(int);
@@ -136,5 +135,6 @@ void clear_terminal_screen(param_t *params); /* _clear */
 void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
 void create_alias(char *name, char *value, param_t *params); /* make_alias */
 void myExit(param_t *params); /* _myExit */
+int read_line(param_t *); /* _getline */
 
 #endif /* end __SHELL__H__ */
