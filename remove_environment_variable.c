@@ -1,13 +1,17 @@
 #include "shell.h"
 
 /**
- * remove_environment_variable - Remove an environment variable from the list.
+ * remove_environment_variable - Remove an environment
+ * variable from the list.
  * @params: Pointer to the param_t structure.
  *
- * This function removes an environment variable from the list based on the provided variable_name.
- * If the variable is found and removed, the status in the param_t structure is set to 0.
+ * This function removes an environment variable from the
+ * list based on the provided variable_name.
+ * If the variable is found and removed, the status in the
+ * param_t structure is set to 0.
  *
- * @params: Pointer to the param_t structure containing the list of environment variables.
+ * @params: Pointer to the param_t structure containing the list
+ * of environment variables.
  */
 void remove_environment_variable(param_t *params)
 {
