@@ -67,7 +67,9 @@ char *get_file(param_t *params);
 void _myExit(param_t *params);
 void _alias(param_t *params);
 void set_alias(char *name, param_t *params);
-void make_alias(char *name, char *val, param_t *params);
+
+
+
 void print_alias(char *name, param_t *params);
 void print_all_aliases(param_t *params);
 void print_list_env(list_t *);
@@ -131,5 +133,6 @@ list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
 void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
+void create_alias(char *name, char *value, param_t *params); /* make_alias */
 
 #endif /* end __SHELL__H__ */
