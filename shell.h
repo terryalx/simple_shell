@@ -121,7 +121,7 @@ int my_printf(const char *, ...);
 int string_compare(char *, char *);
 int strncmp_custom(char *str1, char *str2, int n);
 void set_or_update_environment_variable(param_t *params);
-char *str_duplicate(char *); /* _strdup */
+char *str_duplicate(char *);
 char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *string_copy(char *dest, const char *src); /* _strcpy */
