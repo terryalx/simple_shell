@@ -95,7 +95,7 @@ char *get_binary(unsigned int n);
 char *get_rev(char *s);
 char *get_rot13(char *s);
 char *str_concat(char *, char *);
-char *string_nconcat(char *, char *, unsigned int);
+char *concatenate_strings_with_limit(char *, char *, unsigned int); /* string_nconcat */
 int _strlen(char *);
 
 /* L I S T */

@@ -1,13 +1,15 @@
 #include "shell.h"
 
 /**
- * string_nconcat - concatenates two strings
- * @s1: first string argument
- * @s2: second string argument
- * @n: amount of bytes for s2
- * Return: Null on failure, else ptr to malloc
+ * concatenate_strings_with_limit - Concatenates two strings with a byte limit for the second string.
+ * @s1: First string argument.
+ * @s2: Second string argument.
+ * @n: Maximum number of bytes to concatenate from s2.
+ *
+ * Return: Pointer to a newly allocated string containing the concatenated result,
+ * or NULL on failure.
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+char *concatenate_strings_with_limit(char *s1, char *s2, unsigned int n)
 {
 	char *ptr;
 	unsigned int i = 0;
