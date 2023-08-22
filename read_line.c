@@ -24,7 +24,7 @@ int read_line(param_t *params)
 		writeHead += len;
 		if (writeHead >= (line + BUFFER_SIZE - 1 - READ_SIZE))
 		{
-			line = rlLine(&line, bufSize, bufSize * 2);
+			line = realloc_line_buffer(&line, bufSize, bufSize * 2);
 			bufSize *= 2;
 		}
 	} while (*(writeHead - 1) != '\n');
