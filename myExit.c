@@ -1,29 +1,27 @@
 #include "shell.h"
 
 /**
- * _myExit - buildin exit function
+ * myExit - built-in exit function
  * @params: parameters
  */
-
-void _myExit(param_t *params)
+void myExit(param_t *params)
 {
 	int status = 0;
+	char *arg = params->args[1];
 
-	if (!params->args[1])
+	if (!arg)
 	{
 		status = params->status;
 		free_params(params);
 		exit(status);
 	}
-	if (validNum(params->args[1]))
+	
+	if (validNum(arg))
 	{
-		status = string_to_int((params->args)[1]);
+		status = string_to_int(arg);
 		if (status == -1)
 		{
-			__write_error__(params, "Illegal number: ");
-			write(STDERR_FILENO, params->args[1],
-			      _strlen(params->args[1]));
-			write(STDERR_FILENO, "\n", 1);
+			write_error_message(params, "Illegal number: ", arg);
 			params->status = 2;
 			return;
 		}
@@ -33,9 +31,19 @@ void _myExit(param_t *params)
 	else
 	{
 		params->status = 2;
-		__write_error__(params, "Illegal number: ");
-		write(STDERR_FILENO, params->args[1],
-		      _strlen(params->args[1]));
-		write(STDERR_FILENO, "\n", 1);
+		write_error_message(params, "Illegal number: ", arg);
 	}
+}
+
+/**
+ * write_error_message - writes the error message to stderr
+ * @params: parameters
+ * @message: error message
+ * @arg: argument causing the error
+ */
+void write_error_message(param_t *params, const char *message, const char *arg)
+{
+	__write_error__(params, message);
+	write(STDERR_FILENO, arg, _strlen(arg));
+	write(STDERR_FILENO, "\n", 1);
 }
