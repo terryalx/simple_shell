@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
- * run_command - searches path dirs for command and execs
- * @params: parameters
+ * execute_external_command - Searches path directories for a command and executes it.
+ * @params: Parameters containing the command to be executed.
  */
-
-void run_command(param_t *params)
+void execute_external_command(param_t *params)
 {
 	char *exeFile = NULL;
 	pid_t pid;
@@ -17,11 +16,13 @@ void run_command(param_t *params)
 		buildin(params);
 		return;
 	}
+
 	exeFile = get_file(params);
 	if (!exeFile)
 	{
 		return;
 	}
+
 	pid = fork();
 	if (pid < 0)
 	{
