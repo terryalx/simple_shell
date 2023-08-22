@@ -128,7 +128,7 @@ char *string_copy(char *dest, const char *src);
 char *token_(char *str, char *delim, char **savePtr);
 void remove_environment_variable(param_t *params);
 list_t *prepend_list_node(list_t **head, char *str, char *val);
-void change_directory(param_t *params); /* _cd */
+void change_directory(param_t *params);
 void clear_terminal_screen(param_t *params); /* _clear */
 void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
 void create_alias(char *name, char *value, param_t *params); /* make_alias */
