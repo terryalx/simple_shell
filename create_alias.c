@@ -12,19 +12,19 @@
  */
 void create_alias(char *name, char *value, param_t *params)
 {
-    list_t *h = params->alias_head;
+    list_t *head = params->alias_head;
 
-    while (h)
+    while (head)
     {
-        if (!string_compare(name, h->str))
+        if (!string_compare(name, head->str))
         {
-            free(h->value);
-            h->value = value;
-            h->value_length = _strlen(value);
+            free(head->value);
+            head->value = value;
+            head->value_length = _strlen(value);
             params->status = 0;
             return;
         }
-        h = h->next_node;
+        head = head->next_node;
     }
 
     params->alias_head = prepend_list_node(&(params->alias_head), name, value);
