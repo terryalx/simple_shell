@@ -81,7 +81,7 @@ int my_printf(const char *format, ...)
                 return (returnValue);
             }
 
-            charCount += flush_buffer(buffer, &bufferIndex);
+            charCount += write_and_reset_buffer(buffer, &bufferIndex);
             charCount += print_arg(arg);
             free(arg);
             formatIndex++;
