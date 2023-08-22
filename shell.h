@@ -126,7 +126,7 @@ char *find_character_in_string(char *s, char c); /* _strchr */
 char **array_realloc(char **ptr, unsigned int old_size, unsigned int new_size); /* _realloc.c */
 char *string_copy(char *dest, const char *src); /* _strcpy */
 char *token_(char *str, char *delim, char **savePtr); /* _strtok */
-void str_length(param_t *params); /* _unsetenv */
+void remove_environment_variable(param_t *params); /* _unsetenv | str_length */
 list_t *prepend_list_node(list_t **head, char *str, char *val); /* add_node */
 void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
