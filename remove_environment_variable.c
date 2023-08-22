@@ -1,4 +1,4 @@
-#include "shell.current_node"
+#include "shell.h"
 
 /**
  * remove_environment_variable - Remove an environment variable from the list.
