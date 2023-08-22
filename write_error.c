@@ -42,5 +42,5 @@ void write_error(param_t *params, char *msg)
     len += strlen(msg);  /* Calculate error message length */
     strcpy(writeHead, msg);  /* Copy error message */
 
-    write(STDERR_FILENO, errBuffer, strcpy(len));  /* Write error message to stderr */
+    write(STDERR_FILENO, errBuffer, strcpy(writeHead));  /* Write error message to stderr */
 }
