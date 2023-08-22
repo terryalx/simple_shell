@@ -15,25 +15,25 @@ void write_error(param_t *params, char *msg)
     char *writeHead = errBuffer;  /* Pointer to the current write position */
 
     /* Copy program name */
-    writeHead += string_copy(writeHead, params->argv[0]);
+    writeHead = stpncpy(writeHead, params->argv[0], sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy separator ": " */
-    writeHead += string_copy(writeHead, ": ");
+    writeHead = stpncpy(writeHead, ": ", sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy line number */
-    writeHead += string_copy(writeHead, get_number(params->lineCount));
+    writeHead = stpncpy(writeHead, get_number(params->lineCount), sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy separator ": " */
-    writeHead += string_copy(writeHead, ": ");
+    writeHead = stpncpy(writeHead, ": ", sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy argument */
-    writeHead += string_copy(writeHead, params->args[0]);
+    writeHead = stpncpy(writeHead, params->args[0], sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy separator ": " */
-    writeHead += string_copy(writeHead, ": ");
+    writeHead = stpncpy(writeHead, ": ", sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Copy error message */
-    writeHead += string_copy(writeHead, msg);
+    stpncpy(writeHead, msg, sizeof(errBuffer) - (writeHead - errBuffer));
 
     /* Write error message to stderr */
     write(STDERR_FILENO, errBuffer, strlen(errBuffer));
