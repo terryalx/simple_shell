@@ -8,32 +8,32 @@
  */
 char *str_duplicate(char *str)
 {
-    char *ptr = NULL;
-    int len = 0;
-    char *str_copy = str;
+	char *ptr = NULL;
+	int len = 0;
+	char *str_copy = str;
 
-    if (!str)
-    {
-        return (NULL);
-    }
+	if (!str)
+	{
+		return (NULL);
+	}
 
-    while (*str_copy)
-    {
-        len++;
-        str_copy++;
-    }
+	while (*str_copy)
+	{
+		len++;
+		str_copy++;
+	}
 
-    ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
 
-    if (ptr)
-    {
-        int i;
-        for (i = 0; i < len; i++)
-        {
-            ptr[i] = str[i];
-        }
-        ptr[len] = '\0';
-    }
+	if (ptr)
+	{
+		int i;
+		for (i = 0; i < len; i++)
+		{
+			ptr[i] = str[i];
+		}
+		ptr[len] = '\0';
+	}
 
-    return (ptr);
+	return (ptr);
 }
