@@ -64,7 +64,7 @@ void _printenv(param_t *);
 void sigint_handler(int);
 char *_getenv(char *name, param_t *params);
 char *get_file(param_t *params);
-void _myExit(param_t *params);
+
 void _alias(param_t *params);
 void set_alias(char *name, param_t *params);
 
@@ -135,5 +135,6 @@ void change_directory(param_t *params); /* _cd */
 void clear_terminal_screen(param_t *params); /* _clear */
 void (*find_builtin_function(param_t *params))(param_t *); /* get_builtin */
 void create_alias(char *name, char *value, param_t *params); /* make_alias */
+void myExit(param_t *params); /* _myExit */
 
 #endif /* end __SHELL__H__ */
