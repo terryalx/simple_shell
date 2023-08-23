@@ -36,7 +36,6 @@ static int initialize_environment(param_t *params, char **env);
 static param_t *allocate_param(char **argv, char **env)
 {
     param_t *params = malloc(sizeof(*params));
-    unsigned int i;
 
     if (!params)
         return (NULL);
