@@ -36,6 +36,7 @@ static int initialize_environment(param_t *params, char **env);
 static param_t *allocate_param(char **argv, char **env)
 {
     param_t *params = malloc(sizeof(*params));
+    unsigned int i;
 
     if (!params)
         return (NULL);
@@ -63,13 +64,15 @@ static param_t *allocate_param(char **argv, char **env)
 
 static int initialize_buffer(param_t *params)
 {
+    unsigned int i;
+
     params->buffer = malloc(sizeof(char) * BUFFER_SIZE);
     if (!(params->buffer))
     {
         free(params);
         exit(-1);
     }
-    for (unsigned int i = 0; i < BUFFER_SIZE; i++)
+    for (i = 0; i < BUFFER_SIZE; i++)
         params->buffer[i] = 0;
 
     return (1);
@@ -77,6 +80,8 @@ static int initialize_buffer(param_t *params)
 
 static int initialize_args(param_t *params)
 {
+    unsigned int i;
+
     params->args = malloc(sizeof(char *) * params->argsCap);
     if (!(params->args))
     {
@@ -84,7 +89,7 @@ static int initialize_args(param_t *params)
         free(params);
         exit(-1);
     }
-    for (unsigned int i = 0; i < params->argsCap; i++)
+    for (i = 0; i < params->argsCap; i++)
         params->args[i] = NULL;
 
     return (1);
@@ -93,8 +98,9 @@ static int initialize_args(param_t *params)
 static int initialize_environment(param_t *params, char **env)
 {
     params->env_head = NULL;
+    unsigned int i;
 
-    for (unsigned int i = 0; env[i]; i++)
+    for (i = 0; env[i]; i++)
     {
         char *eqs = find_character_in_string(env[i], '=');
         *eqs = '\0';
