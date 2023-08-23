@@ -12,10 +12,8 @@ int process_format(const char *format, va_list params,
  */
 int my_printf(const char *format, ...)
 {
-	/* int formatIndex, */
 	int charCount = 0, returnValue = -1, bufferIndex = 0;
 	char buffer[BUFFER_SIZE] = {0};
-	/* char *arg = NULL; */
 	va_list params;
 
 	if (!format)
@@ -24,7 +22,6 @@ int my_printf(const char *format, ...)
 	if (_strlen((char *)format) == 1 && format[0] == '%')
 		return (returnValue);
 
-	/* formatIndex = 0; */
 	va_start(params, format);
 
 	charCount = process_format(format, params, buffer, &bufferIndex);
@@ -123,4 +120,3 @@ int process_format(const char *format, va_list params,
 		}
 	}
 }
-
