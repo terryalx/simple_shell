@@ -73,7 +73,6 @@ int my_printf(const char *format, ...)
 {
     int formatIndex, charCount = 0, returnValue = -1, bufferIndex = 0;
     char buffer[BUFFER_SIZE] = {0};
-    char *arg = NULL;
     va_list params;
 
     if (!format)
@@ -87,6 +86,8 @@ int my_printf(const char *format, ...)
 
     while (1)
     {
+        int charsProcessed;
+
         if (bufferIndex == BUFFER_SIZE)
         {
             charCount += write_and_reset_buffer(buffer, &bufferIndex);
@@ -96,7 +97,7 @@ int my_printf(const char *format, ...)
         {
             get_type((char *)format, &formatIndex);
 
-            int charsProcessed = process_format_specifier(buffer, &bufferIndex, format, &formatIndex, params);
+            charsProcessed = process_format_specifier(buffer, &bufferIndex, format, &formatIndex, params);
 
             if (charsProcessed == 0)
             {
