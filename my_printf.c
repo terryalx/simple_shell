@@ -153,7 +153,6 @@ static int print_int(int num, char *buffer, int *bufferIndex)
  */
 static int print_binary(int num, char *buffer, int *bufferIndex)
 {
-	int len;
 	int i;
 	char binStr[33];
 
