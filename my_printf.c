@@ -78,7 +78,9 @@ static int handle_int(char *buffer, int *index, va_list *params)
 	int num = va_arg(*params, int);
 	char numStr[32];
 	snprintf(numStr, sizeof(numStr), "%d", num);
-	return (handle_string(buffer, index, numStr));
+	va_list paramsCopy;
+	va_copy(paramsCopy, *params);
+	return (handle_string(buffer, index, &paramsCopy));
 }
 
 /**
@@ -100,8 +102,8 @@ int my_printf(const char *format, ...)
 		return (-1);
 
 	va_start(params, format);
-
-	for (int i = 0; format[i]; i++)
+	int i;
+	for (i = 0; format[i]; i++)
 	{
 		if (bufferIndex == BUFFER_SIZE)
 			charCount += write_and_reset_buffer(buffer, &bufferIndex);
@@ -116,7 +118,11 @@ int my_printf(const char *format, ...)
 			else if (format[i] == 's')
 				charCount += handle_string(buffer, &bufferIndex, &params);
 			else if (format[i] == 'd' || format[i] == 'i')
-				charCount += handle_int(buffer, &bufferIndex, &params);
+			{
+				va_list paramsCopy;
+				va_copy(paramsCopy, params);
+				charCount += handle_string(buffer, &bufferIndex, &paramsCopy);
+			}
 		}
 		else
 		{
@@ -129,10 +135,4 @@ int my_printf(const char *format, ...)
 
 	va_end(params);
 	return (charCount);
-}
-
-int main(void)
-{
-	my_printf("Hello, %s! The answer is %d.\n", "world", 42);
-	return (0);
 }
