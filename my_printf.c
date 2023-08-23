@@ -2,137 +2,110 @@
 
 #define BUFFER_SIZE 1024
 
-/* Function Declarations */
-static int write_and_reset_buffer(char *buffer, int *index);
-static int handle_char(char *buffer, int *index, va_list *params);
-static int handle_string(char *buffer, int *index, va_list *params);
-static int handle_int(char *buffer, int *index, va_list *params);
-
-int my_printf(const char *format, ...);
+static int handle_argument(const char *format, va_list params, char *buffer, int *bufferIndex);
+static int write_buffer_and_reset(char *buffer, int *bufferIndex);
 
 /**
- * write_and_reset_buffer - Write the buffer content to standard output and reset it.
- * @buffer: The character buffer to write from.
- * @index: Pointer to the buffer index.
+ * write_buffer_and_reset - Write buffer content to stdout and reset the index
+ * @buffer: Buffer to write from
+ * @bufferIndex: Index to reset
  *
- * Return: The number of characters written.
+ * Return: Number of characters written
  */
-static int write_and_reset_buffer(char *buffer, int *index)
+static int write_buffer_and_reset(char *buffer, int *bufferIndex)
 {
-	int charCount = write(1, buffer, *index);
-	memset(buffer, 0, BUFFER_SIZE);
-	*index = 0;
-	return (charCount);
-}
-
-/**
- * handle_char - Handle the %c format specifier.
- * @buffer: The character buffer to write to.
- * @index: Pointer to the buffer index.
- * @params: The variable argument list.
- *
- * Return: The number of characters written.
- */
-static int handle_char(char *buffer, int *index, va_list *params)
-{
-	char c = va_arg(*params, int);
-	if (*index == BUFFER_SIZE)
-		return (write_and_reset_buffer(buffer, index));
-	buffer[(*index)++] = c;
-	return (1);
-}
-
-/**
- * handle_string - Handle the %s format specifier.
- * @buffer: The character buffer to write to.
- * @index: Pointer to the buffer index.
- * @params: The variable argument list.
- *
- * Return: The number of characters written.
- */
-static int handle_string(char *buffer, int *index, va_list *params)
-{
-	char *s = va_arg(*params, char *);
 	int charCount = 0;
-	while (*s)
-	{
-		if (*index == BUFFER_SIZE)
-			charCount += write_and_reset_buffer(buffer, index);
-		buffer[(*index)++] = *s;
-		s++;
-		charCount++;
-	}
+	charCount += write(1, buffer, *bufferIndex);
+	*bufferIndex = 0;
 	return (charCount);
 }
 
 /**
- * handle_int - Handle the %d and %i format specifiers.
- * @buffer: The character buffer to write to.
- * @index: Pointer to the buffer index.
- * @params: The variable argument list.
+ * handle_argument - Handle the argument and add it to the buffer
+ * @format: Format specifier
+ * @params: Variable argument list
+ * @buffer: Buffer to add to
+ * @bufferIndex: Index for the buffer
  *
- * Return: The number of characters written.
+ * Return: Number of characters added to the buffer
  */
-static int handle_int(char *buffer, int *index, va_list *params)
+static int handle_argument(const char *format, va_list params, char *buffer, int *bufferIndex)
 {
-	int num = va_arg(*params, int);
-	char numStr[32];
-	snprintf(numStr, sizeof(numStr), "%d", num);
-	va_list paramsCopy;
-	va_copy(paramsCopy, *params);
-	return (handle_string(buffer, index, &paramsCopy));
+	int charCount = 0;
+	char *arg = NULL;
+
+	switch (format[0])
+	{
+		case 'c':
+			buffer[(*bufferIndex)++] = (char)va_arg(params, int);
+			break;
+		case 's':
+		case 'd':
+		case 'i':
+		case 'b':
+		case 'r':
+		case 'R':
+		case '%':
+			arg = get_arg(format[0], va_arg(params, void *));
+			if (!arg)
+				return (-1);
+			charCount += write_buffer_and_reset(buffer, bufferIndex);
+			charCount += print_arg(arg);
+			free(arg);
+			break;
+		case '\0':
+			buffer[(*bufferIndex)++] = '%';
+			break;
+		default:
+			arg = get_arg('c', format[0]);
+			if (!arg)
+				return (-1);
+			charCount += write_buffer_and_reset(buffer, bufferIndex);
+			charCount += print_arg(arg);
+			free(arg);
+	}
+
+	return charCount;
 }
 
 /**
- * my_printf - Format and print text to standard output.
- * @format: The format string with optional format specifiers.
- *            Supported specifiers: %c, %s, %d, %i
- * @...: Variable number of arguments corresponding to the specifiers.
+ * my_printf - Output text to standard output specified by format
+ * @format: Directives for outputting text
  *
- * Return: The number of characters printed.
+ * Return: Number of characters output
  */
 int my_printf(const char *format, ...)
 {
-	int charCount = 0;
-	int bufferIndex = 0;
+	int charCount = 0, formatIndex = 0, bufferIndex = 0;
 	char buffer[BUFFER_SIZE] = {0};
 	va_list params;
 
-	if (format == NULL)
+	if (!format)
 		return (-1);
 
+	if (_strlen((char *)format) == 1 && format[0] == '%')
+		return (-1);
+
+	formatIndex = 0;
 	va_start(params, format);
-	int i;
-	for (i = 0; format[i]; i++)
+
+	while (1)
 	{
 		if (bufferIndex == BUFFER_SIZE)
-			charCount += write_and_reset_buffer(buffer, &bufferIndex);
+			charCount += write_buffer_and_reset(buffer, &bufferIndex);
 
-		if (format[i] == '%')
+		if (format[formatIndex] == '%')
 		{
-			i++;
-			if (format[i] == '\0')
-				buffer[bufferIndex++] = '%';
-			else if (format[i] == 'c')
-				charCount += handle_char(buffer, &bufferIndex, &params);
-			else if (format[i] == 's')
-				charCount += handle_string(buffer, &bufferIndex, &params);
-			else if (format[i] == 'd' || format[i] == 'i')
-			{
-				va_list paramsCopy;
-				va_copy(paramsCopy, params);
-				charCount += handle_string(buffer, &bufferIndex, &paramsCopy);
-			}
+			get_type((char *)format, &formatIndex);
+			charCount += handle_argument(format + formatIndex, params, buffer, &bufferIndex);
 		}
+		else if (format[formatIndex] != '\0')
+			buffer[bufferIndex++] = format[formatIndex++];
 		else
 		{
-			buffer[bufferIndex++] = format[i];
-			charCount++;
+			charCount += write_buffer_and_reset(buffer, &bufferIndex);
+			va_end(params);
+			return (charCount);
 		}
 	}
-
-	charCount += write_and_reset_buffer(buffer, &bufferIndex);
-
-	va_end(params);
-	return (charCount);
 }
