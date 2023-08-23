@@ -86,7 +86,7 @@ static int initialize_args(param_t *params)
 }
 
 /**
- * initialize_environment - Populate environment variables in 
+ * initialize_environment - Populate environment variables in
  * param_t structure.
  * @params: Pointer to the param_t structure.
  * @env: Environment variables.
