@@ -137,6 +137,7 @@ static int print_string(char *str, char *buffer, int *bufferIndex)
 static int print_int(int num, char *buffer, int *bufferIndex)
 {
 	char numStr[12];
+	int len;
 	
 	len = snprintf(numStr, sizeof(numStr), "%d", num);
 	return (print_string(numStr, buffer, bufferIndex));
