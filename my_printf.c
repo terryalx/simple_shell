@@ -1,77 +1,66 @@
-#include "shell.h" 
+#include "shell.h"
 
 #define BUFFER_SIZE 1024
 
-static int write_buffer_and_reset(char *buffer, int *bufferIndex);
-static int handle_argument(const char *format, va_list params, char *buffer, int *bufferIndex);
-
 /**
- * write_buffer_and_reset - Write buffer content to stdout and reset the index
- * @buffer: Buffer to write from
- * @bufferIndex: Index to reset
- *
- * Return: Number of characters written
+ * Process a format specifier and update the buffer.
  */
-static int write_buffer_and_reset(char *buffer, int *bufferIndex)
+static int process_format_specifier(char *buffer, int *bufferIndex, const char *format, int *formatIndex, va_list params)
 {
-    int charCount = 0;
-    charCount = write(1, buffer, *bufferIndex);
-    if (charCount == -1) {
-        perror("write");
-        exit(EXIT_FAILURE);
-    }
-    *bufferIndex = 0;
-    return charCount;
-}
-
-/**
- * handle_argument - Handle the argument and add it to the buffer
- * @format: Format specifier
- * @params: Variable argument list
- * @buffer: Buffer to add to
- * @bufferIndex: Index for the buffer
- *
- * Return: Number of characters added to the buffer
- */
-static int handle_argument(const char *format, va_list params, char *buffer, int *bufferIndex)
-{
-    int charCount = 0;
     char *arg = NULL;
 
-    switch (format[0])
+    switch (format[*formatIndex])
     {
         case 'c':
-            buffer[(*bufferIndex)++] = (char)va_arg(params, int);
-            break;
+            buffer[*bufferIndex] = (char)va_arg(params, int);
+            (*bufferIndex)++;
+            (*formatIndex)++;
+            return (1);
+
         case 's':
+            arg = get_arg('s', va_arg(params, char *));
+            if (arg == NULL)
+                return (0); 
+            while (*arg)
+            {
+                buffer[*bufferIndex] = *arg;
+                (*bufferIndex)++;
+                arg++;
+            }
+            return (1);
+
         case 'd':
         case 'i':
-        case 'b':
-        case 'r':
-        case 'R':
-        case '%':
-            arg = get_arg(format[0], va_arg(params, void *));
-            if (!arg) {
-                return -1;
-            }
-            charCount += write_buffer_and_reset(buffer, bufferIndex);
-            charCount += print_arg(arg);
-            free(arg);
-            break;
-        case '\0':
-            buffer[(*bufferIndex)++] = '%';
-            break;
-        default:
-            arg = get_arg('c', format[0]);
-            if (!arg) {
-                return -1;
-            }
-            charCount += write_buffer_and_reset(buffer, bufferIndex);
-            charCount += print_arg(arg);
-            free(arg);
-    }
+            return (1);
 
-    return charCount;
+        case 'b':
+            return (1);
+
+        case 'r':
+            return (1);
+
+        case 'R':
+            return (1);
+
+        case '%':
+            arg = malloc(2);
+            arg[0] = '%';
+            arg[1] = '\0';
+            return (1);
+
+        case '\0':
+            buffer[*bufferIndex] = '%';
+            (*bufferIndex)++;
+            (*formatIndex)++;
+            return (1);
+
+        default:
+            arg = malloc(3);
+            arg[0] = '%';
+            arg[1] = format[*formatIndex];
+            arg[2] = '\0';
+            return (1);
+    }
 }
 
 /**
@@ -82,15 +71,16 @@ static int handle_argument(const char *format, va_list params, char *buffer, int
  */
 int my_printf(const char *format, ...)
 {
-    int charCount = 0, formatIndex = 0, bufferIndex = 0;
+    int formatIndex, charCount = 0, returnValue = -1, bufferIndex = 0;
     char buffer[BUFFER_SIZE] = {0};
+    char *arg = NULL;
     va_list params;
 
     if (!format)
-        return -1;
+        return (returnValue);
 
     if (_strlen((char *)format) == 1 && format[0] == '%')
-        return -1;
+        return (returnValue);
 
     formatIndex = 0;
     va_start(params, format);
@@ -98,20 +88,37 @@ int my_printf(const char *format, ...)
     while (1)
     {
         if (bufferIndex == BUFFER_SIZE)
-            charCount += write_buffer_and_reset(buffer, &bufferIndex);
+        {
+            charCount += write_and_reset_buffer(buffer, &bufferIndex);
+        }
 
         if (format[formatIndex] == '%')
         {
-            formatIndex++;
-            charCount += handle_argument(format + formatIndex, params, buffer, &bufferIndex);
+            get_type((char *)format, &formatIndex);
+
+            int charsProcessed = process_format_specifier(buffer, &bufferIndex, format, &formatIndex, params);
+
+            if (charsProcessed == 0)
+            {
+                va_end(params);
+                return (returnValue);
+            }
+
+            charCount += charsProcessed;
         }
         else if (format[formatIndex] != '\0')
-            buffer[bufferIndex++] = format[formatIndex++];
+        {
+            buffer[bufferIndex] = format[formatIndex];
+            bufferIndex++;
+            formatIndex++;
+        }
         else
         {
-            charCount += write_buffer_and_reset(buffer, &bufferIndex);
+            charCount += write_and_reset_buffer(buffer, &bufferIndex);
             va_end(params);
-            return charCount;
+            return (charCount);
         }
     }
+
+    return (charCount);
 }
