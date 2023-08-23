@@ -9,6 +9,30 @@
  * @env: Environment variables.
  * Return: Pointer to the newly allocated param_t structure or NULL on failure.
  */
+static param_t *allocate_param(char **argv, char **env);
+
+/**
+ * initialize_buffer - Initialize the buffer in the param_t structure.
+ * @params: Pointer to the param_t structure.
+ * Return: 1 on success, 0 on failure.
+ */
+static int initialize_buffer(param_t *params);
+
+/**
+ * initialize_args - Initialize the args array in the param_t structure.
+ * @params: Pointer to the param_t structure.
+ * Return: 1 on success, 0 on failure.
+ */
+static int initialize_args(param_t *params);
+
+/**
+ * initialize_environment - Populate environment variables in param_t structure.
+ * @params: Pointer to the param_t structure.
+ * @env: Environment variables.
+ * Return: 1 on success, 0 on failure.
+ */
+static int initialize_environment(param_t *params, char **env);
+
 static param_t *allocate_param(char **argv, char **env)
 {
     param_t *params = malloc(sizeof(*params));
@@ -37,11 +61,6 @@ static param_t *allocate_param(char **argv, char **env)
     return (params);
 }
 
-/**
- * initialize_buffer - Initialize the buffer in the param_t structure.
- * @params: Pointer to the param_t structure.
- * Return: 1 on success, 0 on failure.
- */
 static int initialize_buffer(param_t *params)
 {
     params->buffer = malloc(sizeof(char) * BUFFER_SIZE);
@@ -56,11 +75,6 @@ static int initialize_buffer(param_t *params)
     return (1);
 }
 
-/**
- * initialize_args - Initialize the args array in the param_t structure.
- * @params: Pointer to the param_t structure.
- * Return: 1 on success, 0 on failure.
- */
 static int initialize_args(param_t *params)
 {
     params->args = malloc(sizeof(char *) * params->argsCap);
@@ -76,12 +90,6 @@ static int initialize_args(param_t *params)
     return (1);
 }
 
-/**
- * initialize_environment - Populate environment variables in param_t structure.
- * @params: Pointer to the param_t structure.
- * @env: Environment variables.
- * Return: 1 on success, 0 on failure.
- */
 static int initialize_environment(param_t *params, char **env)
 {
     params->env_head = NULL;
@@ -107,12 +115,6 @@ static int initialize_environment(param_t *params, char **env)
     return (1);
 }
 
-/**
- * init_param - Initialize params structure for the shell program.
- * @argv: Command line argument.
- * @env: Environment variables.
- * Return: Pointer to the initialized param_t structure or NULL on failure.
- */
 param_t *init_param(char **argv, char **env)
 {
     return (allocate_param(argv, env));
