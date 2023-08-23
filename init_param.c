@@ -97,9 +97,9 @@ static int initialize_args(param_t *params)
 
 static int initialize_environment(param_t *params, char **env)
 {
-    params->env_head = NULL;
     unsigned int i;
-
+    params->env_head = NULL;
+    
     for (i = 0; env[i]; i++)
     {
         char *eqs = find_character_in_string(env[i], '=');
